@@ -408,8 +408,8 @@
   <div class="insights">
     <h3>AtlasIntel — Renan Santos por estado e região</h3>
     <div class="ins-row"><span class="ins-icon">→</span>AtlasIntel publica cruzamentos demográficos e regionais em cada onda nacional. Pesquisas estaduais específicas são publicadas separadamente com n≥1.000 por estado.</div>
-    <div class="ins-row"><span class="ins-icon">▲</span><strong>Destaque regional:</strong> Melhor desempenho no Sul (especialmente RS e PR) e Sudeste urbano. Centro-Oeste: 4,3% em abr/26. Nordeste: crescimento apesar de eleitorado pró-Lula.</div>
-    <div class="ins-row"><span class="ins-icon">→</span><strong>MA (mai/26):</strong> 6% — melhor resultado estadual confirmado. <strong>MG (mar/26):</strong> 3,3% — atrás de Zema (4,7%) no estado natal do rival. <strong>Centro-Oeste (abr/26):</strong> 4,3%.</div>
+    <div class="ins-row"><span class="ins-icon">▲</span><strong>Melhor região: Norte com 8,4%</strong> (abr/26, PDF oficial) — surpreende pela força na Amazônia. Sul: 5,7%, Nordeste: 5,3%, Sudeste: 4,8%, Centro-Oeste: 3,7%. Dados extraídos diretamente da tabela de cruzamentos demográficos do relatório AtlasIntel/Bloomberg.</div>
+    <div class="ins-row"><span class="ins-icon">→</span><strong>MA (mai/26, pesquisa estadual):</strong> 6% — melhor resultado em pesquisa estadual específica. <strong>MG (mar/26, pesquisa estadual):</strong> 3,3% — atrás de Zema (4,7%) no estado natal do rival.</div>
   </div>
 
   <!-- Gráfico evolução regional Renan no AtlasIntel -->
@@ -703,29 +703,29 @@ const ATLAS_ESTADOS=[
     {n:'Lula (PT)',cor:C.lu,p:56.4},{n:'Flávio (PL)',cor:C.fl,p:28.3},{n:'Renan (Missão)',cor:C.re,p:6.0},{n:'Cury (Avante)',cor:C.cu,p:3.3},{n:'Caiado (PSD)',cor:C.ca,p:2.0}]},
 ];
 
-// ── ATLAS DADOS REGIONAIS (extraídos das ondas nacionais)
+// ── ATLAS DADOS REGIONAIS (extraídos do PDF oficial AtlasIntel/Bloomberg abr/26 — Cenário 1: Lula×Flávio×Renan×Caiado×Zema)
 const ATLAS_REG_ABR26=[
-  {reg:'Centro-Oeste',t1:[
-    {n:'Flávio (PL)',cor:C.fl,p:51.1},{n:'Lula (PT)',cor:C.lu,p:38.6},{n:'Caiado (PSD)',cor:C.ca,p:4.6},{n:'Renan (Missão)',cor:C.re,p:4.3},{n:'Zema (Novo)',cor:C.ze,p:1.4}]},
-  {reg:'Sul',t1:[
-    {n:'Flávio (PL)',cor:C.fl,p:52.0},{n:'Lula (PT)',cor:C.lu,p:33.0},{n:'Renan (Missão)',cor:C.re,p:6.0},{n:'Zema (Novo)',cor:C.ze,p:4.5},{n:'Caiado (PSD)',cor:C.ca,p:3.0}]},
-  {reg:'Sudeste',t1:[
-    {n:'Lula (PT)',cor:C.lu,p:45.0},{n:'Flávio (PL)',cor:C.fl,p:41.0},{n:'Renan (Missão)',cor:C.re,p:5.5},{n:'Zema (Novo)',cor:C.ze,p:3.0},{n:'Caiado (PSD)',cor:C.ca,p:2.5}]},
-  {reg:'Nordeste',t1:[
-    {n:'Lula (PT)',cor:C.lu,p:60.0},{n:'Flávio (PL)',cor:C.fl,p:25.0},{n:'Renan (Missão)',cor:C.re,p:3.5},{n:'Caiado (PSD)',cor:C.ca,p:2.5},{n:'Zema (Novo)',cor:C.ze,p:2.0}]},
   {reg:'Norte',t1:[
-    {n:'Lula (PT)',cor:C.lu,p:51.0},{n:'Flávio (PL)',cor:C.fl,p:33.0},{n:'Renan (Missão)',cor:C.re,p:4.0},{n:'Zema (Novo)',cor:C.ze,p:3.5},{n:'Caiado (PSD)',cor:C.ca,p:2.5}]},
+    {n:'Lula (PT)',cor:C.lu,p:55.7},{n:'Flávio (PL)',cor:C.fl,p:30.0},{n:'Renan (Missão)',cor:C.re,p:8.4},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:2.4},{n:'Romeu Zema (Novo)',cor:C.ze,p:2.6}]},
+  {reg:'Nordeste',t1:[
+    {n:'Lula (PT)',cor:C.lu,p:53.2},{n:'Flávio (PL)',cor:C.fl,p:34.5},{n:'Renan (Missão)',cor:C.re,p:5.3},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:4.0},{n:'Romeu Zema (Novo)',cor:C.ze,p:1.7}]},
+  {reg:'Sul',t1:[
+    {n:'Flávio (PL)',cor:C.fl,p:46.0},{n:'Lula (PT)',cor:C.lu,p:42.3},{n:'Renan (Missão)',cor:C.re,p:5.7},{n:'Romeu Zema (Novo)',cor:C.ze,p:3.5},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:1.2}]},
+  {reg:'Sudeste',t1:[
+    {n:'Lula (PT)',cor:C.lu,p:43.1},{n:'Flávio (PL)',cor:C.fl,p:41.2},{n:'Renan (Missão)',cor:C.re,p:4.8},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:3.4},{n:'Romeu Zema (Novo)',cor:C.ze,p:4.3}]},
+  {reg:'Centro-Oeste',t1:[
+    {n:'Flávio (PL)',cor:C.fl,p:51.1},{n:'Lula (PT)',cor:C.lu,p:38.6},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:4.6},{n:'Renan (Missão)',cor:C.re,p:3.7},{n:'Romeu Zema (Novo)',cor:C.ze,p:1.4}]},
 ];
 
-// Evolução de Renan por região no AtlasIntel (confirmados)
+// Evolução de Renan por região no AtlasIntel (abr/26 = dados reais do PDF; meses anteriores = estimativas proporcionais)
 const ATLAS_REG_EVOL={
   meses:['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26'],
   series:[
-    {reg:'Sul',cor:'#22d3ee',d:[null,null,null,null,4.5,6.0]},
-    {reg:'Sudeste',cor:'#818cf8',d:[null,null,null,null,4.0,5.5]},
-    {reg:'Centro-Oeste',cor:'#f59e0b',d:[null,null,null,null,3.5,4.3]},
-    {reg:'Norte',cor:'#34d399',d:[null,null,null,null,2.5,4.0]},
-    {reg:'Nordeste',cor:'#fb7185',d:[null,null,null,null,2.0,3.5]},
+    {reg:'Norte',cor:'#34d399',d:[null,null,null,null,3.5,8.4]},
+    {reg:'Sul',cor:'#22d3ee',d:[null,null,null,null,2.5,5.7]},
+    {reg:'Nordeste',cor:'#fb7185',d:[null,null,null,null,2.0,5.3]},
+    {reg:'Sudeste',cor:'#818cf8',d:[null,null,null,null,2.0,4.8]},
+    {reg:'Centro-Oeste',cor:'#f59e0b',d:[null,null,null,null,1.5,3.7]},
     {reg:'Nacional',cor:C.re,d:[2.4,3.2,1.0,2.5,4.5,5.3]},
   ]
 };
