@@ -206,6 +206,7 @@
   <button class="tab"     onclick="showTab('evolucao',this)">Evolução Mensal</button>
   <button class="tab"     onclick="showTab('geral',this)">Visão Geral</button>
   <button class="tab"     onclick="showTab('estados',this)">Por Estado</button>
+  <button class="tab"     onclick="showTab('atlas-estados',this)">🔵 Atlas por Estado</button>
   <button class="tab"     onclick="showTab('tabela',this)">Todas as Pesquisas</button>
 </div>
 
@@ -398,6 +399,34 @@
 
   <div class="st">Pesquisas por estado <em>múltiplos institutos</em></div>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px" id="est-grid"></div>
+
+</div>
+
+<!-- ═══════════════════ ATLAS POR ESTADO ═══════════════════ -->
+<div class="panel" id="panel-atlas-estados">
+
+  <div class="insights">
+    <h3>AtlasIntel — Renan Santos por estado e região</h3>
+    <div class="ins-row"><span class="ins-icon">→</span>AtlasIntel publica cruzamentos demográficos e regionais em cada onda nacional. Pesquisas estaduais específicas são publicadas separadamente com n≥1.000 por estado.</div>
+    <div class="ins-row"><span class="ins-icon">▲</span><strong>Destaque regional:</strong> Melhor desempenho no Sul (especialmente RS e PR) e Sudeste urbano. Centro-Oeste: 4,3% em abr/26. Nordeste: crescimento apesar de eleitorado pró-Lula.</div>
+    <div class="ins-row"><span class="ins-icon">→</span><strong>MA (mai/26):</strong> 6% — melhor resultado estadual confirmado. <strong>MG (mar/26):</strong> 3,3% — atrás de Zema (4,7%) no estado natal do rival. <strong>Centro-Oeste (abr/26):</strong> 4,3%.</div>
+  </div>
+
+  <!-- Gráfico evolução regional Renan no AtlasIntel -->
+  <div class="st">Evolução de Renan Santos <em>por região — AtlasIntel</em></div>
+  <div class="ch-card" style="margin-bottom:20px">
+    <div class="ch-leg" id="atlas-reg-leg"></div>
+    <div class="ch-h" style="height:280px"><canvas id="ch-atlas-reg"></canvas></div>
+    <p class="ch-note">Dados regionais extraídos dos relatórios AtlasIntel/Bloomberg. Sul e Sudeste urbano com melhor desempenho de Renan.</p>
+  </div>
+
+  <!-- Dados por estado -->
+  <div class="st">Pesquisas estaduais AtlasIntel <em>Renan Santos</em></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:20px" id="atlas-est-grid"></div>
+
+  <!-- Dados regionais nacionais -->
+  <div class="st">Resultados por região — AtlasIntel <em>abr/2026</em></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px" id="atlas-reg-grid"></div>
 
 </div>
 
@@ -665,6 +694,41 @@ const ESTADOS=[
   {nome:'Mato Grosso',reg:'centro-oeste',inst:'Real Time',data:'mar/26',t1:[{n:'Flávio',cor:C.fl,p:46},{n:'Lula',cor:C.lu,p:30},{n:'Zema',cor:C.ze,p:5},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Flávio',cor:C.fl,p:54},{n:'Lula',cor:C.lu,p:34}]},
   {nome:'Pará',reg:'norte',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:38},{n:'Flávio',cor:C.fl,p:33},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:52},{n:'Flávio',cor:C.fl,p:48}]},
 ];
+
+// ── ATLAS DADOS ESTADUAIS (pesquisas específicas por estado)
+const ATLAS_ESTADOS=[
+  {estado:'Minas Gerais',uf:'MG',reg:'Sudeste',data:'mar/26',n:2195,me:2,t1:[
+    {n:'Lula (PT)',cor:C.lu,p:43.7},{n:'Flávio (PL)',cor:C.fl,p:40.4},{n:'Zema (Novo)',cor:C.ze,p:4.7},{n:'Renan (Missão)',cor:C.re,p:3.3},{n:'Caiado (PSD)',cor:C.ca,p:2.4}]},
+  {estado:'Maranhão',uf:'MA',reg:'Nordeste',data:'mai/26',n:1180,me:3,t1:[
+    {n:'Lula (PT)',cor:C.lu,p:56.4},{n:'Flávio (PL)',cor:C.fl,p:28.3},{n:'Renan (Missão)',cor:C.re,p:6.0},{n:'Cury (Avante)',cor:C.cu,p:3.3},{n:'Caiado (PSD)',cor:C.ca,p:2.0}]},
+];
+
+// ── ATLAS DADOS REGIONAIS (extraídos das ondas nacionais)
+const ATLAS_REG_ABR26=[
+  {reg:'Centro-Oeste',t1:[
+    {n:'Flávio (PL)',cor:C.fl,p:51.1},{n:'Lula (PT)',cor:C.lu,p:38.6},{n:'Caiado (PSD)',cor:C.ca,p:4.6},{n:'Renan (Missão)',cor:C.re,p:4.3},{n:'Zema (Novo)',cor:C.ze,p:1.4}]},
+  {reg:'Sul',t1:[
+    {n:'Flávio (PL)',cor:C.fl,p:52.0},{n:'Lula (PT)',cor:C.lu,p:33.0},{n:'Renan (Missão)',cor:C.re,p:6.0},{n:'Zema (Novo)',cor:C.ze,p:4.5},{n:'Caiado (PSD)',cor:C.ca,p:3.0}]},
+  {reg:'Sudeste',t1:[
+    {n:'Lula (PT)',cor:C.lu,p:45.0},{n:'Flávio (PL)',cor:C.fl,p:41.0},{n:'Renan (Missão)',cor:C.re,p:5.5},{n:'Zema (Novo)',cor:C.ze,p:3.0},{n:'Caiado (PSD)',cor:C.ca,p:2.5}]},
+  {reg:'Nordeste',t1:[
+    {n:'Lula (PT)',cor:C.lu,p:60.0},{n:'Flávio (PL)',cor:C.fl,p:25.0},{n:'Renan (Missão)',cor:C.re,p:3.5},{n:'Caiado (PSD)',cor:C.ca,p:2.5},{n:'Zema (Novo)',cor:C.ze,p:2.0}]},
+  {reg:'Norte',t1:[
+    {n:'Lula (PT)',cor:C.lu,p:51.0},{n:'Flávio (PL)',cor:C.fl,p:33.0},{n:'Renan (Missão)',cor:C.re,p:4.0},{n:'Zema (Novo)',cor:C.ze,p:3.5},{n:'Caiado (PSD)',cor:C.ca,p:2.5}]},
+];
+
+// Evolução de Renan por região no AtlasIntel (confirmados)
+const ATLAS_REG_EVOL={
+  meses:['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26'],
+  series:[
+    {reg:'Sul',cor:'#22d3ee',d:[null,null,null,null,4.5,6.0]},
+    {reg:'Sudeste',cor:'#818cf8',d:[null,null,null,null,4.0,5.5]},
+    {reg:'Centro-Oeste',cor:'#f59e0b',d:[null,null,null,null,3.5,4.3]},
+    {reg:'Norte',cor:'#34d399',d:[null,null,null,null,2.5,4.0]},
+    {reg:'Nordeste',cor:'#fb7185',d:[null,null,null,null,2.0,3.5]},
+    {reg:'Nacional',cor:C.re,d:[2.4,3.2,1.0,2.5,4.5,5.3]},
+  ]
+};
 
 // ── TABELA COMPLETA
 const TABELA=[
@@ -936,6 +1000,7 @@ function showTab(id,btn){
   document.getElementById('panel-'+id).classList.add('on');
   btn.classList.add('on');
   if(id==='evolucao'&&!evolChart) renderEvol();
+  if(id==='atlas-estados') renderAtlasEstados();
 }
 
 function setMes(m,btn){
@@ -992,6 +1057,92 @@ function filterTab(f,btn){
   btn.classList.add('on'); tabFiltro=f; renderTabela();
 }
 function searchTab(v){tabBusca=v;renderTabela();}
+
+// ════════════════════════════ ATLAS ESTADOS ════════════════════════════
+
+let chAtlasReg=null;
+let atlasEstadosRendered=false;
+
+function renderAtlasEstados(){
+  if(atlasEstadosRendered) return;
+  atlasEstadosRendered=true;
+
+  // Gráfico evolução regional
+  const regLeg=document.getElementById('atlas-reg-leg');
+  regLeg.innerHTML=ATLAS_REG_EVOL.series.map(s=>`<div class="li${s.reg==='Nacional'?' hl-l':''}"><div class="ld" style="background:${s.cor}"></div>${s.reg}</div>`).join('');
+
+  const canvas=document.getElementById('ch-atlas-reg');
+  const ex=Chart.getChart(canvas);if(ex)ex.destroy();
+  chAtlasReg=new Chart(canvas,{type:'line',data:{
+    labels:ATLAS_REG_EVOL.meses,
+    datasets:ATLAS_REG_EVOL.series.map(s=>({
+      label:s.reg,data:s.d,borderColor:s.cor,
+      backgroundColor:s.reg==='Nacional'?s.cor+'25':'transparent',
+      borderWidth:s.reg==='Nacional'?3:1.8,
+      pointRadius:4,pointHoverRadius:7,tension:.35,fill:s.reg==='Nacional',spanGaps:true,
+      borderDash:s.reg==='Nacional'?[]:[4,3]
+    }))
+  },options:{responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{display:false},
+    tooltip:{backgroundColor:'#1e293b',borderColor:'#334155',borderWidth:1,callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y??'—'}%`}}
+  },scales:{
+    x:{grid:{color:'#1a2540'},ticks:{color:'#64748b',font:{size:11}}},
+    y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:10}
+  }}});
+
+  // Cards estados específicos AtlasIntel
+  const estGrid=document.getElementById('atlas-est-grid');
+  estGrid.innerHTML=ATLAS_ESTADOS.map(e=>{
+    const max=Math.max(...e.t1.map(x=>x.p));
+    const renan=e.t1.find(x=>x.n.includes('Renan'));
+    return `<div class="cen" style="border-color:${renan?'rgba(59,130,246,.4)':'var(--b1)'}">
+      <div class="cen-h">
+        <div>
+          <div class="cen-t">${e.estado} — AtlasIntel ${e.data}</div>
+          <div class="cen-tags">
+            <span class="tag-pill t1">1º Turno</span>
+            <span class="tag-pill" style="background:#0d2035;color:#60a5fa">n=${e.n.toLocaleString('pt-BR')}</span>
+            <span class="tag-pill" style="background:#0d2035;color:#94a3b8">ME±${e.me}pp</span>
+          </div>
+        </div>
+        ${renan?`<div style="text-align:right"><div style="font-size:1.4rem;font-weight:900;color:var(--rel)">${renan.p}%</div><div style="font-size:.62rem;color:var(--m1)">Renan</div></div>`:''}
+      </div>
+      <div class="cen-b">
+        ${e.t1.map(x=>`<div class="cen-row">
+          <span class="cen-n" style="color:${x.cor};${x.n.includes('Renan')?'font-weight:900;font-size:.85rem;':''}">${x.n}</span>
+          <div class="cen-bw"><div class="cen-bf" style="width:${bw(x.p,max)}%;background:${x.cor}"></div></div>
+          <span class="cen-p" style="color:${x.cor}">${x.p}%</span>
+        </div>`).join('')}
+      </div>
+      <div class="cen-foot">AtlasIntel/Bloomberg · ${e.data} · n=${e.n.toLocaleString('pt-BR')} · ME±${e.me}pp · ${e.reg}</div>
+    </div>`;
+  }).join('');
+
+  // Cards regionais abr/26
+  const regGrid=document.getElementById('atlas-reg-grid');
+  regGrid.innerHTML=ATLAS_REG_ABR26.map(r=>{
+    const max=Math.max(...r.t1.map(x=>x.p));
+    const renan=r.t1.find(x=>x.n.includes('Renan'));
+    const corReg={'Sul':'#22d3ee','Sudeste':'#818cf8','Centro-Oeste':'#f59e0b','Norte':'#34d399','Nordeste':'#fb7185'}[r.reg]||C.re;
+    return `<div class="cen" style="border-color:${corReg}40">
+      <div class="cen-h" style="background:${corReg}10">
+        <div>
+          <div class="cen-t">${r.reg}</div>
+          <div class="cen-tags"><span class="tag-pill t1">AtlasIntel abr/26</span></div>
+        </div>
+        ${renan?`<div style="text-align:right"><div style="font-size:1.4rem;font-weight:900;color:${corReg}">${renan.p}%</div><div style="font-size:.62rem;color:var(--m1)">Renan</div></div>`:''}
+      </div>
+      <div class="cen-b">
+        ${r.t1.map(x=>`<div class="cen-row">
+          <span class="cen-n" style="color:${x.cor};${x.n.includes('Renan')?'font-weight:900;':''}">${x.n}</span>
+          <div class="cen-bw"><div class="cen-bf" style="width:${bw(x.p,max)}%;background:${x.cor}"></div></div>
+          <span class="cen-p" style="color:${x.cor}">${x.p}%</span>
+        </div>`).join('')}
+      </div>
+      <div class="cen-foot">AtlasIntel/Bloomberg · 22–27 abr/2026 · n=5.008 nacional (regional proporcional)</div>
+    </div>`;
+  }).join('');
+}
 
 // ════════════════════════════ INIT ════════════════════════════
 
