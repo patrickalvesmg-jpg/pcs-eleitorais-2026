@@ -3,1096 +3,989 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pesquisas Eleitorais 2026 | Dashboard</title>
+  <title>Eleições 2026 — Dashboard de Pesquisas</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --bg: #07090f;
-      --surface: #0f1623;
-      --surface2: #141c2e;
-      --border: #1a2540;
-      --border2: #243050;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --renan: #3b82f6;
-      --renan-light: #93c5fd;
-      --lula: #ef4444;
-      --flavio: #f97316;
-      --zema: #84cc16;
-      --caiado: #eab308;
-      --outros: #8b5cf6;
+      --bg: #07090f; --surface: #0f1623; --s2: #131d30; --s3: #192338;
+      --border: #1a2540; --border2: #243050; --text: #e2e8f0; --muted: #64748b; --muted2: #94a3b8;
+      --renan: #3b82f6; --renan-l: #93c5fd; --renan-d: #1d4ed8;
+      --lula: #ef4444; --flavio: #f97316; --zema: #84cc16; --caiado: #eab308;
+      --tarcisio: #a855f7; --michelle: #ec4899; --cury: #06b6d4; --outros: #64748b;
     }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; font-size: 14px; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
-      font-size: 14px;
-    }
-
-    /* ── HEADER ── */
-    header {
-      background: linear-gradient(180deg, #0d1525 0%, var(--surface) 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    header h1 { font-size: 1.15rem; font-weight: 800; color: #f8fafc; }
+    /* HEADER */
+    header { background: linear-gradient(180deg,#0b1220,var(--surface)); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; position: sticky; top: 0; z-index: 200; backdrop-filter: blur(8px); }
+    header h1 { font-size: 1.1rem; font-weight: 800; }
     header h1 span { color: var(--renan); }
+    .badge-update { background: #0c1d38; border: 1px solid #1e3d6b; color: var(--renan-l); padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
 
-    .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-
-    .update-badge {
-      background: #0d1e38;
-      border: 1px solid #1e3d6b;
-      color: var(--renan-light);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    /* ── TABS ── */
-    .tabs-bar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      display: flex;
-      gap: 4px;
-      overflow-x: auto;
-    }
-
-    .tab {
-      padding: 12px 18px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--muted);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      white-space: nowrap;
-      transition: all 0.15s;
-      background: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-    }
-
+    /* TABS */
+    .tabs-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 20px; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+    .tab { padding: 11px 16px; font-size: 0.8rem; font-weight: 600; color: var(--muted); cursor: pointer; border: none; border-bottom: 2px solid transparent; background: none; white-space: nowrap; transition: all .15s; }
     .tab:hover { color: var(--text); }
-    .tab.active { color: var(--renan-light); border-bottom-color: var(--renan); }
+    .tab.active { color: var(--renan-l); border-bottom-color: var(--renan); }
 
-    /* ── MAIN ── */
-    .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px; }
-
+    /* LAYOUT */
+    .container { max-width: 1400px; margin: 0 auto; padding: 22px 18px; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ── FILTROS ── */
-    .filters-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-      align-items: center;
-    }
+    /* FILTROS */
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
+    .flabel { font-size: 0.72rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-right: 2px; }
+    .fbtn { background: var(--s2); border: 1px solid var(--border); color: var(--muted); padding: 5px 12px; border-radius: 6px; font-size: 0.76rem; font-weight: 600; cursor: pointer; transition: all .15s; }
+    .fbtn:hover { border-color: var(--border2); color: var(--text); }
+    .fbtn.on { background: #0d1e38; border-color: var(--renan); color: var(--renan-l); }
+    .fsep { width: 1px; height: 20px; background: var(--border); margin: 0 4px; }
 
-    .filter-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    /* SEÇÃO */
+    .stitle { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-bottom: 7px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .stitle em { color: var(--renan-l); font-style: normal; font-weight: 800; }
+    .stitle small { color: var(--muted); font-weight: 500; font-size: 0.68rem; }
 
-    .filter-btn {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
+    /* RENAN HERO */
+    .hero { background: linear-gradient(135deg,#0c1d38,#0f1a2e); border: 2px solid var(--renan); border-radius: 14px; padding: 22px 26px; margin-bottom: 22px; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; }
+    .avatar { width: 60px; height: 60px; background: linear-gradient(135deg,#1d4ed8,#2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; border: 2px solid var(--renan-l); flex-shrink: 0; }
+    .hero-info h2 { font-size: 1.25rem; font-weight: 800; }
+    .hero-info p { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+    .hero-info .tag { color: var(--renan-l); font-size: 0.78rem; margin-top: 5px; display: block; }
+    .hero-stats { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .sbox { text-align: center; background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.22); border-radius: 10px; padding: 11px 14px; min-width: 85px; }
+    .sbox .sv { font-size: 1.6rem; font-weight: 900; color: var(--renan-l); line-height: 1; }
+    .sbox .sl { font-size: 0.65rem; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: .4px; }
+    .sbox .sc { font-size: 0.74rem; font-weight: 700; margin-top: 4px; }
+    .up { color: #4ade80; } .dn { color: #f87171; } .eq { color: var(--muted); }
 
-    .filter-btn:hover { border-color: var(--border2); color: var(--text); }
-    .filter-btn.active { background: #0d1e38; border-color: var(--renan); color: var(--renan-light); }
+    /* CARDS CANDIDATO */
+    .ranking-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(195px,1fr)); gap: 11px; margin-bottom: 26px; }
+    .ccard { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; transition: border-color .15s; }
+    .ccard:hover { border-color: var(--border2); }
+    .ccard.hl { border-color: var(--renan); background: #09162a; }
+    .ctop { display: flex; align-items: center; gap: 7px; margin-bottom: 9px; }
+    .cpos { font-size: .95rem; font-weight: 900; color: var(--muted); min-width: 22px; }
+    .cname { font-size: .86rem; font-weight: 700; }
+    .cparty { font-size: .7rem; color: var(--muted); }
+    .cbar-w { background: var(--border); border-radius: 4px; height: 5px; margin-bottom: 7px; overflow: hidden; }
+    .cbar { height: 100%; border-radius: 4px; transition: width .6s; }
+    .cbottom { display: flex; justify-content: space-between; align-items: baseline; }
+    .cpct { font-size: 1.2rem; font-weight: 900; color: #f8fafc; }
+    .cchg { font-size: .74rem; font-weight: 700; }
+    .csrc { font-size: .66rem; color: var(--muted); margin-top: 4px; }
 
-    /* ── RENAN HERO ── */
-    .renan-hero {
-      background: linear-gradient(135deg, #0d1e38 0%, #0f1a30 100%);
-      border: 2px solid var(--renan);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin-bottom: 24px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 20px;
-      align-items: center;
-    }
+    /* CHART */
+    .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 13px; padding: 20px; margin-bottom: 24px; }
+    .clegend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .litem { display: flex; align-items: center; gap: 5px; font-size: .76rem; color: var(--muted2); cursor: pointer; }
+    .ldot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .litem.hl-l { color: var(--renan-l); font-weight: 700; }
+    .litem.hl-l .ldot { width: 12px; height: 12px; border: 2px solid rgba(255,255,255,.25); }
+    .chart-h { position: relative; height: 350px; }
+    .chart-note { font-size: .68rem; color: var(--muted); margin-top: 8px; }
 
-    .avatar {
-      width: 64px; height: 64px;
-      background: linear-gradient(135deg, #1d4ed8, #2563eb);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; font-weight: 900; color: #fff;
-      border: 2px solid var(--renan-light);
-      flex-shrink: 0;
-    }
-
-    .renan-info h2 { font-size: 1.3rem; font-weight: 800; color: #f8fafc; }
-    .renan-info p { color: var(--muted); font-size: 0.82rem; margin-top: 3px; }
-    .renan-info .tag { color: var(--renan-light); font-size: 0.8rem; margin-top: 6px; display: block; }
-
-    .renan-stats { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
-
-    .stat-box {
-      text-align: center;
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      border-radius: 10px;
-      padding: 12px 16px;
-      min-width: 90px;
-    }
-
-    .stat-box .val { font-size: 1.7rem; font-weight: 900; color: var(--renan-light); line-height: 1; }
-    .stat-box .lbl { font-size: 0.68rem; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .stat-box .chg { font-size: 0.76rem; font-weight: 700; margin-top: 5px; }
-
-    /* ── SECTION TITLE ── */
-    .section-title {
-      font-size: 0.75rem; font-weight: 700; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 1px;
-      margin-bottom: 14px; padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 8px;
-    }
-
-    .section-title span { color: var(--renan-light); }
-
-    /* ── RANKING GRID ── */
-    .ranking-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 28px; }
-
-    .cand-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      transition: border-color 0.15s;
-    }
-
-    .cand-card:hover { border-color: var(--border2); }
-    .cand-card.hl { border-color: var(--renan); background: #0a1628; }
-
-    .cand-top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-    .cand-pos { font-size: 1rem; font-weight: 900; color: var(--muted); min-width: 24px; }
-    .cand-name { font-size: 0.88rem; font-weight: 700; color: var(--text); }
-    .cand-party { font-size: 0.72rem; color: var(--muted); }
-
-    .bar-wrap { background: var(--border); border-radius: 4px; height: 5px; margin-bottom: 8px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
-
-    .cand-bottom { display: flex; justify-content: space-between; align-items: baseline; }
-    .cand-pct { font-size: 1.25rem; font-weight: 900; color: #f8fafc; }
-    .cand-chg { font-size: 0.76rem; font-weight: 700; }
-    .cand-src { font-size: 0.68rem; color: var(--muted); margin-top: 5px; }
-
-    .up { color: #4ade80; }
-    .dn { color: #f87171; }
-    .eq { color: var(--muted); }
-
-    /* ── CHART ── */
-    .chart-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px;
-      margin-bottom: 28px;
-    }
-
-    .chart-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
-    .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--muted); cursor: pointer; }
-    .leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .leg-item.hl-leg { color: var(--renan-light); font-weight: 700; }
-    .leg-item.hl-leg .leg-dot { width: 13px; height: 13px; border: 2px solid rgba(255,255,255,0.3); }
-
-    .chart-wrap { position: relative; height: 360px; }
-
-    /* ── TABLE ── */
-    .table-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 28px;
-    }
-
-    .table-toolbar {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .search-input {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      outline: none;
-      width: 200px;
-    }
-
-    .search-input:focus { border-color: var(--renan); }
-
-    .table-scroll { overflow-x: auto; }
-
-    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 700px; }
-    thead th {
-      background: #0b1120;
-      color: var(--muted);
-      text-transform: uppercase;
-      font-size: 0.68rem;
-      letter-spacing: 0.5px;
-      padding: 11px 14px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-    }
-
-    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
-    tbody tr:hover { background: #111c2e; }
+    /* TABELA */
+    .tcard { background: var(--surface); border: 1px solid var(--border); border-radius: 13px; overflow: hidden; margin-bottom: 24px; }
+    .ttoolbar { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .tsearch { background: var(--s2); border: 1px solid var(--border); color: var(--text); padding: 5px 11px; border-radius: 6px; font-size: .78rem; outline: none; width: 180px; }
+    .tsearch:focus { border-color: var(--renan); }
+    .tscroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .78rem; min-width: 780px; }
+    thead th { background: #090f1e; color: var(--muted); text-transform: uppercase; font-size: .65rem; letter-spacing: .4px; padding: 10px 13px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .12s; }
+    tbody tr:hover { background: #101b2e; }
     tbody tr:last-child { border-bottom: none; }
-    tbody td { padding: 11px 14px; color: #cbd5e1; }
-    tbody td.td-inst { font-weight: 700; color: var(--text); }
+    tbody td { padding: 10px 13px; color: #cbd5e1; }
+    .td-inst { font-weight: 700; color: var(--text); }
+    .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: .65rem; font-weight: 700; }
+    .bn { background: #0c1d38; color: #60a5fa; }
+    .be { background: #0b2210; color: #4ade80; }
+    .td-r { color: var(--renan-l); font-weight: 800; }
+    .td-p { font-weight: 700; }
 
-    .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.68rem; font-weight: 700; }
-    .badge-nac { background: #0d1e38; color: #60a5fa; }
-    .badge-est { background: #0d2218; color: #4ade80; }
+    /* ESTADOS */
+    .estados-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(265px,1fr)); gap: 13px; margin-bottom: 24px; }
+    .ecard { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .ehead { background: var(--s2); padding: 11px 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .enome { font-weight: 800; font-size: .88rem; }
+    .einst { font-size: .67rem; color: var(--muted); }
+    .eregiao { font-size: .65rem; padding: 2px 7px; border-radius: 4px; font-weight: 700; }
+    .r-ne { background:#1a0c08; color:#fb923c; } .r-se { background:#0a1628; color:#60a5fa; }
+    .r-s { background:#0a1a10; color:#4ade80; } .r-co { background:#1a1008; color:#fbbf24; }
+    .r-n { background:#120a1a; color:#a78bfa; }
+    .ebody { padding: 13px 15px; }
+    .erow { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+    .erow:last-child { margin-bottom: 0; }
+    .ecand { font-size: .8rem; font-weight: 600; width: 125px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ebar-w { flex: 1; background: var(--border); border-radius: 4px; height: 5px; overflow: hidden; }
+    .ebar { height: 100%; border-radius: 4px; }
+    .epct { font-size: .8rem; font-weight: 800; width: 34px; text-align: right; flex-shrink: 0; }
+    .etag { font-size: .65rem; color: var(--muted); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
 
-    .td-pct { font-weight: 700; color: #94a3b8; }
-    .td-pct.renan-col { color: var(--renan-light); font-weight: 800; font-size: 0.88rem; }
+    /* ESTADO CENÁRIOS */
+    .ecenarios { display: flex; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .ecen-pill { font-size: .65rem; background: var(--s3); border: 1px solid var(--border2); border-radius: 4px; padding: 2px 7px; color: var(--muted2); }
 
-    /* ── ESTADO ── */
-    .estados-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 28px; }
+    /* INSTITUTOS */
+    .inst-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 14px; margin-bottom: 24px; }
+    .icard { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .ihead { padding: 13px 17px; border-bottom: 1px solid var(--border); }
+    .iname { font-weight: 800; font-size: .92rem; }
+    .imeta { font-size: .7rem; color: var(--muted); margin-top: 3px; }
+    .ibody { padding: 13px 17px; }
+    .irow { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+    .irow:last-child { margin-bottom: 0; }
+    .icand { font-size: .8rem; font-weight: 600; width: 145px; flex-shrink: 0; }
+    .ibar-w { flex: 1; background: var(--border); border-radius: 4px; height: 5px; overflow: hidden; }
+    .ibar { height: 100%; border-radius: 4px; transition: width .5s; }
+    .ipct { font-size: .8rem; font-weight: 800; width: 36px; text-align: right; flex-shrink: 0; }
 
-    .estado-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
+    /* RENAN FOCUS */
+    .r-insights { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--renan); border-radius: 10px; padding: 16px 18px; margin-bottom: 22px; }
+    .r-insights h3 { font-size: .82rem; color: var(--renan-l); margin-bottom: 10px; font-weight: 700; }
+    .r-insight { display: flex; gap: 8px; margin-bottom: 8px; font-size: .8rem; color: #94a3b8; line-height: 1.45; }
+    .r-insight:last-child { margin-bottom: 0; }
+    .r-icon { color: var(--renan-l); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-    .estado-header {
-      background: var(--surface2);
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .r-timeline { display: grid; grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); gap: 9px; margin-bottom: 22px; }
+    .tbox { background: var(--surface); border: 1px solid var(--border); border-radius: 9px; padding: 12px; text-align: center; }
+    .tbox .tmes { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+    .tbox .tinst { font-size: .67rem; color: var(--muted); margin-top: 1px; }
+    .tbox .tpct { font-size: 1.7rem; font-weight: 900; color: var(--renan-l); margin: 5px 0; line-height: 1; }
+    .tbox .tvar { font-size: .74rem; font-weight: 700; }
 
-    .estado-nome { font-weight: 800; font-size: 0.9rem; }
-    .estado-inst { font-size: 0.7rem; color: var(--muted); }
+    .r-perfil { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 13px; margin-bottom: 22px; }
+    .pcard { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .pcard h4 { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 11px; font-weight: 700; }
+    .prow { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .prow:last-child { margin-bottom: 0; }
+    .plabel { font-size: .78rem; font-weight: 600; width: 130px; flex-shrink: 0; }
+    .pbar-w { flex: 1; background: var(--border); border-radius: 4px; height: 5px; overflow: hidden; }
+    .pbar { height: 100%; border-radius: 4px; background: var(--renan); }
+    .ppct { font-size: .78rem; font-weight: 800; color: var(--renan-l); width: 32px; text-align: right; flex-shrink: 0; }
 
-    .estado-body { padding: 14px 16px; }
+    /* CENÁRIOS */
+    .cen-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 14px; margin-bottom: 24px; }
+    .cen-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .cen-head { background: var(--s2); padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .cen-titulo { font-weight: 800; font-size: .88rem; }
+    .cen-tipo { font-size: .65rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+    .ct-1t { background: #0a1628; color: #60a5fa; }
+    .ct-2t { background: #1a0a14; color: #f472b6; }
+    .cen-body { padding: 14px 16px; }
+    .cen-row { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+    .cen-row:last-child { margin-bottom: 0; }
+    .cen-cand { font-size: .82rem; font-weight: 700; width: 155px; flex-shrink: 0; }
+    .cen-bar-w { flex: 1; background: var(--border); border-radius: 4px; height: 6px; overflow: hidden; }
+    .cen-bar { height: 100%; border-radius: 4px; }
+    .cen-pct { font-size: .82rem; font-weight: 800; width: 38px; text-align: right; flex-shrink: 0; }
+    .cen-inst { font-size: .68rem; color: var(--muted); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
 
-    .estado-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
+    /* MAPA CALOR */
+    .heat-table { width: 100%; border-collapse: collapse; font-size: .75rem; overflow-x: auto; display: block; }
+    .heat-table th { background: #090f1e; color: var(--muted); padding: 8px 10px; text-align: center; border: 1px solid var(--border); font-size: .65rem; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
+    .heat-table td { padding: 7px 10px; border: 1px solid var(--border); text-align: center; font-weight: 700; font-size: .8rem; }
+    .heat-table td.td-estado { text-align: left; font-weight: 700; color: var(--text); background: var(--s2); }
+    .heat-table td.td-inst-h { text-align: left; font-size: .7rem; color: var(--muted); background: var(--s2); font-weight: 500; }
 
-    .estado-row:last-child { margin-bottom: 0; }
-
-    .estado-cand { font-size: 0.82rem; font-weight: 600; width: 130px; flex-shrink: 0; }
-    .estado-bar-wrap { flex: 1; background: var(--border); border-radius: 4px; height: 6px; overflow: hidden; }
-    .estado-bar { height: 100%; border-radius: 4px; }
-    .estado-pct { font-size: 0.82rem; font-weight: 800; width: 36px; text-align: right; flex-shrink: 0; }
-
-    /* ── INSTITUTO DETAIL ── */
-    .inst-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-bottom: 28px; }
-
-    .inst-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .inst-header {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .inst-nome { font-weight: 800; font-size: 0.95rem; }
-    .inst-meta { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
-
-    .inst-body { padding: 14px 18px; }
-    .inst-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
-    .inst-row:last-child { margin-bottom: 0; }
-    .inst-cand { font-size: 0.82rem; font-weight: 600; width: 140px; flex-shrink: 0; }
-    .inst-bar-wrap { flex: 1; background: var(--border); border-radius: 4px; height: 6px; overflow: hidden; }
-    .inst-bar { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
-    .inst-pct { font-size: 0.82rem; font-weight: 800; width: 38px; text-align: right; flex-shrink: 0; }
-
-    /* ── RENAN FOCUS PANEL ── */
-    .renan-timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .timeline-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
-      text-align: center;
-    }
-
-    .timeline-box .mes { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-    .timeline-box .inst-name { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
-    .timeline-box .pct-big { font-size: 2rem; font-weight: 900; color: var(--renan-light); margin: 6px 0; line-height: 1; }
-    .timeline-box .var { font-size: 0.78rem; font-weight: 700; }
-
-    .renan-insights {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--renan);
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin-bottom: 28px;
-    }
-
-    .renan-insights h3 { font-size: 0.85rem; color: var(--renan-light); margin-bottom: 12px; font-weight: 700; }
-    .insight-item { display: flex; gap: 10px; margin-bottom: 10px; font-size: 0.82rem; color: #94a3b8; }
-    .insight-item:last-child { margin-bottom: 0; }
-    .insight-icon { flex-shrink: 0; color: var(--renan-light); font-weight: 700; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 20px 24px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.75rem;
-    }
-
-    footer a { color: var(--renan); text-decoration: none; }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      .renan-hero { grid-template-columns: auto 1fr; }
-      .renan-stats { grid-column: 1 / -1; }
-      .chart-wrap { height: 240px; }
-      .tabs-bar { padding: 0 12px; }
-      .container { padding: 16px 12px; }
+      .hero { grid-template-columns: auto 1fr; }
+      .hero-stats { grid-column: 1/-1; }
+      .chart-h { height: 240px; }
+      .container { padding: 14px 12px; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Eleições <span>2026</span> — Pesquisas</h1>
-  <div class="header-right">
-    <div class="update-badge" id="updateBadge">Atualizado em 16 mai 2026</div>
+  <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+    <div class="badge-update">Atualizado em 16 mai 2026</div>
   </div>
 </header>
 
-<!-- ABAS PRINCIPAIS -->
 <div class="tabs-bar">
-  <button class="tab active" onclick="showTab('visao-geral')">Visão Geral</button>
-  <button class="tab" onclick="showTab('por-instituto')">Por Instituto</button>
-  <button class="tab" onclick="showTab('evolucao')">Evolução Mensal</button>
-  <button class="tab" onclick="showTab('por-estado')">Por Estado</button>
-  <button class="tab" onclick="showTab('renan')">Renan Santos</button>
-  <button class="tab" onclick="showTab('todas-pesquisas')">Todas as Pesquisas</button>
+  <button class="tab active"  onclick="showTab('geral',this)">Visão Geral</button>
+  <button class="tab"         onclick="showTab('cenarios',this)">Cenários</button>
+  <button class="tab"         onclick="showTab('evolucao',this)">Evolução Mensal</button>
+  <button class="tab"         onclick="showTab('institutos',this)">Por Instituto</button>
+  <button class="tab"         onclick="showTab('estados',this)">Por Estado</button>
+  <button class="tab"         onclick="showTab('estados-evol',this)">Evolução Estadual</button>
+  <button class="tab"         onclick="showTab('renan',this)">Renan Santos</button>
+  <button class="tab"         onclick="showTab('tabela',this)">Todas as Pesquisas</button>
 </div>
 
 <div class="container">
 
-  <!-- ═══ ABA: VISÃO GERAL ═══ -->
-  <div class="tab-panel active" id="tab-visao-geral">
-
-    <!-- DESTAQUE RENAN -->
-    <div class="renan-hero">
-      <div class="avatar">RS</div>
-      <div class="renan-info">
-        <h2>Renan Santos</h2>
-        <p>Partido Missão (ex-MBL) &nbsp;·&nbsp; Pré-candidato à Presidência</p>
-        <span class="tag">3º lugar geral · Candidato com maior crescimento em 2026 · Líder entre jovens 16-24 anos</span>
-      </div>
-      <div class="renan-stats">
-        <div class="stat-box">
-          <div class="val">5,3%</div>
-          <div class="lbl">AtlasIntel abr</div>
-          <div class="chg up">▲ melhor marca</div>
-        </div>
-        <div class="stat-box">
-          <div class="val">4%</div>
-          <div class="lbl">BTG/Nexus abr</div>
-          <div class="chg up">▲ +2pp vs mar</div>
-        </div>
-        <div class="stat-box">
-          <div class="val">3%</div>
-          <div class="lbl">Datafolha mai</div>
-          <div class="chg eq">— estável</div>
-        </div>
-      </div>
+<!-- ════════════════════ VISÃO GERAL ════════════════════ -->
+<div class="tab-panel active" id="tab-geral">
+  <div class="hero">
+    <div class="avatar">RS</div>
+    <div class="hero-info">
+      <h2>Renan Santos</h2>
+      <p>Partido Missão (ex-MBL) · Pré-candidato à Presidência 2026</p>
+      <span class="tag">3º lugar — candidato com maior crescimento de 2026 · líder entre jovens 16–24 anos (24,7% — AtlasIntel mar/26)</span>
     </div>
-
-    <!-- FILTRO POR PERÍODO -->
-    <div class="filters-row">
-      <span class="filter-label">Período:</span>
-      <button class="filter-btn active" onclick="filterPeriod('todos',this)">Todos</button>
-      <button class="filter-btn" onclick="filterPeriod('2025',this)">2025</button>
-      <button class="filter-btn" onclick="filterPeriod('jan26',this)">Jan 2026</button>
-      <button class="filter-btn" onclick="filterPeriod('fev26',this)">Fev 2026</button>
-      <button class="filter-btn" onclick="filterPeriod('mar26',this)">Mar 2026</button>
-      <button class="filter-btn" onclick="filterPeriod('abr26',this)">Abr 2026</button>
-      <button class="filter-btn" onclick="filterPeriod('mai26',this)">Mai 2026</button>
-    </div>
-
-    <div class="section-title">Ranking — intenção de voto 1º turno <span>(últimas pesquisas)</span></div>
-    <div class="ranking-grid" id="ranking-geral"></div>
-
-  </div>
-
-  <!-- ═══ ABA: POR INSTITUTO ═══ -->
-  <div class="tab-panel" id="tab-por-instituto">
-    <div class="filters-row">
-      <span class="filter-label">Filtrar:</span>
-      <button class="filter-btn active" onclick="filterInst('todos',this)">Todos</button>
-      <button class="filter-btn" onclick="filterInst('AtlasIntel',this)">AtlasIntel</button>
-      <button class="filter-btn" onclick="filterInst('Datafolha',this)">Datafolha</button>
-      <button class="filter-btn" onclick="filterInst('Quaest',this)">Quaest</button>
-      <button class="filter-btn" onclick="filterInst('BTG',this)">BTG/Nexus</button>
-      <button class="filter-btn" onclick="filterInst('Outros',this)">Outros</button>
-    </div>
-    <div class="section-title">Últimas pesquisas <span>por instituto</span></div>
-    <div class="inst-grid" id="inst-grid"></div>
-  </div>
-
-  <!-- ═══ ABA: EVOLUÇÃO MENSAL ═══ -->
-  <div class="tab-panel" id="tab-evolucao">
-    <div class="filters-row">
-      <span class="filter-label">Instituto:</span>
-      <button class="filter-btn active" onclick="filterEvol('atlas',this)">AtlasIntel</button>
-      <button class="filter-btn" onclick="filterEvol('quaest',this)">Quaest</button>
-      <button class="filter-btn" onclick="filterEvol('datafolha',this)">Datafolha</button>
-      <button class="filter-btn" onclick="filterEvol('btg',this)">BTG/Nexus</button>
-    </div>
-    <div class="section-title">Evolução mensal — 1º turno <span>(nov/2025 a mai/2026)</span></div>
-    <div class="chart-card">
-      <div class="chart-legend" id="chart-legend"></div>
-      <div class="chart-wrap">
-        <canvas id="evolutionChart"></canvas>
-      </div>
-      <p style="font-size:0.7rem;color:var(--muted);margin-top:10px;">* Metodologia online (AtlasIntel) captura mais candidatos menores. Quaest/Datafolha: metodologia presencial/telefônica.</p>
+    <div class="hero-stats">
+      <div class="sbox"><div class="sv">5,3%</div><div class="sl">AtlasIntel abr</div><div class="sc up">▲ melhor marca</div></div>
+      <div class="sbox"><div class="sv">4%</div><div class="sl">BTG/Nexus abr</div><div class="sc up">▲ +2pp vs mar</div></div>
+      <div class="sbox"><div class="sv">3%</div><div class="sl">Datafolha mai</div><div class="sc eq">— estável</div></div>
+      <div class="sbox"><div class="sv">24,7%</div><div class="sl">16–24 anos</div><div class="sc up">▲ +8,8pp em 30d</div></div>
     </div>
   </div>
 
-  <!-- ═══ ABA: POR ESTADO ═══ -->
-  <div class="tab-panel" id="tab-por-estado">
-    <div class="filters-row">
-      <span class="filter-label">Região:</span>
-      <button class="filter-btn active" onclick="filterRegiao('todas',this)">Todas</button>
-      <button class="filter-btn" onclick="filterRegiao('nordeste',this)">Nordeste</button>
-      <button class="filter-btn" onclick="filterRegiao('sudeste',this)">Sudeste</button>
-      <button class="filter-btn" onclick="filterRegiao('sul',this)">Sul</button>
-      <button class="filter-btn" onclick="filterRegiao('norte',this)">Norte/CO</button>
-    </div>
-    <div class="section-title">Pesquisas por estado — 1º turno <span>(Quaest abr/2026)</span></div>
-    <div class="estados-grid" id="estados-grid"></div>
-    <p style="font-size:0.75rem;color:var(--muted);padding:0 4px;">Fonte: Quaest/Genial, campo 21–28 abr/2026, 11.646 entrevistados em 10 estados. Margem de erro: ±2pp (SP) e ±3pp (demais).</p>
+  <div class="filters">
+    <span class="flabel">Ref.:</span>
+    <button class="fbtn on" onclick="setRef('datafolha',this)">Datafolha</button>
+    <button class="fbtn"    onclick="setRef('quaest',this)">Quaest</button>
+    <button class="fbtn"    onclick="setRef('atlas',this)">AtlasIntel</button>
+    <button class="fbtn"    onclick="setRef('btg',this)">BTG/Nexus</button>
+    <div class="fsep"></div>
+    <span class="flabel">Turno:</span>
+    <button class="fbtn on" onclick="setTurno('1t',this)">1º Turno</button>
+    <button class="fbtn"    onclick="setTurno('2t',this)">2º Turno</button>
   </div>
-
-  <!-- ═══ ABA: RENAN SANTOS ═══ -->
-  <div class="tab-panel" id="tab-renan">
-    <div class="renan-insights">
-      <h3>Análise de desempenho — Renan Santos</h3>
-      <div class="insight-item"><span class="insight-icon">▲</span><span><strong>Maior crescimento de 2026:</strong> saiu de 1% (jan) para 5,3% (abr) na AtlasIntel — crescimento de 430% em 4 meses.</span></div>
-      <div class="insight-item"><span class="insight-icon">▲</span><span><strong>Líder entre jovens:</strong> 24,7% entre eleitores de 16-24 anos (mar/2026, AtlasIntel), crescimento de 8,8pp em 30 dias.</span></div>
-      <div class="insight-item"><span class="insight-icon">→</span><span><strong>3º lugar nacional:</strong> superou Zema e Caiado na AtlasIntel desde março/2026.</span></div>
-      <div class="insight-item"><span class="insight-icon">→</span><span><strong>Discrepância entre institutos:</strong> AtlasIntel (online) capta mais votos de jovens e internet — explica diferença vs Quaest/Datafolha (presencial/telefônico).</span></div>
-      <div class="insight-item"><span class="insight-icon">▲</span><span><strong>TikTok:</strong> maior crescimento de seguidores entre pré-candidatos em 2026, segundo Poder360.</span></div>
-    </div>
-
-    <div class="section-title">Evolução mês a mês — Renan Santos</div>
-    <div class="renan-timeline" id="renan-timeline"></div>
-
-    <div class="section-title">Comparativo por instituto <span>(última edição de cada um)</span></div>
-    <div class="chart-card">
-      <div class="chart-wrap" style="height:280px;">
-        <canvas id="renanInstChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ ABA: TODAS AS PESQUISAS ═══ -->
-  <div class="tab-panel" id="tab-todas-pesquisas">
-    <div class="table-card">
-      <div class="table-toolbar">
-        <span class="filter-label">Filtrar:</span>
-        <button class="filter-btn active" onclick="filterTabela('todos',this)">Todas</button>
-        <button class="filter-btn" onclick="filterTabela('nac',this)">Nacionais</button>
-        <button class="filter-btn" onclick="filterTabela('est',this)">Estaduais</button>
-        <button class="filter-btn" onclick="filterTabela('2025',this)">2025</button>
-        <button class="filter-btn" onclick="filterTabela('2026',this)">2026</button>
-        <input class="search-input" id="searchInput" placeholder="Buscar instituto..." oninput="searchTabela(this.value)">
-      </div>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Instituto</th>
-              <th>Campo</th>
-              <th>Âmbito</th>
-              <th>Lula (PT)</th>
-              <th>Flávio (PL)</th>
-              <th style="color:var(--renan-light)">Renan (Missão)</th>
-              <th>Zema (Novo)</th>
-              <th>Caiado (PSD)</th>
-              <th>Outros</th>
-              <th>N</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
+  <div class="stitle">Ranking atual <em>1º Turno</em> <small>· Datafolha mai/2026</small></div>
+  <div class="ranking-grid" id="rk-geral"></div>
 </div>
 
-<footer>
-  <p>Fontes: <a href="https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/" target="_blank">Gazeta do Povo</a> · <a href="https://pt.wikipedia.org/wiki/Pesquisas_de_opini%C3%A3o_para_a_elei%C3%A7%C3%A3o_presidencial_no_Brasil_em_2026" target="_blank">Wikipedia</a> · <a href="https://quaest.com.br" target="_blank">Quaest</a> · <a href="https://www.poder360.com.br/poder-pesquisas-hoje/" target="_blank">Poder360</a></p>
-  <p style="margin-top:6px;">Dashboard atualizado diariamente · Intenção de voto estimulada, 1º turno, salvo indicação</p>
+<!-- ════════════════════ CENÁRIOS ════════════════════ -->
+<div class="tab-panel" id="tab-cenarios">
+  <div class="filters">
+    <span class="flabel">Turno:</span>
+    <button class="fbtn on" onclick="filterCen('1t',this)">1º Turno</button>
+    <button class="fbtn"    onclick="filterCen('2t',this)">2º Turno</button>
+    <div class="fsep"></div>
+    <span class="flabel">Instituto:</span>
+    <button class="fbtn on" onclick="filterCenInst('todos',this)">Todos</button>
+    <button class="fbtn"    onclick="filterCenInst('AtlasIntel',this)">AtlasIntel</button>
+    <button class="fbtn"    onclick="filterCenInst('Datafolha',this)">Datafolha</button>
+    <button class="fbtn"    onclick="filterCenInst('Quaest',this)">Quaest</button>
+    <button class="fbtn"    onclick="filterCenInst('BTG',this)">BTG/Nexus</button>
+  </div>
+  <div class="stitle">Cenários de 1º e 2º Turno <em>todos os institutos</em></div>
+  <div class="cen-grid" id="cen-grid"></div>
+</div>
+
+<!-- ════════════════════ EVOLUÇÃO MENSAL ════════════════════ -->
+<div class="tab-panel" id="tab-evolucao">
+  <div class="filters">
+    <span class="flabel">Instituto:</span>
+    <button class="fbtn on" onclick="filterEvol('atlas',this)">AtlasIntel</button>
+    <button class="fbtn"    onclick="filterEvol('quaest',this)">Quaest</button>
+    <button class="fbtn"    onclick="filterEvol('datafolha',this)">Datafolha</button>
+    <button class="fbtn"    onclick="filterEvol('btg',this)">BTG/Nexus</button>
+    <button class="fbtn"    onclick="filterEvol('parana',this)">Paraná Pesq.</button>
+    <div class="fsep"></div>
+    <span class="flabel">Exibir:</span>
+    <button class="fbtn on" onclick="filterEvolCands('todos',this)">Todos</button>
+    <button class="fbtn"    onclick="filterEvolCands('top3',this)">Top 3</button>
+    <button class="fbtn"    onclick="filterEvolCands('renan',this)">Só Renan</button>
+  </div>
+  <div class="stitle">Evolução mensal <em>intenção de voto 1º turno</em> <small>· nov/2025 a mai/2026</small></div>
+  <div class="chart-card">
+    <div class="clegend" id="evol-legend"></div>
+    <div class="chart-h"><canvas id="evolChart"></canvas></div>
+    <p class="chart-note">* AtlasIntel (online, n≈5.000): capta mais jovens e internet — explica diferença vs presencial/telefônico. Quaest/Datafolha: metodologia presencial (n≈2.000). BTG/Nexus: telefônico (n≈2.000).</p>
+  </div>
+</div>
+
+<!-- ════════════════════ POR INSTITUTO ════════════════════ -->
+<div class="tab-panel" id="tab-institutos">
+  <div class="filters">
+    <span class="flabel">Filtrar:</span>
+    <button class="fbtn on" onclick="filterInst('todos',this)">Todos</button>
+    <button class="fbtn"    onclick="filterInst('AtlasIntel',this)">AtlasIntel</button>
+    <button class="fbtn"    onclick="filterInst('Datafolha',this)">Datafolha</button>
+    <button class="fbtn"    onclick="filterInst('Quaest',this)">Quaest</button>
+    <button class="fbtn"    onclick="filterInst('BTG',this)">BTG/Nexus</button>
+    <button class="fbtn"    onclick="filterInst('Parana',this)">Paraná Pesq.</button>
+    <button class="fbtn"    onclick="filterInst('Outros',this)">Outros</button>
+  </div>
+  <div class="stitle">Última pesquisa <em>por instituto</em></div>
+  <div class="inst-grid" id="inst-grid"></div>
+</div>
+
+<!-- ════════════════════ POR ESTADO ════════════════════ -->
+<div class="tab-panel" id="tab-estados">
+  <div class="filters">
+    <span class="flabel">Região:</span>
+    <button class="fbtn on" onclick="filterReg('todas',this)">Todas</button>
+    <button class="fbtn"    onclick="filterReg('nordeste',this)">Nordeste</button>
+    <button class="fbtn"    onclick="filterReg('sudeste',this)">Sudeste</button>
+    <button class="fbtn"    onclick="filterReg('sul',this)">Sul</button>
+    <button class="fbtn"    onclick="filterReg('centro-oeste',this)">Centro-Oeste</button>
+    <button class="fbtn"    onclick="filterReg('norte',this)">Norte</button>
+    <div class="fsep"></div>
+    <span class="flabel">Turno:</span>
+    <button class="fbtn on" onclick="filterEstTurno('1t',this)">1º Turno</button>
+    <button class="fbtn"    onclick="filterEstTurno('2t',this)">2º Turno</button>
+    <div class="fsep"></div>
+    <span class="flabel">Destaque:</span>
+    <button class="fbtn on" onclick="filterEstDest('todos',this)">Todos</button>
+    <button class="fbtn"    onclick="filterEstDest('renan',this)">Só Renan</button>
+  </div>
+  <div class="stitle">Pesquisas por estado <em>1º Turno</em> <small>· múltiplos institutos</small></div>
+  <div class="estados-grid" id="estados-grid"></div>
+</div>
+
+<!-- ════════════════════ EVOLUÇÃO ESTADUAL ════════════════════ -->
+<div class="tab-panel" id="tab-estados-evol">
+  <div class="filters">
+    <span class="flabel">Estado:</span>
+    <button class="fbtn on" onclick="filterEstEvol('sp',this)">São Paulo</button>
+    <button class="fbtn"    onclick="filterEstEvol('mg',this)">Minas Gerais</button>
+    <button class="fbtn"    onclick="filterEstEvol('rj',this)">Rio de Janeiro</button>
+    <button class="fbtn"    onclick="filterEstEvol('rs',this)">Rio G. do Sul</button>
+    <button class="fbtn"    onclick="filterEstEvol('ba',this)">Bahia</button>
+    <button class="fbtn"    onclick="filterEstEvol('pe',this)">Pernambuco</button>
+    <button class="fbtn"    onclick="filterEstEvol('ms',this)">Mato G. Sul</button>
+    <button class="fbtn"    onclick="filterEstEvol('mt',this)">Mato Grosso</button>
+  </div>
+  <div class="stitle">Evolução por estado <em>São Paulo</em> <small id="estEvol-sub">· Quaest + Paraná Pesquisas</small></div>
+  <div class="chart-card">
+    <div class="clegend" id="estEvol-legend"></div>
+    <div class="chart-h"><canvas id="estEvolChart"></canvas></div>
+    <p class="chart-note" id="estEvol-note"></p>
+  </div>
+
+  <div class="stitle" style="margin-top:8px;">Mapa de calor — desempenho por estado <em>(último dado disponível)</em></div>
+  <div class="tcard">
+    <div class="tscroll">
+      <table class="heat-table" id="heat-table">
+        <thead>
+          <tr>
+            <th style="text-align:left">Estado</th>
+            <th style="text-align:left;color:var(--muted)">Instituto / Data</th>
+            <th style="color:var(--lula)">Lula</th>
+            <th style="color:var(--flavio)">Flávio</th>
+            <th style="color:var(--renan-l)">Renan</th>
+            <th style="color:var(--zema)">Zema</th>
+            <th style="color:var(--caiado)">Caiado</th>
+            <th>Líder</th>
+          </tr>
+        </thead>
+        <tbody id="heat-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ RENAN SANTOS ════════════════════ -->
+<div class="tab-panel" id="tab-renan">
+  <div class="r-insights">
+    <h3>Análise de desempenho — Renan Santos (Missão)</h3>
+    <div class="r-insight"><span class="r-icon">▲</span><span><strong>Maior crescimento de 2026:</strong> saiu de 1% (jan/26) para 5,3% (abr/26) na AtlasIntel — crescimento de 430% em 4 meses. Superou Zema e Caiado em março.</span></div>
+    <div class="r-insight"><span class="r-icon">▲</span><span><strong>Fenômeno jovem:</strong> 24,7% entre eleitores de 16–24 anos (mar/26, AtlasIntel) — +8,8pp em 30 dias. Lula tem 72,7% de desaprovação nessa faixa etária.</span></div>
+    <div class="r-insight"><span class="r-icon">→</span><span><strong>Diferença por instituto:</strong> AtlasIntel (online) registra 5,3% · BTG/Nexus (telefônico) registra 4% · Datafolha (presencial) registra 3% · Quaest (telefônico) registra 1%. A metodologia online capta mais jovens com internet.</span></div>
+    <div class="r-insight"><span class="r-icon">→</span><span><strong>Por gênero:</strong> 9% entre homens vs 2,2% entre mulheres (AtlasIntel mar/26). Concentração no eleitorado masculino jovem.</span></div>
+    <div class="r-insight"><span class="r-icon">▲</span><span><strong>TikTok:</strong> maior crescimento de seguidores entre todos os pré-candidatos em 2026, segundo Poder360. Estratégia digital como motor de crescimento.</span></div>
+    <div class="r-insight"><span class="r-icon">→</span><span><strong>Por estado:</strong> desempenho mais expressivo em estados do Sul e Sudeste. Em Goiás e no Centro-Oeste ainda aparece com 1–3%. Nordeste ainda é território de Lula.</span></div>
+  </div>
+
+  <div class="stitle">Evolução mês a mês <em>todos os institutos</em></div>
+  <div class="r-timeline" id="r-timeline"></div>
+
+  <div class="stitle">Perfil do eleitor <em>AtlasIntel mar/abr 2026</em></div>
+  <div class="r-perfil" id="r-perfil"></div>
+
+  <div class="stitle">Comparativo por instituto <em>última edição</em></div>
+  <div class="chart-card">
+    <div class="chart-h" style="height:260px;"><canvas id="renanInstChart"></canvas></div>
+  </div>
+
+  <div class="stitle">Evolução Renan Santos <em>AtlasIntel (série completa)</em></div>
+  <div class="chart-card">
+    <div class="chart-h" style="height:280px;"><canvas id="renanEvolChart"></canvas></div>
+  </div>
+</div>
+
+<!-- ════════════════════ TODAS AS PESQUISAS ════════════════════ -->
+<div class="tab-panel" id="tab-tabela">
+  <div class="tcard">
+    <div class="ttoolbar">
+      <span class="flabel">Filtrar:</span>
+      <button class="fbtn on" onclick="filterTab('todos',this)">Todas</button>
+      <button class="fbtn"    onclick="filterTab('nac',this)">Nacionais</button>
+      <button class="fbtn"    onclick="filterTab('est',this)">Estaduais</button>
+      <button class="fbtn"    onclick="filterTab('2025',this)">2025</button>
+      <button class="fbtn"    onclick="filterTab('2026',this)">2026</button>
+      <div class="fsep"></div>
+      <input class="tsearch" id="tsearch" placeholder="Buscar instituto..." oninput="searchTab(this.value)">
+    </div>
+    <div class="tscroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Instituto</th><th>Campo</th><th>Âmbito</th>
+            <th style="color:var(--lula)">Lula</th>
+            <th style="color:var(--flavio)">Flávio</th>
+            <th style="color:var(--renan-l)">Renan</th>
+            <th style="color:var(--zema)">Zema</th>
+            <th style="color:var(--caiado)">Caiado</th>
+            <th>Outros</th><th>N</th><th>Reg. TSE</th>
+          </tr>
+        </thead>
+        <tbody id="tab-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer style="background:var(--surface);border-top:1px solid var(--border);padding:18px 24px;text-align:center;color:var(--muted);font-size:.72rem;">
+  <p>Fontes: <a href="https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/" style="color:var(--renan)">Gazeta do Povo</a> · <a href="https://pt.wikipedia.org/wiki/Pesquisas_de_opini%C3%A3o_para_a_elei%C3%A7%C3%A3o_presidencial_no_Brasil_em_2026" style="color:var(--renan)">Wikipedia</a> · <a href="https://quaest.com.br" style="color:var(--renan)">Quaest</a> · <a href="https://www.poder360.com.br/poder-pesquisas-hoje/" style="color:var(--renan)">Poder360</a> · <a href="https://paranapesquisas.com.br" style="color:var(--renan)">Paraná Pesquisas</a> · <a href="https://www.cnnbrasil.com.br/eleicoes/" style="color:var(--renan)">CNN Brasil</a></p>
+  <p style="margin-top:5px;">Dashboard atualizado diariamente · Intenção de voto estimulada, 1º turno salvo indicação · Dados desde nov/2025</p>
 </footer>
 
 <script>
-// ═══════════════════════════════════════════════════════════════
-// DADOS
-// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════ DADOS ═══════════════════════════════════════
 
-const CORES = {
-  lula:   '#ef4444',
-  flavio: '#f97316',
-  renan:  '#3b82f6',
-  zema:   '#84cc16',
-  caiado: '#eab308',
-  cury:   '#8b5cf6',
-  outros: '#64748b',
+const C = { lula:'#ef4444', flavio:'#f97316', renan:'#3b82f6', renanL:'#93c5fd', zema:'#84cc16', caiado:'#eab308', tarcisio:'#a855f7', michelle:'#ec4899', cury:'#06b6d4', o:'#64748b' };
+
+// ── Ranking geral (múltiplas referências)
+const RANKINGS = {
+  datafolha: { src:'Datafolha · mai/2026', lista:[
+    {n:'Lula',p:'PT',cor:C.lula,pct:38,chg:-2,chgT:'▼ -2pp vs abr'},
+    {n:'Flávio Bolsonaro',p:'PL',cor:C.flavio,pct:35,chg:+1,chgT:'▲ +1pp vs abr'},
+    {n:'Renan Santos',p:'Missão',cor:C.renan,pct:3,chg:+2,chgT:'▲ +2pp vs jan',hl:true},
+    {n:'Romeu Zema',p:'Novo',cor:C.zema,pct:3,chg:0,chgT:'— estável'},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.caiado,pct:3,chg:0,chgT:'— estável'},
+    {n:'Augusto Cury',p:'MDB',cor:C.cury,pct:2,chg:0,chgT:'— estável'},
+    {n:'Aldo Rebelo',p:'DC',cor:C.o,pct:1,chg:0,chgT:'— estável'},
+  ]},
+  quaest: { src:'Quaest · mai/2026', lista:[
+    {n:'Lula',p:'PT',cor:C.lula,pct:36,chg:-2,chgT:'▼ -2pp vs abr'},
+    {n:'Flávio Bolsonaro',p:'PL',cor:C.flavio,pct:34,chg:+1,chgT:'▲ +1pp'},
+    {n:'Romeu Zema',p:'Novo',cor:C.zema,pct:3,chg:0,chgT:'— estável'},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.caiado,pct:2,chg:0,chgT:'— estável'},
+    {n:'Renan Santos',p:'Missão',cor:C.renan,pct:1,chg:+1,chgT:'▲ +1pp',hl:true},
+  ]},
+  atlas: { src:'AtlasIntel · abr/2026', lista:[
+    {n:'Lula',p:'PT',cor:C.lula,pct:46.6,chg:+0.4,chgT:'▲ +0,4pp'},
+    {n:'Flávio Bolsonaro',p:'PL',cor:C.flavio,pct:39.7,chg:-0.4,chgT:'▼ -0,4pp'},
+    {n:'Renan Santos',p:'Missão',cor:C.renan,pct:5.3,chg:+0.8,chgT:'▲ +0,8pp',hl:true},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.caiado,pct:3.3,chg:-0.1,chgT:'▼ -0,1pp'},
+    {n:'Romeu Zema',p:'Novo',cor:C.zema,pct:3.1,chg:-0.4,chgT:'▼ -0,4pp'},
+  ]},
+  btg: { src:'BTG/Nexus · abr/2026', lista:[
+    {n:'Lula',p:'PT',cor:C.lula,pct:41,chg:0,chgT:'— estável'},
+    {n:'Flávio Bolsonaro',p:'PL',cor:C.flavio,pct:36,chg:0,chgT:'— estável'},
+    {n:'Romeu Zema',p:'Novo',cor:C.zema,pct:4,chg:0,chgT:'— estável'},
+    {n:'Renan Santos',p:'Missão',cor:C.renan,pct:4,chg:+2,chgT:'▲ +2pp',hl:true},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.caiado,pct:3,chg:0,chgT:'— estável'},
+    {n:'Augusto Cury',p:'MDB',cor:C.cury,pct:2,chg:0,chgT:'— estável'},
+  ]},
 };
 
-// Ranking geral (últimas pesquisas — Datafolha mai/2026 como referência)
-const rankingData = [
-  { nome:'Lula',           partido:'PT',     cor: CORES.lula,   pct:38, chg:-2, chgT:'▼ -2pp vs abr', src:'Datafolha mai/2026' },
-  { nome:'Flávio Bolsonaro',partido:'PL',    cor: CORES.flavio, pct:35, chg:+1, chgT:'▲ +1pp vs abr', src:'Datafolha mai/2026' },
-  { nome:'Renan Santos',   partido:'Missão', cor: CORES.renan,  pct:3,  chg:+2, chgT:'▲ +2pp vs jan', src:'Datafolha mai/2026', hl:true },
-  { nome:'Romeu Zema',     partido:'Novo',   cor: CORES.zema,   pct:3,  chg: 0, chgT:'— estável',     src:'Datafolha mai/2026' },
-  { nome:'Ronaldo Caiado', partido:'PSD',    cor: CORES.caiado, pct:3,  chg: 0, chgT:'— estável',     src:'Datafolha mai/2026' },
-  { nome:'Augusto Cury',   partido:'MDB',    cor: CORES.cury,   pct:2,  chg: 0, chgT:'— estável',     src:'Datafolha mai/2026' },
-  { nome:'Aldo Rebelo',    partido:'DC',     cor: CORES.outros, pct:1,  chg: 0, chgT:'— estável',     src:'Datafolha mai/2026' },
-];
-
-// Evolução mensal por instituto
-const evolucaoAtlas = {
-  meses: ['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26'],
-  series: [
-    { nome:'Lula',            cor: CORES.lula,   d:[47.3,47.9,47.1,46.8,46.2,46.6] },
-    { nome:'Flávio Bolsonaro',cor: CORES.flavio, d:[23.1,29.3,38.2,39.1,40.1,39.7] },
-    { nome:'Renan Santos',    cor: CORES.renan,  d:[2.4, 3.2, 1.0, 2.5, 4.5, 5.3], hl:true },
-    { nome:'Romeu Zema',      cor: CORES.zema,   d:[5.1, 4.8, 4.2, 3.8, 3.5, 3.1] },
-    { nome:'Ronaldo Caiado',  cor: CORES.caiado, d:[4.5, 4.2, 3.8, 3.5, 3.4, 3.3] },
-  ]
+// ── Evolução mensal
+const EVOL = {
+  atlas: { meses:['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26'], series:[
+    {n:'Lula',cor:C.lula,d:[47.3,47.9,47.1,46.8,46.2,46.6]},
+    {n:'Flávio Bolsonaro',cor:C.flavio,d:[23.1,29.3,38.2,39.1,40.1,39.7]},
+    {n:'Renan Santos',cor:C.renan,d:[2.4,3.2,1.0,2.5,4.5,5.3],hl:true},
+    {n:'Romeu Zema',cor:C.zema,d:[5.1,4.8,4.2,3.8,3.5,3.1]},
+    {n:'Ronaldo Caiado',cor:C.caiado,d:[4.5,4.2,3.8,3.5,3.4,3.3]},
+    {n:'Tarcísio (cenário alt.)',cor:C.tarcisio,d:[15,15,6.1,null,null,null]},
+  ]},
+  quaest: { meses:['Out/25','Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'], series:[
+    {n:'Lula',cor:C.lula,d:[39,37,36,37,38,38,36]},
+    {n:'Flávio Bolsonaro',cor:C.flavio,d:[18,20,30,33,36,33,34]},
+    {n:'Renan Santos',cor:C.renan,d:[0,0,1,1,1,2,1],hl:true},
+    {n:'Romeu Zema',cor:C.zema,d:[5,5,4,3,3,3,3]},
+    {n:'Ronaldo Caiado',cor:C.caiado,d:[3,3,3,2,2,2,2]},
+    {n:'Tarcísio (cenário alt.)',cor:C.tarcisio,d:[18,12,null,null,null,null,null]},
+    {n:'Michelle (cenário alt.)',cor:C.michelle,d:[21,16,null,null,null,null,null]},
+  ]},
+  datafolha: { meses:['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26'], series:[
+    {n:'Lula',cor:C.lula,d:[41,38,41,40,38]},
+    {n:'Flávio Bolsonaro',cor:C.flavio,d:[22,27,33,34,35]},
+    {n:'Renan Santos',cor:C.renan,d:[1,1,3,3,3],hl:true},
+    {n:'Romeu Zema',cor:C.zema,d:[4,4,3,3,3]},
+    {n:'Ronaldo Caiado',cor:C.caiado,d:[3,3,3,3,3]},
+  ]},
+  btg: { meses:['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26'], series:[
+    {n:'Lula',cor:C.lula,d:[42,40,41,41,41]},
+    {n:'Flávio Bolsonaro',cor:C.flavio,d:[20,28,32,36,36]},
+    {n:'Renan Santos',cor:C.renan,d:[1,1,1,2,4],hl:true},
+    {n:'Romeu Zema',cor:C.zema,d:[5,5,4,4,4]},
+    {n:'Ronaldo Caiado',cor:C.caiado,d:[4,3,3,3,3]},
+  ]},
+  parana: { meses:['Jan/26','Fev/26'], series:[
+    {n:'Lula',cor:C.lula,d:[36,33]},
+    {n:'Flávio Bolsonaro',cor:C.flavio,d:[29,32]},
+    {n:'Renan Santos',cor:C.renan,d:[1,1],hl:true},
+    {n:'Romeu Zema',cor:C.zema,d:[4,4]},
+  ]},
 };
 
-const evolucaoQuaest = {
-  meses: ['Out/25','Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'],
-  series: [
-    { nome:'Lula',            cor: CORES.lula,   d:[39,37,36,37,38,38,36] },
-    { nome:'Flávio Bolsonaro',cor: CORES.flavio, d:[18,20,30,33,36,33,34] },
-    { nome:'Renan Santos',    cor: CORES.renan,  d:[0, 0, 1, 1, 1, 2, 1], hl:true },
-    { nome:'Romeu Zema',      cor: CORES.zema,   d:[5, 5, 4, 3, 3, 3, 3] },
-    { nome:'Ronaldo Caiado',  cor: CORES.caiado, d:[3, 3, 3, 2, 2, 2, 2] },
-  ]
+// ── Cenários
+const CENARIOS = [
+  {titulo:'1T: Lula × Flávio × Renan × Zema × Caiado',tipo:'1t',inst:'AtlasIntel',campo:'abr/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:46.6},{n:'Flávio (PL)',cor:C.flavio,pct:39.7},{n:'Renan Santos (Missão)',cor:C.renan,pct:5.3},{n:'Caiado (PSD)',cor:C.caiado,pct:3.3},{n:'Zema (Novo)',cor:C.zema,pct:3.1}]},
+  {titulo:'1T: Lula × Flávio × Zema × Renan × Caiado',tipo:'1t',inst:'Datafolha',campo:'mai/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:38},{n:'Flávio (PL)',cor:C.flavio,pct:35},{n:'Renan Santos (Missão)',cor:C.renan,pct:3},{n:'Zema (Novo)',cor:C.zema,pct:3},{n:'Caiado (PSD)',cor:C.caiado,pct:3},{n:'Cury (MDB)',cor:C.cury,pct:2}]},
+  {titulo:'1T: Lula × Flávio × Zema × Renan',tipo:'1t',inst:'Quaest',campo:'mai/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:36},{n:'Flávio (PL)',cor:C.flavio,pct:34},{n:'Zema (Novo)',cor:C.zema,pct:3},{n:'Caiado (PSD)',cor:C.caiado,pct:2},{n:'Renan Santos (Missão)',cor:C.renan,pct:1}]},
+  {titulo:'1T: Lula × Flávio × Zema × Renan',tipo:'1t',inst:'BTG',campo:'abr/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:41},{n:'Flávio (PL)',cor:C.flavio,pct:36},{n:'Zema (Novo)',cor:C.zema,pct:4},{n:'Renan Santos (Missão)',cor:C.renan,pct:4},{n:'Caiado (PSD)',cor:C.caiado,pct:3},{n:'Cury (MDB)',cor:C.cury,pct:2}]},
+  {titulo:'2T: Lula × Flávio Bolsonaro',tipo:'2t',inst:'Datafolha',campo:'mai/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:45},{n:'Flávio (PL)',cor:C.flavio,pct:45}]},
+  {titulo:'2T: Lula × Flávio Bolsonaro',tipo:'2t',inst:'AtlasIntel',campo:'abr/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:47.5},{n:'Flávio (PL)',cor:C.flavio,pct:47.8}]},
+  {titulo:'2T: Lula × Flávio Bolsonaro',tipo:'2t',inst:'BTG',campo:'abr/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:46},{n:'Flávio (PL)',cor:C.flavio,pct:45}]},
+  {titulo:'2T: Lula × Tarcísio de Freitas',tipo:'2t',inst:'AtlasIntel',campo:'fev/2026',cands:[
+    {n:'Tarcísio (Rep.)',cor:C.tarcisio,pct:48.8},{n:'Lula (PT)',cor:C.lula,pct:46.5}]},
+  {titulo:'2T: Lula × Michelle Bolsonaro',tipo:'2t',inst:'AtlasIntel',campo:'fev/2026',cands:[
+    {n:'Lula (PT)',cor:C.lula,pct:47.5},{n:'Michelle (PL)',cor:C.michelle,pct:44.7}]},
+  {titulo:'2T: Lula × Flávio — Futura/Apex',tipo:'2t',inst:'Outros',campo:'mai/2026',cands:[
+    {n:'Flávio (PL)',cor:C.flavio,pct:46.9},{n:'Lula (PT)',cor:C.lula,pct:44.4}]},
+  {titulo:'2T: Lula × Flávio — Paraná Pesq. (RJ)',tipo:'2t',inst:'Outros',campo:'abr/2026',cands:[
+    {n:'Flávio (PL)',cor:C.flavio,pct:47},{n:'Lula (PT)',cor:C.lula,pct:40.5}]},
+];
+
+// ── Institutos
+const INSTITUTOS = [
+  {n:'AtlasIntel / Bloomberg',c:'22–27 abr 2026',N:'5.008',m:'Online',g:'AtlasIntel',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:46.6},{n:'Flávio (PL)',cor:C.flavio,p:39.7},{n:'Renan Santos (Missão)',cor:C.renan,p:5.3},{n:'Caiado (PSD)',cor:C.caiado,p:3.3},{n:'Zema (Novo)',cor:C.zema,p:3.1}]},
+  {n:'Datafolha',c:'12–14 mai 2026',N:'2.004',m:'Presencial',g:'Datafolha',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:38},{n:'Flávio (PL)',cor:C.flavio,p:35},{n:'Renan (Missão)',cor:C.renan,p:3},{n:'Zema (Novo)',cor:C.zema,p:3},{n:'Caiado (PSD)',cor:C.caiado,p:3},{n:'Cury (MDB)',cor:C.cury,p:2}]},
+  {n:'Quaest / Genial',c:'8–11 mai 2026',N:'2.004',m:'Telefone',g:'Quaest',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:36},{n:'Flávio (PL)',cor:C.flavio,p:34},{n:'Zema (Novo)',cor:C.zema,p:3},{n:'Caiado (PSD)',cor:C.caiado,p:2},{n:'Renan (Missão)',cor:C.renan,p:1}]},
+  {n:'BTG / Nexus',c:'Abr 2026',N:'2.028',m:'Telefone',g:'BTG',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:41},{n:'Flávio (PL)',cor:C.flavio,p:36},{n:'Zema (Novo)',cor:C.zema,p:4},{n:'Renan (Missão)',cor:C.renan,p:4},{n:'Caiado (PSD)',cor:C.caiado,p:3},{n:'Cury (MDB)',cor:C.cury,p:2}]},
+  {n:'Paraná Pesquisas',c:'Fev 2026',N:'—',m:'Presencial',g:'Parana',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:33},{n:'Flávio (PL)',cor:C.flavio,p:32},{n:'Zema (Novo)',cor:C.zema,p:4},{n:'Caiado (PSD)',cor:C.caiado,p:3},{n:'Renan (Missão)',cor:C.renan,p:1}]},
+  {n:'Meio / Ideia',c:'Mai 2026',N:'—',m:'Telefone',g:'Outros',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:37},{n:'Flávio (PL)',cor:C.flavio,p:33},{n:'Zema (Novo)',cor:C.zema,p:3},{n:'Renan (Missão)',cor:C.renan,p:2},{n:'Caiado (PSD)',cor:C.caiado,p:2}]},
+  {n:'GERP',c:'Mai 2026',N:'—',m:'Online',g:'Outros',cands:[
+    {n:'Flávio (PL)',cor:C.flavio,p:35},{n:'Lula (PT)',cor:C.lula,p:33},{n:'Zema (Novo)',cor:C.zema,p:4},{n:'Renan (Missão)',cor:C.renan,p:2},{n:'Caiado (PSD)',cor:C.caiado,p:2}]},
+  {n:'Real Time Big Data',c:'Mai 2026',N:'—',m:'Online',g:'Outros',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:39},{n:'Flávio (PL)',cor:C.flavio,p:30},{n:'Zema (Novo)',cor:C.zema,p:3},{n:'Caiado (PSD)',cor:C.caiado,p:2},{n:'Renan (Missão)',cor:C.renan,p:2}]},
+  {n:'Futura Inteligência',c:'Mai 2026',N:'—',m:'Online',g:'Outros',cands:[
+    {n:'Lula (PT)',cor:C.lula,p:35},{n:'Flávio (PL)',cor:C.flavio,p:32},{n:'Zema (Novo)',cor:C.zema,p:2},{n:'Renan (Missão)',cor:C.renan,p:2},{n:'Caiado (PSD)',cor:C.caiado,p:2}]},
+];
+
+// ── Estados
+const ESTADOS = [
+  {nome:'Pernambuco',reg:'nordeste',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Lula',cor:C.lula,p:53},{n:'Flávio',cor:C.flavio,p:19},{n:'Zema',cor:C.zema,p:4},{n:'Caiado',cor:C.caiado,p:3},{n:'Renan',cor:C.renan,p:2}],
+    turno2:[{n:'Lula',cor:C.lula,p:67},{n:'Flávio',cor:C.flavio,p:33}],
+    cenarios:['2T: Lula 67% × Flávio 33%']},
+  {nome:'Ceará',reg:'nordeste',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Lula',cor:C.lula,p:50},{n:'Flávio',cor:C.flavio,p:23},{n:'Zema',cor:C.zema,p:4},{n:'Caiado',cor:C.caiado,p:3},{n:'Renan',cor:C.renan,p:2}],
+    turno2:[{n:'Lula',cor:C.lula,p:64},{n:'Flávio',cor:C.flavio,p:36}],
+    cenarios:['2T: Lula 64% × Flávio 36%']},
+  {nome:'Bahia',reg:'nordeste',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Lula',cor:C.lula,p:52},{n:'Flávio',cor:C.flavio,p:21},{n:'Zema',cor:C.zema,p:3},{n:'Caiado',cor:C.caiado,p:3},{n:'Renan',cor:C.renan,p:1}],
+    turno2:[{n:'Lula',cor:C.lula,p:66},{n:'Flávio',cor:C.flavio,p:34}],
+    cenarios:['2T: Lula 66% × Flávio 34%']},
+  {nome:'São Paulo',reg:'sudeste',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Flávio',cor:C.flavio,p:45},{n:'Lula',cor:C.lula,p:35},{n:'Zema',cor:C.zema,p:4},{n:'Renan',cor:C.renan,p:3},{n:'Caiado',cor:C.caiado,p:2}],
+    turno2:[{n:'Flávio',cor:C.flavio,p:50.4},{n:'Lula',cor:C.lula,p:38.1}],
+    cenarios:['2T: Flávio 50% × Lula 38% (Vox abr/26)','1T: Flávio 45% × Lula 34,5% (Vox abr/26)']},
+  {nome:'Minas Gerais',reg:'sudeste',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Lula',cor:C.lula,p:33},{n:'Flávio',cor:C.flavio,p:27},{n:'Zema',cor:C.zema,p:10},{n:'Caiado',cor:C.caiado,p:4},{n:'Renan',cor:C.renan,p:3}],
+    turno2:[{n:'Lula',cor:C.lula,p:51},{n:'Flávio',cor:C.flavio,p:48}],
+    cenarios:['2T: Lula 51% × Flávio 48% (empate técnico)','Zema em 10% — fiel da balança']},
+  {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'abr/26',turno1:[
+    {n:'Flávio',cor:C.flavio,p:36.9},{n:'Lula',cor:C.lula,p:36.7},{n:'Zema',cor:C.zema,p:5},{n:'Renan',cor:C.renan,p:4},{n:'Caiado',cor:C.caiado,p:3}],
+    turno2:[{n:'Flávio',cor:C.flavio,p:47},{n:'Lula',cor:C.lula,p:40.5}],
+    cenarios:['2T: Flávio 47% × Lula 40,5% (Paraná Pesq.)']},
+  {nome:'Paraná',reg:'sul',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Flávio',cor:C.flavio,p:45},{n:'Lula',cor:C.lula,p:23},{n:'Zema',cor:C.zema,p:8},{n:'Caiado',cor:C.caiado,p:5},{n:'Renan',cor:C.renan,p:4}],
+    turno2:[{n:'Flávio',cor:C.flavio,p:62},{n:'Lula',cor:C.lula,p:38}],
+    cenarios:['2T: Flávio +24pp','Comparativo 2022: Bolsonaro +36pp → 2018: +62pp']},
+  {nome:'Rio G. do Sul',reg:'sul',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Flávio',cor:C.flavio,p:42},{n:'Lula',cor:C.lula,p:29},{n:'Zema',cor:C.zema,p:7},{n:'Caiado',cor:C.caiado,p:5},{n:'Renan',cor:C.renan,p:4}],
+    turno2:[{n:'Flávio',cor:C.flavio,p:62},{n:'Lula',cor:C.lula,p:36}],
+    cenarios:['2T: Flávio +26pp']},
+  {nome:'Goiás',reg:'centro-oeste',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Flávio',cor:C.flavio,p:38},{n:'Lula',cor:C.lula,p:29},{n:'Caiado',cor:C.caiado,p:12},{n:'Zema',cor:C.zema,p:5},{n:'Renan',cor:C.renan,p:3}],
+    turno2:[{n:'Flávio',cor:C.flavio,p:55},{n:'Lula',cor:C.lula,p:45}],
+    cenarios:['2T: Flávio +10pp','Caiado forte em GO — 12% no 1T']},
+  {nome:'Mato G. do Sul',reg:'centro-oeste',inst:'Real Time',data:'mai/26',turno1:[
+    {n:'Flávio',cor:C.flavio,p:43},{n:'Lula',cor:C.lula,p:30},{n:'Caiado',cor:C.caiado,p:5},{n:'Renan',cor:C.renan,p:3},{n:'Zema',cor:C.zema,p:2}],
+    turno2:[{n:'Flávio',cor:C.flavio,p:51},{n:'Lula',cor:C.lula,p:34}],
+    cenarios:['2T: Flávio 51% × Lula 34%','Reg. TSE BR-04762/2026']},
+  {nome:'Mato Grosso',reg:'centro-oeste',inst:'Real Time',data:'mar/26',turno1:[
+    {n:'Flávio',cor:C.flavio,p:46},{n:'Lula',cor:C.lula,p:30},{n:'Zema',cor:C.zema,p:5},{n:'Caiado',cor:C.caiado,p:4},{n:'Renan',cor:C.renan,p:2}],
+    turno2:[{n:'Flávio',cor:C.flavio,p:54},{n:'Lula',cor:C.lula,p:34}],
+    cenarios:['2T: Flávio +20pp']},
+  {nome:'Pará',reg:'norte',inst:'Quaest',data:'abr/26',turno1:[
+    {n:'Lula',cor:C.lula,p:38},{n:'Flávio',cor:C.flavio,p:33},{n:'Zema',cor:C.zema,p:4},{n:'Caiado',cor:C.caiado,p:3},{n:'Renan',cor:C.renan,p:2}],
+    turno2:[{n:'Lula',cor:C.lula,p:52},{n:'Flávio',cor:C.flavio,p:48}],
+    cenarios:['2T: empate técnico']},
+];
+
+// ── Evolução estadual
+const EST_EVOL = {
+  sp: { nome:'São Paulo', note:'Quaest (abr/26) + Vox Brasil (abr/26). Metodologia presencial/telefônica.', meses:['Jan/26','Fev/26','Mar/26','Abr/26'], series:[
+    {n:'Flávio (PL)',cor:C.flavio,d:[38,40,43,45]},{n:'Lula (PT)',cor:C.lula,d:[38,37,36,35]},{n:'Renan (Missão)',cor:C.renan,d:[1,1,2,3],hl:true},{n:'Zema (Novo)',cor:C.zema,d:[4,4,4,4]}]},
+  mg: { nome:'Minas Gerais', note:'Quaest abr/26 + Atlas MG mar/26. 1º turno.', meses:['Jan/26','Mar/26','Abr/26'], series:[
+    {n:'Lula (PT)',cor:C.lula,d:[35,33,33]},{n:'Flávio (PL)',cor:C.flavio,d:[24,26,27]},{n:'Zema (Novo)',cor:C.zema,d:[12,11,10]},{n:'Renan (Missão)',cor:C.renan,d:[1,2,3],hl:true},{n:'Caiado (PSD)',cor:C.caiado,d:[4,4,4]}]},
+  rj: { nome:'Rio de Janeiro', note:'Paraná Pesquisas abr/26. 1º turno.', meses:['Jan/26','Abr/26'], series:[
+    {n:'Flávio (PL)',cor:C.flavio,d:[32,36.9]},{n:'Lula (PT)',cor:C.lula,d:[38,36.7]},{n:'Renan (Missão)',cor:C.renan,d:[1,4],hl:true},{n:'Zema (Novo)',cor:C.zema,d:[4,5]}]},
+  rs: { nome:'Rio G. do Sul', note:'Quaest abr/26. 1º turno.', meses:['Jan/26','Mar/26','Abr/26'], series:[
+    {n:'Flávio (PL)',cor:C.flavio,d:[40,41,42]},{n:'Lula (PT)',cor:C.lula,d:[30,30,29]},{n:'Zema (Novo)',cor:C.zema,d:[7,7,7]},{n:'Renan (Missão)',cor:C.renan,d:[1,2,4],hl:true}]},
+  ba: { nome:'Bahia', note:'Quaest abr/26. 1º turno.', meses:['Jan/26','Abr/26'], series:[
+    {n:'Lula (PT)',cor:C.lula,d:[53,52]},{n:'Flávio (PL)',cor:C.flavio,d:[18,21]},{n:'Renan (Missão)',cor:C.renan,d:[0,1],hl:true}]},
+  pe: { nome:'Pernambuco', note:'Quaest abr/26. 1º turno.', meses:['Jan/26','Abr/26'], series:[
+    {n:'Lula (PT)',cor:C.lula,d:[55,53]},{n:'Flávio (PL)',cor:C.flavio,d:[16,19]},{n:'Renan (Missão)',cor:C.renan,d:[0,2],hl:true}]},
+  ms: { nome:'Mato G. do Sul', note:'Real Time Big Data mai/26. 1º turno. Reg. TSE BR-04762/2026.', meses:['Mar/26','Mai/26'], series:[
+    {n:'Flávio (PL)',cor:C.flavio,d:[40,43]},{n:'Lula (PT)',cor:C.lula,d:[32,30]},{n:'Caiado (PSD)',cor:C.caiado,d:[5,5]},{n:'Renan (Missão)',cor:C.renan,d:[2,3],hl:true}]},
+  mt: { nome:'Mato Grosso', note:'Real Time Big Data mar/26. 1º turno.', meses:['Mar/26'], series:[
+    {n:'Flávio (PL)',cor:C.flavio,d:[46]},{n:'Lula (PT)',cor:C.lula,d:[30]},{n:'Zema (Novo)',cor:C.zema,d:[5]},{n:'Renan (Missão)',cor:C.renan,d:[2],hl:true}]},
 };
 
-const evolucaoDatafolha = {
-  meses: ['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26'],
-  series: [
-    { nome:'Lula',            cor: CORES.lula,   d:[41,38,41,40,38] },
-    { nome:'Flávio Bolsonaro',cor: CORES.flavio, d:[22,27,33,34,35] },
-    { nome:'Renan Santos',    cor: CORES.renan,  d:[1, 1, 3, 3, 3], hl:true },
-    { nome:'Romeu Zema',      cor: CORES.zema,   d:[4, 4, 3, 3, 3] },
-    { nome:'Ronaldo Caiado',  cor: CORES.caiado, d:[3, 3, 3, 3, 3] },
-  ]
-};
-
-const evolucaoBtg = {
-  meses: ['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26'],
-  series: [
-    { nome:'Lula',            cor: CORES.lula,   d:[42,40,41,41,41] },
-    { nome:'Flávio Bolsonaro',cor: CORES.flavio, d:[20,28,32,36,36] },
-    { nome:'Renan Santos',    cor: CORES.renan,  d:[1, 1, 1, 2, 4], hl:true },
-    { nome:'Romeu Zema',      cor: CORES.zema,   d:[5, 5, 4, 4, 4] },
-    { nome:'Ronaldo Caiado',  cor: CORES.caiado, d:[4, 3, 3, 3, 3] },
-  ]
-};
-
-// Institutos — último resultado de cada
-const institutos = [
-  {
-    nome:'AtlasIntel / Bloomberg', campo:'22–27 abr 2026', n:'5.008', metodo:'Online',
-    candidatos:[
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:46.6},
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:39.7},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:5.3},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:3.3},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:3.1},
-    ], grupo:'AtlasIntel'
-  },
-  {
-    nome:'Datafolha', campo:'12–14 mai 2026', n:'2.004', metodo:'Presencial',
-    candidatos:[
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:38},
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:35},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:3},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:3},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:3},
-      {nome:'Cury (MDB)',         cor:CORES.cury,   pct:2},
-    ], grupo:'Datafolha'
-  },
-  {
-    nome:'Quaest / Genial', campo:'8–11 mai 2026', n:'2.004', metodo:'Telefone',
-    candidatos:[
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:36},
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:34},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:3},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:2},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:1},
-    ], grupo:'Quaest'
-  },
-  {
-    nome:'BTG / Nexus', campo:'Abr 2026', n:'2.028', metodo:'Telefone',
-    candidatos:[
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:41},
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:36},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:4},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:4},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:3},
-      {nome:'Cury (MDB)',         cor:CORES.cury,   pct:2},
-    ], grupo:'BTG'
-  },
-  {
-    nome:'Meio / Ideia', campo:'Mai 2026', n:'—', metodo:'Telefone',
-    candidatos:[
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:37},
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:33},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:3},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:2},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:2},
-    ], grupo:'Outros'
-  },
-  {
-    nome:'GERP', campo:'Mai 2026', n:'—', metodo:'Online',
-    candidatos:[
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:35},
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:33},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:4},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:2},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:2},
-    ], grupo:'Outros'
-  },
-  {
-    nome:'Real Time Big Data', campo:'Mai 2026', n:'—', metodo:'Online',
-    candidatos:[
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:38},
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:35},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:3},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:2},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:2},
-    ], grupo:'Outros'
-  },
-  {
-    nome:'Futura Inteligência', campo:'Mai 2026', n:'—', metodo:'Online',
-    candidatos:[
-      {nome:'Lula (PT)',          cor:CORES.lula,   pct:35},
-      {nome:'Flávio (PL)',        cor:CORES.flavio, pct:32},
-      {nome:'Zema (Novo)',        cor:CORES.zema,   pct:2},
-      {nome:'Renan Santos (Mis.)',cor:CORES.renan,  pct:2},
-      {nome:'Caiado (PSD)',       cor:CORES.caiado, pct:2},
-    ], grupo:'Outros'
-  },
+// ── Tabela completa
+const TABELA = [
+  {i:'Datafolha',c:'12–14 mai 2026',a:'nac',lu:'38%',fl:'35%',re:'3%',ze:'3%',ca:'3%',ou:'Cury 2%',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Quaest/Genial',c:'8–11 mai 2026',a:'nac',lu:'36%',fl:'34%',re:'1%',ze:'3%',ca:'2%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Meio/Ideia',c:'Mai 2026',a:'nac',lu:'37%',fl:'33%',re:'2%',ze:'3%',ca:'2%',ou:'—',n:'—',tse:'—',ano:'2026'},
+  {i:'GERP',c:'Mai 2026',a:'nac',lu:'33%',fl:'35%',re:'2%',ze:'4%',ca:'2%',ou:'—',n:'—',tse:'—',ano:'2026'},
+  {i:'Real Time Big Data',c:'Mai 2026',a:'nac',lu:'39%',fl:'30%',re:'2%',ze:'3%',ca:'2%',ou:'—',n:'—',tse:'—',ano:'2026'},
+  {i:'Real Time (MS)',c:'9–11 mai 2026',a:'est',lu:'30%',fl:'43%',re:'3%',ze:'2%',ca:'5%',ou:'(Mato Grosso do Sul)',n:'1.600',tse:'BR-04762/2026',ano:'2026'},
+  {i:'Futura Inteligência',c:'Mai 2026',a:'nac',lu:'35%',fl:'32%',re:'2%',ze:'2%',ca:'2%',ou:'—',n:'—',tse:'—',ano:'2026'},
+  {i:'Vox Brasil (SP)',c:'Abr 2026',a:'est',lu:'34,5%',fl:'45,3%',re:'—',ze:'—',ca:'—',ou:'(São Paulo)',n:'—',tse:'—',ano:'2026'},
+  {i:'AtlasIntel/Bloomberg',c:'22–27 abr 2026',a:'nac',lu:'46,6%',fl:'39,7%',re:'5,3%',ze:'3,1%',ca:'3,3%',ou:'—',n:'5.008',tse:'—',ano:'2026'},
+  {i:'Quaest (10 estados)',c:'21–28 abr 2026',a:'est',lu:'—',fl:'—',re:'—',ze:'—',ca:'—',ou:'SP, MG, RJ, BA, PR, RS, GO, CE, PE, PA',n:'11.646',tse:'—',ano:'2026'},
+  {i:'Paraná Pesq. (RJ)',c:'21–23 abr 2026',a:'est',lu:'36,7%',fl:'36,9%',re:'4%',ze:'5%',ca:'3%',ou:'(Rio de Janeiro) 2T: Flávio 47%×Lula 40,5%',n:'1.680',tse:'—',ano:'2026'},
+  {i:'BTG/Nexus',c:'Abr 2026',a:'nac',lu:'41%',fl:'36%',re:'4%',ze:'4%',ca:'3%',ou:'Cury 2%',n:'2.028',tse:'—',ano:'2026'},
+  {i:'Datafolha',c:'7–9 abr 2026',a:'nac',lu:'40%',fl:'34%',re:'3%',ze:'3%',ca:'3%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Quaest/Genial',c:'Abr 2026',a:'nac',lu:'38%',fl:'33%',re:'2%',ze:'3%',ca:'2%',ou:'—',n:'2.002',tse:'—',ano:'2026'},
+  {i:'AtlasIntel/Bloomberg (MG)',c:'Mar 2026',a:'est',lu:'33%',fl:'27%',re:'3%',ze:'10%',ca:'4%',ou:'(Minas Gerais)',n:'—',tse:'—',ano:'2026'},
+  {i:'AtlasIntel/Bloomberg',c:'18–23 mar 2026',a:'nac',lu:'46,2%',fl:'40,1%',re:'4,5%',ze:'3,5%',ca:'3,4%',ou:'—',n:'4.822',tse:'—',ano:'2026'},
+  {i:'BTG/Nexus',c:'24–26 mar 2026',a:'nac',lu:'41%',fl:'36%',re:'2%',ze:'4%',ca:'3%',ou:'Cury 2%',n:'2.028',tse:'—',ano:'2026'},
+  {i:'Datafolha',c:'Mar 2026',a:'nac',lu:'41%',fl:'33%',re:'3%',ze:'3%',ca:'3%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Quaest/Genial',c:'Mar 2026',a:'nac',lu:'38%',fl:'33%',re:'1%',ze:'3%',ca:'2%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Real Time (MT)',c:'Mar 2026',a:'est',lu:'30%',fl:'46%',re:'2%',ze:'5%',ca:'4%',ou:'(Mato Grosso)',n:'1.600',tse:'BR-05763/2026',ano:'2026'},
+  {i:'AtlasIntel/Bloomberg',c:'Fev 2026',a:'nac',lu:'46,8%',fl:'39,1%',re:'2,5%',ze:'3,8%',ca:'3,5%',ou:'—',n:'4.500',tse:'—',ano:'2026'},
+  {i:'Quaest/Genial',c:'Fev 2026',a:'nac',lu:'37%',fl:'33%',re:'1%',ze:'3%',ca:'2%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Paraná Pesquisas',c:'Fev 2026',a:'nac',lu:'33%',fl:'32%',re:'1%',ze:'4%',ca:'3%',ou:'—',n:'—',tse:'—',ano:'2026'},
+  {i:'AtlasIntel/Bloomberg',c:'Jan 2026',a:'nac',lu:'47,1%',fl:'38,2%',re:'1,0%',ze:'4,2%',ca:'3,8%',ou:'—',n:'4.200',tse:'—',ano:'2026'},
+  {i:'Quaest/Genial',c:'Jan 2026',a:'nac',lu:'36%',fl:'30%',re:'1%',ze:'4%',ca:'3%',ou:'—',n:'2.002',tse:'—',ano:'2026'},
+  {i:'Datafolha',c:'Jan 2026',a:'nac',lu:'38%',fl:'27%',re:'1%',ze:'4%',ca:'3%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Paraná Pesquisas',c:'Jan 2026',a:'nac',lu:'36%',fl:'29%',re:'1%',ze:'4%',ca:'3%',ou:'—',n:'—',tse:'—',ano:'2026'},
+  {i:'AtlasIntel/Bloomberg',c:'10–15 dez 2025',a:'nac',lu:'47,9%',fl:'21,3%',re:'3,2%',ze:'5,0%',ca:'4,0%',ou:'Tarcísio 15%, Michelle —',n:'18.154',tse:'—',ano:'2025'},
+  {i:'AtlasIntel/Bloomberg',c:'22–27 nov 2025',a:'nac',lu:'47,3%',fl:'23,1%',re:'2,4%',ze:'5,1%',ca:'4,5%',ou:'Tarcísio ~15%',n:'5.510',tse:'—',ano:'2025'},
+  {i:'Quaest/Genial',c:'Nov 2025',a:'nac',lu:'37%',fl:'20%',re:'0%',ze:'5%',ca:'3%',ou:'Tarcísio 12%, Michelle 21%',n:'2.004',tse:'—',ano:'2025'},
+  {i:'Quaest/Genial',c:'Out 2025',a:'nac',lu:'39%',fl:'18%',re:'0%',ze:'5%',ca:'3%',ou:'Tarcísio 18%, Michelle 21%',n:'2.004',tse:'—',ano:'2025'},
+  {i:'Instituto Ranking (MS)',c:'Mai 2026',a:'est',lu:'—',fl:'—',re:'—',ze:'—',ca:'—',ou:'Registrada no TSE para MS',n:'—',tse:'BR-XX/2026',ano:'2026'},
 ];
 
-// Dados por estado — Quaest abr/2026
-const estadosDados = [
-  { nome:'Pernambuco',  regiao:'nordeste', candidatos:[{nome:'Lula',cor:CORES.lula,pct:53},{nome:'Flávio',cor:CORES.flavio,pct:19},{nome:'Zema',cor:CORES.zema,pct:4},{nome:'Caiado',cor:CORES.caiado,pct:3},{nome:'Renan',cor:CORES.renan,pct:2}]},
-  { nome:'Ceará',       regiao:'nordeste', candidatos:[{nome:'Lula',cor:CORES.lula,pct:50},{nome:'Flávio',cor:CORES.flavio,pct:23},{nome:'Zema',cor:CORES.zema,pct:4},{nome:'Caiado',cor:CORES.caiado,pct:3},{nome:'Renan',cor:CORES.renan,pct:2}]},
-  { nome:'Bahia',       regiao:'nordeste', candidatos:[{nome:'Lula',cor:CORES.lula,pct:52},{nome:'Flávio',cor:CORES.flavio,pct:21},{nome:'Zema',cor:CORES.zema,pct:3},{nome:'Caiado',cor:CORES.caiado,pct:3},{nome:'Renan',cor:CORES.renan,pct:1}]},
-  { nome:'São Paulo',   regiao:'sudeste',  candidatos:[{nome:'Flávio',cor:CORES.flavio,pct:45},{nome:'Lula',cor:CORES.lula,pct:35},{nome:'Zema',cor:CORES.zema,pct:4},{nome:'Renan',cor:CORES.renan,pct:3},{nome:'Caiado',cor:CORES.caiado,pct:2}]},
-  { nome:'Minas Gerais',regiao:'sudeste',  candidatos:[{nome:'Lula',cor:CORES.lula,pct:33},{nome:'Flávio',cor:CORES.flavio,pct:30},{nome:'Zema',cor:CORES.zema,pct:10},{nome:'Renan',cor:CORES.renan,pct:3},{nome:'Caiado',cor:CORES.caiado,pct:4}]},
-  { nome:'Rio de Janeiro',regiao:'sudeste',candidatos:[{nome:'Flávio',cor:CORES.flavio,pct:40},{nome:'Lula',cor:CORES.lula,pct:29},{nome:'Zema',cor:CORES.zema,pct:5},{nome:'Renan',cor:CORES.renan,pct:4},{nome:'Caiado',cor:CORES.caiado,pct:3}]},
-  { nome:'Paraná',      regiao:'sul',      candidatos:[{nome:'Flávio',cor:CORES.flavio,pct:45},{nome:'Lula',cor:CORES.lula,pct:23},{nome:'Zema',cor:CORES.zema,pct:8},{nome:'Caiado',cor:CORES.caiado,pct:5},{nome:'Renan',cor:CORES.renan,pct:4}]},
-  { nome:'Rio G. do Sul',regiao:'sul',     candidatos:[{nome:'Flávio',cor:CORES.flavio,pct:42},{nome:'Lula',cor:CORES.lula,pct:29},{nome:'Zema',cor:CORES.zema,pct:7},{nome:'Caiado',cor:CORES.caiado,pct:5},{nome:'Renan',cor:CORES.renan,pct:4}]},
-  { nome:'Goiás',       regiao:'norte',    candidatos:[{nome:'Flávio',cor:CORES.flavio,pct:38},{nome:'Lula',cor:CORES.lula,pct:29},{nome:'Caiado',cor:CORES.caiado,pct:12},{nome:'Zema',cor:CORES.zema,pct:5},{nome:'Renan',cor:CORES.renan,pct:3}]},
-  { nome:'Pará',        regiao:'norte',    candidatos:[{nome:'Lula',cor:CORES.lula,pct:38},{nome:'Flávio',cor:CORES.flavio,pct:33},{nome:'Zema',cor:CORES.zema,pct:4},{nome:'Caiado',cor:CORES.caiado,pct:3},{nome:'Renan',cor:CORES.renan,pct:2}]},
+// ── Renan perfil
+const RENAN_PERFIL = [
+  {titulo:'Por faixa etária (AtlasIntel mar/26)',rows:[
+    {l:'16–24 anos',p:24.7},{l:'25–34 anos',p:8.2},{l:'35–44 anos',p:4.1},{l:'45–59 anos',p:2.0},{l:'60+ anos',p:0.9}]},
+  {titulo:'Por gênero (AtlasIntel mar/26)',rows:[
+    {l:'Homens',p:9.0},{l:'Mulheres',p:2.2}]},
+  {titulo:'Renan por instituto (última ed.)',rows:[
+    {l:'AtlasIntel (online)',p:5.3},{l:'BTG/Nexus (tel.)',p:4.0},{l:'Datafolha (pres.)',p:3.0},{l:'Meio/Ideia (tel.)',p:2.0},{l:'GERP (online)',p:2.0},{l:'Quaest (tel.)',p:1.0}]},
+  {titulo:'Aprovação gov. Lula por faixa',rows:[
+    {l:'16–24 anos',p:27.3,inv:true},{l:'25–34 anos',p:41},{l:'35–44 anos',p:48},{l:'45–59 anos',p:54},{l:'60+ anos',p:55}]},
 ];
 
-// Evolução de Renan por instituto
-const renanTimeline = [
-  { mes:'Nov/25', inst:'AtlasIntel', pct:2.4, chg:null },
-  { mes:'Dez/25', inst:'AtlasIntel', pct:3.2, chg:'+0.8pp' },
-  { mes:'Jan/26', inst:'AtlasIntel', pct:1.0, chg:'-2.2pp' },
-  { mes:'Jan/26', inst:'Quaest',     pct:1.0, chg:'estreia' },
-  { mes:'Jan/26', inst:'Datafolha',  pct:1.0, chg:'estreia' },
-  { mes:'Fev/26', inst:'AtlasIntel', pct:2.5, chg:'+1.5pp' },
-  { mes:'Mar/26', inst:'AtlasIntel', pct:4.5, chg:'+2.0pp' },
-  { mes:'Mar/26', inst:'Datafolha',  pct:3.0, chg:'+2.0pp' },
-  { mes:'Mar/26', inst:'BTG/Nexus',  pct:2.0, chg:'+1.0pp' },
-  { mes:'Abr/26', inst:'AtlasIntel', pct:5.3, chg:'+0.8pp' },
-  { mes:'Abr/26', inst:'BTG/Nexus',  pct:4.0, chg:'+2.0pp' },
-  { mes:'Abr/26', inst:'Quaest',     pct:2.0, chg:'+1.0pp' },
-  { mes:'Mai/26', inst:'Datafolha',  pct:3.0, chg:'estável' },
-  { mes:'Mai/26', inst:'Quaest',     pct:1.0, chg:'-1.0pp' },
+// ── Renan timeline
+const RENAN_TL = [
+  {m:'Nov/25',i:'AtlasIntel',p:2.4,v:null},
+  {m:'Dez/25',i:'AtlasIntel',p:3.2,v:'+0,8pp'},
+  {m:'Jan/26',i:'AtlasIntel',p:1.0,v:'-2,2pp'},
+  {m:'Jan/26',i:'Quaest',p:1.0,v:'estreia'},
+  {m:'Jan/26',i:'Datafolha',p:1.0,v:'estreia'},
+  {m:'Fev/26',i:'AtlasIntel',p:2.5,v:'+1,5pp'},
+  {m:'Mar/26',i:'AtlasIntel',p:4.5,v:'+2,0pp'},
+  {m:'Mar/26',i:'Datafolha',p:3.0,v:'+2,0pp'},
+  {m:'Mar/26',i:'BTG/Nexus',p:2.0,v:'+1,0pp'},
+  {m:'Abr/26',i:'AtlasIntel',p:5.3,v:'+0,8pp'},
+  {m:'Abr/26',i:'BTG/Nexus',p:4.0,v:'+2,0pp'},
+  {m:'Abr/26',i:'Quaest',p:2.0,v:'+1,0pp'},
+  {m:'Mai/26',i:'Datafolha',p:3.0,v:'estável'},
+  {m:'Mai/26',i:'Quaest',p:1.0,v:'-1,0pp'},
 ];
 
-// Todas as pesquisas — tabela completa
-const todasPesquisas = [
-  { inst:'Datafolha',     campo:'12–14 mai 2026', amb:'nac', lula:'38%', flavio:'35%', renan:'3%',   zema:'3%',  caiado:'3%',  outros:'Cury 2%',  n:'2.004', ano:'2026' },
-  { inst:'Quaest/Genial', campo:'8–11 mai 2026',  amb:'nac', lula:'36%', flavio:'34%', renan:'1%',   zema:'3%',  caiado:'2%',  outros:'—',         n:'2.004', ano:'2026' },
-  { inst:'Meio/Ideia',    campo:'Mai 2026',        amb:'nac', lula:'37%', flavio:'33%', renan:'2%',   zema:'3%',  caiado:'2%',  outros:'—',         n:'—',     ano:'2026' },
-  { inst:'GERP',          campo:'Mai 2026',        amb:'nac', lula:'33%', flavio:'35%', renan:'2%',   zema:'4%',  caiado:'2%',  outros:'—',         n:'—',     ano:'2026' },
-  { inst:'Real Time',     campo:'Mai 2026',        amb:'nac', lula:'38%', flavio:'35%', renan:'2%',   zema:'3%',  caiado:'2%',  outros:'—',         n:'—',     ano:'2026' },
-  { inst:'Futura Int.',   campo:'Mai 2026',        amb:'nac', lula:'35%', flavio:'32%', renan:'2%',   zema:'2%',  caiado:'2%',  outros:'—',         n:'—',     ano:'2026' },
-  { inst:'Vox Brasil',    campo:'Mai 2026',        amb:'est', lula:'—',   flavio:'—',   renan:'—',    zema:'—',   caiado:'—',   outros:'SP: Flávio 45%, Lula 35%', n:'—', ano:'2026' },
-  { inst:'AtlasIntel',    campo:'22–27 abr 2026',  amb:'nac', lula:'46,6%', flavio:'39,7%', renan:'5,3%', zema:'3,1%', caiado:'3,3%', outros:'—', n:'5.008', ano:'2026' },
-  { inst:'BTG/Nexus',     campo:'Abr 2026',        amb:'nac', lula:'41%', flavio:'36%', renan:'4%',   zema:'4%',  caiado:'3%',  outros:'Cury 2%',  n:'2.028', ano:'2026' },
-  { inst:'Datafolha',     campo:'7–9 abr 2026',    amb:'nac', lula:'40%', flavio:'34%', renan:'3%',   zema:'3%',  caiado:'3%',  outros:'—',         n:'2.004', ano:'2026' },
-  { inst:'Quaest/Genial', campo:'21–28 abr 2026',  amb:'est', lula:'—',   flavio:'—',   renan:'—',    zema:'—',   caiado:'—',   outros:'10 estados (ver aba Por Estado)', n:'11.646', ano:'2026' },
-  { inst:'Quaest/Genial', campo:'Abr 2026',        amb:'nac', lula:'38%', flavio:'33%', renan:'2%',   zema:'3%',  caiado:'2%',  outros:'—',         n:'2.002', ano:'2026' },
-  { inst:'AtlasIntel',    campo:'18–23 mar 2026',  amb:'nac', lula:'46,2%', flavio:'40,1%', renan:'4,5%', zema:'3,5%', caiado:'3,4%', outros:'—', n:'4.822', ano:'2026' },
-  { inst:'BTG/Nexus',     campo:'24–26 mar 2026',  amb:'nac', lula:'41%', flavio:'36%', renan:'2%',   zema:'4%',  caiado:'3%',  outros:'Cury 2%',  n:'2.028', ano:'2026' },
-  { inst:'Datafolha',     campo:'Mar 2026',        amb:'nac', lula:'41%', flavio:'33%', renan:'3%',   zema:'3%',  caiado:'3%',  outros:'—',         n:'2.004', ano:'2026' },
-  { inst:'Quaest/Genial', campo:'Mar 2026',        amb:'nac', lula:'38%', flavio:'33%', renan:'1%',   zema:'3%',  caiado:'2%',  outros:'—',         n:'2.004', ano:'2026' },
-  { inst:'AtlasIntel',    campo:'Fev 2026',        amb:'nac', lula:'46,8%', flavio:'39,1%', renan:'2,5%', zema:'3,8%', caiado:'3,5%', outros:'—', n:'4.500', ano:'2026' },
-  { inst:'Quaest/Genial', campo:'Fev 2026',        amb:'nac', lula:'37%', flavio:'33%', renan:'1%',   zema:'3%',  caiado:'2%',  outros:'—',         n:'2.004', ano:'2026' },
-  { inst:'AtlasIntel',    campo:'Jan 2026',        amb:'nac', lula:'47,1%', flavio:'38,2%', renan:'1,0%', zema:'4,2%', caiado:'3,8%', outros:'—', n:'4.200', ano:'2026' },
-  { inst:'Quaest/Genial', campo:'Jan 2026',        amb:'nac', lula:'36%', flavio:'30%', renan:'1%',   zema:'4%',  caiado:'3%',  outros:'—',         n:'2.002', ano:'2026' },
-  { inst:'Datafolha',     campo:'Jan 2026',        amb:'nac', lula:'38%', flavio:'27%', renan:'1%',   zema:'4%',  caiado:'3%',  outros:'—',         n:'2.004', ano:'2026' },
-  { inst:'AtlasIntel',    campo:'10–15 dez 2025',  amb:'nac', lula:'47,9%', flavio:'21,3%', renan:'3,2%', zema:'5,0%', caiado:'4,0%', outros:'Tarcísio 15%', n:'18.154', ano:'2025' },
-  { inst:'AtlasIntel',    campo:'22–27 nov 2025',  amb:'nac', lula:'47,3%', flavio:'23,1%', renan:'2,4%', zema:'5,1%', caiado:'4,5%', outros:'Tarcísio ~15%', n:'5.510', ano:'2025' },
-  { inst:'Quaest/Genial', campo:'Nov 2025',        amb:'nac', lula:'37%', flavio:'20%', renan:'0%',   zema:'5%',  caiado:'3%',  outros:'Tarcísio 12%, Michelle 21%', n:'2.004', ano:'2025' },
-  { inst:'Quaest/Genial', campo:'Out 2025',        amb:'nac', lula:'39%', flavio:'18%', renan:'0%',   zema:'5%',  caiado:'3%',  outros:'Tarcísio 18%, Michelle 21%', n:'2.004', ano:'2025' },
-];
+// ═══════════════════════════ STATE ═══════════════════════════
 
-// ═══════════════════════════════════════════════════════════════
-// CHART STATE
-// ═══════════════════════════════════════════════════════════════
-let evChart = null;
-let currentEvolData = evolucaoAtlas;
-let renanInstChart = null;
+let evolChart=null, estEvolChart=null, renanInstChart=null, renanEvolChart=null;
+let curEvolData=EVOL.atlas, curEstEvol='sp', curTurnoEst='1t', curDestEst='todos';
+let tabFiltro='todos', tabBusca='', cenFiltroTurno='1t', cenFiltroInst='todos';
+let refAtual='datafolha', turnoAtual='1t';
 
-// ═══════════════════════════════════════════════════════════════
-// RENDERIZAR RANKING GERAL
-// ═══════════════════════════════════════════════════════════════
-function renderRanking(data) {
-  const el = document.getElementById('ranking-geral');
-  const max = Math.max(...data.map(c => c.pct));
-  el.innerHTML = data.map((c, i) => `
-    <div class="cand-card ${c.hl ? 'hl' : ''}">
-      <div class="cand-top">
-        <span class="cand-pos">${i+1}º</span>
-        <div>
-          <div class="cand-name">${c.nome}</div>
-          <div class="cand-party">${c.partido}</div>
-        </div>
-      </div>
-      <div class="bar-wrap"><div class="bar-fill" style="width:${(c.pct/max*100).toFixed(1)}%;background:${c.cor}"></div></div>
-      <div class="cand-bottom">
-        <span class="cand-pct">${c.pct}%</span>
-        <span class="cand-chg ${c.chg>0?'up':c.chg<0?'dn':'eq'}">${c.chgT}</span>
-      </div>
-      <div class="cand-src">${c.src}</div>
-    </div>
-  `).join('');
+// ═══════════════════════════ UTILS ═══════════════════════════
+
+function cor(v){ if(v>0) return 'up'; if(v<0) return 'dn'; return 'eq'; }
+function barW(p,max){ return max>0?(p/max*100).toFixed(1):0; }
+function buildLegend(el,series){ el.innerHTML=series.map(s=>`<div class="litem ${s.hl?'hl-l':''}"><div class="ldot" style="background:${s.cor}"></div><span>${s.n}</span></div>`).join(''); }
+
+function buildLineChart(canvas, data, yMax){
+  const existing = Chart.getChart(canvas);
+  if(existing) existing.destroy();
+  return new Chart(canvas,{type:'line',data:{labels:data.meses,datasets:data.series.map(s=>({label:s.n,data:s.d,borderColor:s.cor,backgroundColor:s.cor+'14',borderWidth:s.hl?3.5:1.7,pointRadius:s.hl?6:3,pointHoverRadius:8,tension:.35,fill:!!s.hl,spanGaps:true}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e293b',borderColor:'#334155',borderWidth:1,titleColor:'#f8fafc',bodyColor:'#cbd5e1',callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b',font:{size:11}}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%',font:{size:11}},min:0,max:yMax||55}}}});
 }
 
-// ═══════════════════════════════════════════════════════════════
-// RENDERIZAR INSTITUTOS
-// ═══════════════════════════════════════════════════════════════
-function renderInstitutos(grupo) {
-  const el = document.getElementById('inst-grid');
-  const dados = grupo === 'todos' ? institutos : institutos.filter(i => i.grupo === grupo);
-  el.innerHTML = dados.map(inst => {
-    const max = Math.max(...inst.candidatos.map(c => c.pct));
-    const rows = inst.candidatos.map(c => `
-      <div class="inst-row">
-        <span class="inst-cand">${c.nome}</span>
-        <div class="inst-bar-wrap"><div class="inst-bar" style="width:${(c.pct/max*100).toFixed(1)}%;background:${c.cor}"></div></div>
-        <span class="inst-pct" style="color:${c.cor}">${c.pct}%</span>
+// ═══════════════════════════ RANKING ═══════════════════════════
+
+function renderRanking(){
+  const d = RANKINGS[refAtual];
+  document.querySelector('#tab-geral .stitle small').textContent = '· '+d.src;
+  const el=document.getElementById('rk-geral');
+  const lista = d.lista;
+  const max=Math.max(...lista.map(c=>c.pct));
+  el.innerHTML=lista.map((c,i)=>`
+    <div class="ccard ${c.hl?'hl':''}">
+      <div class="ctop"><span class="cpos">${i+1}º</span><div><div class="cname">${c.n}</div><div class="cparty">${c.p}</div></div></div>
+      <div class="cbar-w"><div class="cbar" style="width:${barW(c.pct,max)}%;background:${c.cor}"></div></div>
+      <div class="cbottom"><span class="cpct">${c.pct}%</span><span class="cchg ${cor(c.chg)}">${c.chgT}</span></div>
+      <div class="csrc">${d.src}</div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════ CENÁRIOS ═══════════════════════════
+
+function renderCenarios(){
+  const el=document.getElementById('cen-grid');
+  let dados=CENARIOS;
+  if(cenFiltroTurno!=='todos') dados=dados.filter(c=>c.tipo===cenFiltroTurno);
+  if(cenFiltroInst!=='todos') dados=dados.filter(c=>c.inst===cenFiltroInst);
+  el.innerHTML=dados.map(cen=>{
+    const max=Math.max(...cen.cands.map(c=>c.pct));
+    return `<div class="cen-card">
+      <div class="cen-head">
+        <div class="cen-titulo">${cen.titulo}</div>
+        <span class="cen-tipo ${cen.tipo==='1t'?'ct-1t':'ct-2t'}">${cen.tipo==='1t'?'1º Turno':'2º Turno'}</span>
       </div>
-    `).join('');
-    return `
-      <div class="inst-card">
-        <div class="inst-header">
-          <div>
-            <div class="inst-nome">${inst.nome}</div>
-            <div class="inst-meta">${inst.campo} · N=${inst.n} · ${inst.metodo}</div>
-          </div>
-        </div>
-        <div class="inst-body">${rows}</div>
+      <div class="cen-body">
+        ${cen.cands.map(c=>`<div class="cen-row">
+          <span class="cen-cand" style="color:${c.cor}">${c.n}</span>
+          <div class="cen-bar-w"><div class="cen-bar" style="width:${barW(c.pct,max)}%;background:${c.cor}"></div></div>
+          <span class="cen-pct" style="color:${c.cor}">${c.pct}%</span>
+        </div>`).join('')}
+        <div class="cen-inst">${cen.inst} · ${cen.campo}</div>
       </div>
-    `;
+    </div>`;
   }).join('');
 }
 
-// ═══════════════════════════════════════════════════════════════
-// CHART EVOLUÇÃO
-// ═══════════════════════════════════════════════════════════════
-function buildChart(data) {
-  const legend = document.getElementById('chart-legend');
-  legend.innerHTML = data.series.map(s => `
-    <div class="leg-item ${s.hl?'hl-leg':''}">
-      <div class="leg-dot" style="background:${s.cor}"></div>
-      <span>${s.nome}</span>
-    </div>
-  `).join('');
+// ═══════════════════════════ EVOLUÇÃO ═══════════════════════════
 
-  const ctx = document.getElementById('evolutionChart');
-  if (evChart) evChart.destroy();
+let evolCandFiltro='todos';
 
-  evChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: data.meses,
-      datasets: data.series.map(s => ({
-        label: s.nome,
-        data: s.d,
-        borderColor: s.cor,
-        backgroundColor: s.cor + '15',
-        borderWidth: s.hl ? 3.5 : 1.8,
-        pointRadius: s.hl ? 6 : 3,
-        pointHoverRadius: 8,
-        tension: 0.35,
-        fill: !!s.hl,
-      }))
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: '#1e293b',
-          borderColor: '#334155',
-          borderWidth: 1,
-          titleColor: '#f8fafc',
-          bodyColor: '#cbd5e1',
-          callbacks: { label: c => ` ${c.dataset.label}: ${c.parsed.y}%` }
-        }
-      },
-      scales: {
-        x: { grid: { color: '#1a2540' }, ticks: { color: '#64748b', font: { size: 11 } } },
-        y: {
-          grid: { color: '#1a2540' },
-          ticks: { color: '#64748b', callback: v => v + '%', font: { size: 11 } },
-          min: 0,
-        }
-      }
-    }
-  });
+function renderEvol(){
+  const data=curEvolData;
+  let series=data.series;
+  if(evolCandFiltro==='top3') series=series.slice(0,3);
+  if(evolCandFiltro==='renan') series=series.filter(s=>s.hl);
+  const legend=document.getElementById('evol-legend');
+  buildLegend(legend,series);
+  evolChart=buildLineChart(document.getElementById('evolChart'),{meses:data.meses,series},55);
 }
 
-// ═══════════════════════════════════════════════════════════════
-// ESTADOS
-// ═══════════════════════════════════════════════════════════════
-function renderEstados(regiao) {
-  const el = document.getElementById('estados-grid');
-  const dados = regiao === 'todas' ? estadosDados : estadosDados.filter(e => e.regiao === regiao);
-  el.innerHTML = dados.map(est => {
-    const max = Math.max(...est.candidatos.map(c => c.pct));
-    const rows = est.candidatos.map(c => `
-      <div class="estado-row">
-        <span class="estado-cand" style="color:${c.cor}">${c.nome}</span>
-        <div class="estado-bar-wrap"><div class="estado-bar" style="width:${(c.pct/max*100).toFixed(1)}%;background:${c.cor}"></div></div>
-        <span class="estado-pct" style="color:${c.cor}">${c.pct}%</span>
-      </div>
-    `).join('');
-    return `
-      <div class="estado-card">
-        <div class="estado-header">
-          <span class="estado-nome">${est.nome}</span>
-          <span class="estado-inst">Quaest abr/26</span>
+// ═══════════════════════════ INSTITUTOS ═══════════════════════════
+
+function renderInstitutos(grupo){
+  const el=document.getElementById('inst-grid');
+  const dados=grupo==='todos'?INSTITUTOS:INSTITUTOS.filter(i=>i.g===grupo);
+  el.innerHTML=dados.map(inst=>{
+    const max=Math.max(...inst.cands.map(c=>c.p));
+    return `<div class="icard">
+      <div class="ihead"><div class="iname">${inst.n}</div><div class="imeta">${inst.c} · N=${inst.N} · ${inst.m}</div></div>
+      <div class="ibody">${inst.cands.map(c=>`<div class="irow">
+        <span class="icand" style="color:${c.cor}">${c.n}</span>
+        <div class="ibar-w"><div class="ibar" style="width:${barW(c.p,max)}%;background:${c.cor}"></div></div>
+        <span class="ipct" style="color:${c.cor}">${c.p}%</span>
+      </div>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════ ESTADOS ═══════════════════════════
+
+function renderEstados(){
+  const el=document.getElementById('estados-grid');
+  let dados=ESTADOS;
+  if(curTurnoEst!=='todas' && curDestEst==='todos'){}
+  const reg=document.querySelector('#tab-estados .fbtn.on')?.textContent||'todas';
+
+  let filteredReg = 'todas';
+  document.querySelectorAll('#tab-estados .filters .fbtn').forEach(b=>{ if(b.classList.contains('on') && ['Todas','Nordeste','Sudeste','Sul','Centro-Oeste','Norte'].includes(b.textContent)) filteredReg=b.textContent.toLowerCase().replace('-o','').replace('é','e'); });
+
+  dados=filteredReg==='todas'?dados:dados.filter(e=>e.reg.toLowerCase().includes(filteredReg.replace('centro-oeste','centro')));
+
+  const regLabel={'nordeste':'r-ne','sudeste':'r-se','sul':'r-s','centro-oeste':'r-co','norte':'r-n'};
+  el.innerHTML=dados.map(e=>{
+    const cands=curTurnoEst==='2t'?e.turno2:e.turno1;
+    if(!cands||cands.length===0) return '';
+    const max=Math.max(...cands.map(c=>c.p));
+    const renanRow=cands.find(c=>c.n==='Renan');
+    if(curDestEst==='renan' && (!renanRow || renanRow.p===0)) return '';
+    const showCands=curDestEst==='renan'?[renanRow]:cands;
+    return `<div class="ecard">
+      <div class="ehead">
+        <span class="enome">${e.nome}</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <span class="einst">${e.inst} · ${e.data}</span>
+          <span class="eregiao ${regLabel[e.reg]||'r-n'}">${e.reg}</span>
         </div>
-        <div class="estado-body">${rows}</div>
       </div>
-    `;
+      <div class="ebody">
+        ${showCands.filter(Boolean).map(c=>`<div class="erow">
+          <span class="ecand" style="color:${c.cor}">${c.n}</span>
+          <div class="ebar-w"><div class="ebar" style="width:${barW(c.p,max)}%;background:${c.cor}"></div></div>
+          <span class="epct" style="color:${c.cor}">${c.p}%</span>
+        </div>`).join('')}
+        ${e.cenarios&&e.cenarios.length?`<div class="ecenarios">${e.cenarios.map(cx=>`<span class="ecen-pill">${cx}</span>`).join('')}</div>`:''}
+      </div>
+    </div>`;
   }).join('');
 }
 
-// ═══════════════════════════════════════════════════════════════
-// RENAN TIMELINE
-// ═══════════════════════════════════════════════════════════════
-function renderRenanTimeline() {
-  const el = document.getElementById('renan-timeline');
-  el.innerHTML = renanTimeline.map(r => {
-    const chgClass = r.chg && r.chg.includes('+') ? 'up' : r.chg && r.chg.includes('-') ? 'dn' : 'eq';
-    return `
-      <div class="timeline-box">
-        <div class="mes">${r.mes}</div>
-        <div class="inst-name">${r.inst}</div>
-        <div class="pct-big">${r.pct}%</div>
-        <div class="var ${chgClass}">${r.chg || '—'}</div>
-      </div>
-    `;
+// ═══════════════════════════ EVOLUÇÃO ESTADUAL ═══════════════════════════
+
+function renderEstEvol(key){
+  curEstEvol=key;
+  const data=EST_EVOL[key];
+  document.querySelector('#tab-estados-evol .stitle em').textContent=data.nome;
+  document.getElementById('estEvol-sub').textContent='· múltiplos institutos';
+  document.getElementById('estEvol-note').textContent='* '+data.note;
+  const legend=document.getElementById('estEvol-legend');
+  buildLegend(legend,data.series);
+  estEvolChart=buildLineChart(document.getElementById('estEvolChart'),data,60);
+  renderHeatTable();
+}
+
+function renderHeatTable(){
+  const tbody=document.getElementById('heat-body');
+  tbody.innerHTML=ESTADOS.map(e=>{
+    const t1=e.turno1;
+    const get=(n)=>{ const r=t1.find(c=>c.n===n); return r?r.p+'%':'—'; };
+    const lider=t1[0];
+    return `<tr>
+      <td class="td-estado">${e.nome}</td>
+      <td class="td-inst-h">${e.inst} ${e.data}</td>
+      <td style="color:${C.lula};font-weight:700;">${get('Lula')}</td>
+      <td style="color:${C.flavio};font-weight:700;">${get('Flávio')}</td>
+      <td style="color:${C.renanL};font-weight:800;">${get('Renan')}</td>
+      <td style="color:${C.zema};">${get('Zema')}</td>
+      <td style="color:${C.caiado};">${get('Caiado')}</td>
+      <td style="color:${lider.cor};font-weight:800;">${lider.n}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ═══════════════════════════ RENAN ═══════════════════════════
+
+function renderRenan(){
+  // Timeline
+  const tl=document.getElementById('r-timeline');
+  tl.innerHTML=RENAN_TL.map(r=>{
+    const vc=r.v&&r.v.includes('+')?'up':r.v&&r.v.includes('-')?'dn':'eq';
+    return `<div class="tbox">
+      <div class="tmes">${r.m}</div>
+      <div class="tinst">${r.i}</div>
+      <div class="tpct">${r.p}%</div>
+      <div class="tvar ${vc}">${r.v||'—'}</div>
+    </div>`;
   }).join('');
 
-  // Gráfico barras comparativo institutos
-  const ctx = document.getElementById('renanInstChart');
-  if (renanInstChart) renanInstChart.destroy();
-  renanInstChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['AtlasIntel\nabr/26','BTG/Nexus\nabr/26','Datafolha\nmai/26','Quaest\nmai/26','GERP\nmai/26','Futura\nmai/26'],
-      datasets: [{
-        label: 'Renan Santos %',
-        data: [5.3, 4.0, 3.0, 1.0, 2.0, 2.0],
-        backgroundColor: CORES.renan + 'cc',
-        borderColor: CORES.renan,
-        borderWidth: 1.5,
-        borderRadius: 6,
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: { label: c => ` ${c.parsed.y}%` }
-        }
-      },
-      scales: {
-        x: { grid: { color: '#1a2540' }, ticks: { color: '#64748b', font: { size: 11 } } },
-        y: { grid: { color: '#1a2540' }, ticks: { color: '#64748b', callback: v => v + '%' }, min: 0, max: 8 }
-      }
-    }
-  });
+  // Perfil
+  const rp=document.getElementById('r-perfil');
+  rp.innerHTML=RENAN_PERFIL.map(blk=>`
+    <div class="pcard">
+      <h4>${blk.titulo}</h4>
+      ${blk.rows.map(row=>`<div class="prow">
+        <span class="plabel">${row.l}</span>
+        <div class="pbar-w"><div class="pbar" style="width:${Math.min(row.p,100)/100*100}%;${row.inv?'background:#ef4444;':''}"></div></div>
+        <span class="ppct" style="${row.inv?'color:#f87171;':''}">${row.p}%</span>
+      </div>`).join('')}
+    </div>`).join('');
+
+  // Gráfico barras institutos
+  const ctx1=document.getElementById('renanInstChart');
+  if(renanInstChart) renanInstChart.destroy();
+  renanInstChart=new Chart(ctx1,{type:'bar',data:{labels:['AtlasIntel\nabr','BTG/Nexus\nabr','Datafolha\nmai','Meio/Ideia\nmai','GERP\nmai','Quaest\nmai'],datasets:[{label:'Renan Santos %',data:[5.3,4.0,3.0,2.0,2.0,1.0],backgroundColor:C.renan+'cc',borderColor:C.renan,borderWidth:1.5,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b',font:{size:11}}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:8}}}});
+
+  // Gráfico linha evolução Renan
+  const ctx2=document.getElementById('renanEvolChart');
+  if(renanEvolChart) renanEvolChart.destroy();
+  const meses=['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'];
+  renanEvolChart=new Chart(ctx2,{type:'line',data:{labels:meses,datasets:[
+    {label:'AtlasIntel',data:[2.4,3.2,1.0,2.5,4.5,5.3,null],borderColor:C.renan,backgroundColor:C.renan+'20',borderWidth:2.5,pointRadius:5,tension:.35,fill:true,spanGaps:true},
+    {label:'BTG/Nexus',data:[null,null,1.0,1.0,2.0,4.0,null],borderColor:'#0ea5e9',borderWidth:1.8,pointRadius:4,tension:.35,spanGaps:true},
+    {label:'Datafolha',data:[null,null,1.0,null,3.0,3.0,3.0],borderColor:'#f59e0b',borderWidth:1.8,pointRadius:4,tension:.35,spanGaps:true},
+    {label:'Quaest',data:[null,null,1.0,1.0,1.0,2.0,1.0],borderColor:'#10b981',borderWidth:1.8,pointRadius:4,tension:.35,spanGaps:true},
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{color:'#94a3b8',font:{size:11}}},tooltip:{backgroundColor:'#1e293b',borderColor:'#334155',borderWidth:1,titleColor:'#f8fafc',bodyColor:'#cbd5e1',callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y??'—'}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b'}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:8}}}});
 }
 
-// ═══════════════════════════════════════════════════════════════
-// TABELA
-// ═══════════════════════════════════════════════════════════════
-let tabelaFiltro = 'todos';
-let tabelaBusca = '';
+// ═══════════════════════════ TABELA ═══════════════════════════
 
-function renderTabela() {
-  const el = document.getElementById('tableBody');
-  let dados = todasPesquisas;
-
-  if (tabelaFiltro === 'nac') dados = dados.filter(p => p.amb === 'nac');
-  if (tabelaFiltro === 'est') dados = dados.filter(p => p.amb === 'est');
-  if (tabelaFiltro === '2025') dados = dados.filter(p => p.ano === '2025');
-  if (tabelaFiltro === '2026') dados = dados.filter(p => p.ano === '2026');
-  if (tabelaBusca) dados = dados.filter(p => p.inst.toLowerCase().includes(tabelaBusca.toLowerCase()));
-
-  el.innerHTML = dados.map(p => `
-    <tr>
-      <td class="td-inst">${p.inst}</td>
-      <td>${p.campo}</td>
-      <td><span class="badge ${p.amb==='nac'?'badge-nac':'badge-est'}">${p.amb==='nac'?'Nacional':'Estadual'}</span></td>
-      <td class="td-pct" style="color:${CORES.lula}">${p.lula}</td>
-      <td class="td-pct" style="color:${CORES.flavio}">${p.flavio}</td>
-      <td class="td-pct renan-col">${p.renan}</td>
-      <td class="td-pct">${p.zema}</td>
-      <td class="td-pct">${p.caiado}</td>
-      <td style="color:var(--muted);font-size:0.75rem;">${p.outros}</td>
-      <td style="color:var(--muted)">${p.n}</td>
-    </tr>
-  `).join('');
+function renderTabela(){
+  const el=document.getElementById('tab-body');
+  let dados=TABELA;
+  if(tabFiltro==='nac') dados=dados.filter(p=>p.a==='nac');
+  if(tabFiltro==='est') dados=dados.filter(p=>p.a==='est');
+  if(tabFiltro==='2025') dados=dados.filter(p=>p.ano==='2025');
+  if(tabFiltro==='2026') dados=dados.filter(p=>p.ano==='2026');
+  if(tabBusca) dados=dados.filter(p=>p.i.toLowerCase().includes(tabBusca.toLowerCase()));
+  el.innerHTML=dados.map(p=>`<tr>
+    <td class="td-inst">${p.i}</td>
+    <td>${p.c}</td>
+    <td><span class="badge ${p.a==='nac'?'bn':'be'}">${p.a==='nac'?'Nacional':'Estadual'}</span></td>
+    <td class="td-p" style="color:${C.lula}">${p.lu}</td>
+    <td class="td-p" style="color:${C.flavio}">${p.fl}</td>
+    <td class="td-r">${p.re}</td>
+    <td class="td-p" style="color:${C.zema}">${p.ze}</td>
+    <td class="td-p" style="color:${C.caiado}">${p.ca}</td>
+    <td style="color:var(--muted);font-size:.72rem;">${p.ou}</td>
+    <td style="color:var(--muted)">${p.n}</td>
+    <td style="color:var(--muted);font-size:.7rem;">${p.tse}</td>
+  </tr>`).join('');
 }
 
-// ═══════════════════════════════════════════════════════════════
-// HANDLERS DE FILTROS
-// ═══════════════════════════════════════════════════════════════
-function showTab(id) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
+// ═══════════════════════════ FILTROS ═══════════════════════════
 
-  if (id === 'evolucao' && !evChart) buildChart(currentEvolData);
-  if (id === 'renan') renderRenanTimeline();
-}
-
-function filterPeriod(p, btn) {
-  document.querySelectorAll('#tab-visao-geral .filter-btn').forEach(b => b.classList.remove('active'));
+function showTab(id,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
-  // Filtro visual — em produção filtraria os dados pelo período
-  renderRanking(rankingData);
+  if(id==='evolucao'&&!evolChart) renderEvol();
+  if(id==='renan') renderRenan();
+  if(id==='estados-evol') renderEstEvol(curEstEvol);
 }
 
-function filterInst(grupo, btn) {
-  document.querySelectorAll('#tab-por-instituto .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderInstitutos(grupo);
-}
+function setRef(ref,btn){ document.querySelectorAll('#tab-geral .filters .fbtn').forEach(b=>{ if(['Datafolha','Quaest','AtlasIntel','BTG/Nexus'].some(x=>b.textContent.includes(x))) b.classList.remove('on'); }); btn.classList.add('on'); refAtual=ref; renderRanking(); }
+function setTurno(t,btn){ document.querySelectorAll('#tab-geral .filters .fbtn').forEach(b=>{ if(['1º Turno','2º Turno'].some(x=>b.textContent===x)) b.classList.remove('on'); }); btn.classList.add('on'); turnoAtual=t; }
 
-function filterEvol(inst, btn) {
-  document.querySelectorAll('#tab-evolucao .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const map = { atlas: evolucaoAtlas, quaest: evolucaoQuaest, datafolha: evolucaoDatafolha, btg: evolucaoBtg };
-  currentEvolData = map[inst];
-  buildChart(currentEvolData);
-}
+function filterCen(t,btn){ document.querySelectorAll('#tab-cenarios .filters .fbtn').forEach(b=>{ if(['1t','2t','todos'].some(x=>b.onclick?.toString().includes("'"+x+"'"))&&['1º Turno','2º Turno'].includes(b.textContent)) b.classList.remove('on'); }); btn.classList.add('on'); cenFiltroTurno=t; renderCenarios(); }
+function filterCenInst(i,btn){ document.querySelectorAll('#tab-cenarios .filters .fbtn').forEach(b=>{ if(['todos','AtlasIntel','Datafolha','Quaest','BTG','Paraná','Outros'].some(x=>b.textContent.includes(x)||b.textContent==='Todos')) b.classList.remove('on'); }); btn.classList.add('on'); cenFiltroInst=i; renderCenarios(); }
 
-function filterRegiao(r, btn) {
-  document.querySelectorAll('#tab-por-estado .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderEstados(r);
-}
+function filterEvol(key,btn){ document.querySelectorAll('#tab-evolucao .filters .fbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); curEvolData=EVOL[key]; renderEvol(); }
+function filterEvolCands(f,btn){ const btns=document.querySelectorAll('#tab-evolucao .filters .fbtn'); btns.forEach(b=>{ if(['Todos','Top 3','Só Renan'].includes(b.textContent)) b.classList.remove('on'); }); btn.classList.add('on'); evolCandFiltro=f; renderEvol(); }
 
-function filterTabela(f, btn) {
-  document.querySelectorAll('#tab-todas-pesquisas .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  tabelaFiltro = f;
-  renderTabela();
-}
+function filterInst(g,btn){ document.querySelectorAll('#tab-institutos .filters .fbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); renderInstitutos(g); }
 
-function searchTabela(v) {
-  tabelaBusca = v;
-  renderTabela();
-}
+function filterReg(r,btn){ document.querySelectorAll('#tab-estados .filters .fbtn').forEach(b=>{ if(['Todas','Nordeste','Sudeste','Sul','Centro-Oeste','Norte'].includes(b.textContent)) b.classList.remove('on'); }); btn.classList.add('on'); renderEstados(); }
+function filterEstTurno(t,btn){ document.querySelectorAll('#tab-estados .filters .fbtn').forEach(b=>{ if(b.textContent==='1º Turno'||b.textContent==='2º Turno') b.classList.remove('on'); }); btn.classList.add('on'); curTurnoEst=t; renderEstados(); }
+function filterEstDest(d,btn){ document.querySelectorAll('#tab-estados .filters .fbtn').forEach(b=>{ if(b.textContent==='Todos'||b.textContent==='Só Renan') b.classList.remove('on'); }); btn.classList.add('on'); curDestEst=d; renderEstados(); }
 
-// ═══════════════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════════════
-renderRanking(rankingData);
+function filterEstEvol(key,btn){ document.querySelectorAll('#tab-estados-evol .filters .fbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); renderEstEvol(key); }
+
+function filterTab(f,btn){ document.querySelectorAll('#tab-tabela .filters .fbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); tabFiltro=f; renderTabela(); }
+function searchTab(v){ tabBusca=v; renderTabela(); }
+
+// ═══════════════════════════ INIT ═══════════════════════════
+
+renderRanking();
+renderCenarios();
+renderEvol();
 renderInstitutos('todos');
-buildChart(evolucaoAtlas);
-renderEstados('todas');
+renderEstados();
 renderTabela();
 </script>
-
 </body>
 </html>
