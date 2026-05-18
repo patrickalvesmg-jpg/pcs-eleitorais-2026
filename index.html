@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 17 mai 2026</div>
+    <div class="hbadge">Atualizado: 18 mai 2026</div>
   </div>
 </header>
 
@@ -225,7 +225,7 @@
         <div class="hstat"><div class="hv">5,3%</div><div class="hl">AtlasIntel abr</div><div class="hc up">▲ melhor marca</div></div>
         <div class="hstat"><div class="hv">4%</div><div class="hl">BTG abr</div><div class="hc up">▲ +2pp</div></div>
         <div class="hstat"><div class="hv">3%</div><div class="hl">Datafolha mai</div><div class="hc eq">— estável</div></div>
-        <div class="hstat"><div class="hv">2%</div><div class="hl">Quaest abr</div><div class="hc up">▲ +1pp</div></div>
+        <div class="hstat"><div class="hv">2%</div><div class="hl">Quaest mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">24,7%</div><div class="hl">Jovens 16–24</div><div class="hc up">▲ +8,8pp/30d</div></div>
         <div class="hstat"><div class="hv">9%</div><div class="hl">Entre homens</div><div class="hc up">vs 2,2% mulheres</div></div>
       </div>
@@ -236,7 +236,7 @@
     <h3>Análise de desempenho</h3>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>430% de crescimento</strong> — saiu de 1% (jan/26) para 5,3% (abr/26) na AtlasIntel em 4 meses. Superou Zema e Caiado em março.</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>Fenômeno geracional</strong> — 24,7% entre 16–24 anos (AtlasIntel mar/26, +8,8pp em 30 dias). Lula tem 72,7% de desaprovação nessa faixa.</div>
-    <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 5,3% · BTG telefônico 4% · Datafolha presencial 3% · Quaest telefônico 1%. Metodologia online reflete mais o eleitor jovem/digital.</div>
+    <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 5,3% · BTG telefônico 4% · Datafolha presencial 3% · Quaest telefônico 2%. Metodologia online reflete mais o eleitor jovem/digital.</div>
     <div class="ins-row"><span class="ins-icon">→</span><strong>2º turno vs Lula (Quaest mai/26)</strong> — Renan 25%, Lula 42%. 29% branco/nulo. Ainda com 74% de desconhecimento nacional.</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>TikTok</strong> — maior crescimento de seguidores entre todos os pré-candidatos em 2026 (Poder360). Estratégia digital como motor.</div>
   </div>
@@ -497,7 +497,7 @@ const RENAN_TL=[
   {m:'Abr/26',mes:'abr26',i:'Datafolha',p:3.0,v:'estável',g:'Datafolha'},
   {m:'Abr/26',mes:'abr26',i:'Paraná Pesq. (RJ)',p:4.0,v:'+3,0pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Datafolha',p:3.0,v:'estável',g:'Datafolha'},
-  {m:'Mai/26',mes:'mai26',i:'Quaest',p:1.0,v:'-1,0pp',g:'Quaest'},
+  {m:'Mai/26',mes:'mai26',i:'Quaest',p:2.0,v:'estável',g:'Quaest'},
   {m:'Mai/26',mes:'mai26',i:'GERP',p:1.0,v:'-0,5pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Real Time',p:2.0,v:'+1,0pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Futura Int.',p:2.0,v:'estável',g:'Outros'},
@@ -555,11 +555,11 @@ const CENARIOS=[
     nota:'Datafolha · jan/2026 · n=2.004'},
   // ── QUAEST ──
   {t:'Quaest: 1T — Mai/2026',turno:'1t',inst:'Quaest',mes:'mai26',temRenan:true,c:[
-    {n:'Lula (PT)',cor:C.lu,p:36},{n:'Flávio (PL)',cor:C.fl,p:34},{n:'Zema (Novo)',cor:C.ze,p:3},{n:'Caiado (PSD)',cor:C.ca,p:2},{n:'Renan Santos (Missão)',cor:C.re,p:1}],
-    nota:'Quaest/Genial · 8–11 mai/2026 · n=2.004'},
+    {n:'Lula (PT)',cor:C.lu,p:39},{n:'Flávio (PL)',cor:C.fl,p:33},{n:'Caiado (PSD)',cor:C.ca,p:4},{n:'Zema (Novo)',cor:C.ze,p:4},{n:'Renan Santos (Missão)',cor:C.re,p:2}],
+    nota:'Quaest/Genial · 8–11 mai/2026 · n=2.004 · TSE BR-03598/2026'},
   {t:'Quaest: 2T — Lula × Flávio',turno:'2t',inst:'Quaest',mes:'mai26',temRenan:false,c:[
-    {n:'Lula (PT)',cor:C.lu,p:45},{n:'Flávio (PL)',cor:C.fl,p:42}],
-    nota:'Quaest/Genial · mai/2026'},
+    {n:'Lula (PT)',cor:C.lu,p:42},{n:'Flávio (PL)',cor:C.fl,p:41}],
+    nota:'Quaest/Genial · mai/2026 · empate técnico'},
   {t:'Quaest: 2T — Lula × Renan Santos ★',turno:'2t',inst:'Quaest',mes:'mai26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:42},{n:'Renan Santos (Missão)',cor:C.re,p:25},{n:'Branco/Nulo/NS',cor:C.ot,p:29}],
     nota:'Quaest/Genial · mai/2026 · 1ª pesquisa 2T com Renan · 74% não conhecem Renan'},
@@ -632,11 +632,11 @@ const EVOL={
     {n:'Tarcísio (alt.)',cor:C.ta,d:[15,15,6.1,null,null,null]},
   ]},
   quaest:{meses:['Out/25','Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'],nota:'Telefônico · n≈2.000',series:[
-    {n:'Lula',cor:C.lu,d:[39,37,36,37,38,38,36]},
-    {n:'Flávio',cor:C.fl,d:[18,20,30,33,36,33,34]},
-    {n:'Renan Santos',cor:C.re,d:[0,0,1,1,1,2,1],hl:true},
-    {n:'Zema',cor:C.ze,d:[5,5,4,3,3,3,3]},
-    {n:'Caiado',cor:C.ca,d:[3,3,3,2,2,2,2]},
+    {n:'Lula',cor:C.lu,d:[39,37,36,37,38,38,39]},
+    {n:'Flávio',cor:C.fl,d:[18,20,30,33,36,33,33]},
+    {n:'Renan Santos',cor:C.re,d:[0,0,1,1,1,2,2],hl:true},
+    {n:'Zema',cor:C.ze,d:[5,5,4,3,3,3,4]},
+    {n:'Caiado',cor:C.ca,d:[3,3,3,2,2,2,4]},
     {n:'Tarcísio (alt.)',cor:C.ta,d:[18,12,null,null,null,null,null]},
     {n:'Michelle (alt.)',cor:C.mi,d:[21,16,null,null,null,null,null]},
   ]},
@@ -669,9 +669,9 @@ const RANKINGS={
     {n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:+2,chgT:'▲ +2pp vs jan',hl:true},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:3,chg:0,chgT:'—'},
     {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:3,chg:0,chgT:'—'},{n:'Augusto Cury',p:'MDB',cor:C.cu,pct:2,chg:0,chgT:'—'}]},
   qu:{src:'Quaest · mai/2026',lista:[
-    {n:'Lula',p:'PT',cor:C.lu,pct:36,chg:-2,chgT:'▼ -2pp'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:34,chg:+1,chgT:'▲ +1pp'},
-    {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:3,chg:0,chgT:'—'},{n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:2,chg:0,chgT:'—'},
-    {n:'Renan Santos',p:'Missão',cor:C.re,pct:1,chg:+1,chgT:'▲ +1pp vs jan',hl:true}]},
+    {n:'Lula',p:'PT',cor:C.lu,pct:39,chg:+1,chgT:'▲ +1pp'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:33,chg:0,chgT:'—'},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:4,chg:+2,chgT:'▲ +2pp'},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:4,chg:+1,chgT:'▲ +1pp'},
+    {n:'Renan Santos',p:'Missão',cor:C.re,pct:2,chg:+1,chgT:'▲ +1pp vs jan',hl:true}]},
   at:{src:'AtlasIntel · abr/2026',lista:[
     {n:'Lula',p:'PT',cor:C.lu,pct:46.6,chg:+0.4,chgT:'▲ +0,4pp'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:39.7,chg:-0.4,chgT:'▼ -0,4pp'},
     {n:'Renan Santos',p:'Missão',cor:C.re,pct:5.3,chg:+0.8,chgT:'▲ +0,8pp',hl:true},{n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:3.3,chg:0,chgT:'—'},
@@ -736,7 +736,7 @@ const ATLAS_REG_EVOL={
 // ── TABELA COMPLETA
 const TABELA=[
   {i:'Datafolha',c:'12–14 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'35%',re:'3%',ze:'3%',ca:'3%',ou:'Cury 2%',n:'2.004',tse:'BR-00290/2026',ano:'2026'},
-  {i:'Quaest/Genial',c:'8–11 mai 2026',mes:'mai26',a:'nac',lu:'36%',fl:'34%',re:'1%',ze:'3%',ca:'2%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Quaest/Genial',c:'8–11 mai 2026',mes:'mai26',a:'nac',lu:'39%',fl:'33%',re:'2%',ze:'4%',ca:'4%',ou:'—',n:'2.004',tse:'BR-03598/2026',ano:'2026'},
   {i:'GERP',c:'8–12 mai 2026',mes:'mai26',a:'nac',lu:'34%',fl:'36%',re:'1%',ze:'4%',ca:'2%',ou:'—',n:'2.000',tse:'BR-03369/2026',ano:'2026'},
   {i:'Real Time Big Data',c:'2–4 mai 2026',mes:'mai26',a:'nac',lu:'39%',fl:'30%',re:'2%',ze:'3%',ca:'2%',ou:'—',n:'2.000',tse:'—',ano:'2026'},
   {i:'Real Time (MS)',c:'9–11 mai 2026',mes:'mai26',a:'est',lu:'30%',fl:'43%',re:'3%',ze:'2%',ca:'5%',ou:'(Mato Grosso do Sul)',n:'1.600',tse:'BR-04762/2026',ano:'2026'},
@@ -865,10 +865,10 @@ function renderRenanCharts(){
   // Datafolha
   chDf=miniLine(document.getElementById('ch-df'),['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26'],[1,1,3,3,3],'#f97316',8);
   // Quaest
-  chQu=miniLine(document.getElementById('ch-qu'),['Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'],[1,1,1,2,1],'#10b981',8);
+  chQu=miniLine(document.getElementById('ch-qu'),['Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'],[1,1,1,2,2],'#10b981',8);
   // Comparativo barras
   const ex=Chart.getChart(document.getElementById('ch-comp'));if(ex)ex.destroy();
-  chComp=new Chart(document.getElementById('ch-comp'),{type:'bar',data:{labels:['AtlasIntel\nabr','BTG\nabr','Datafolha\nmai','Meio/Ideia\nmai','GERP\nmai','Quaest\nmai'],datasets:[{label:'Renan Santos %',data:[5.3,4.0,3.0,2.0,2.0,1.0],backgroundColor:[C.re+'cc',C.re+'99',C.re+'88',C.re+'66',C.re+'66',C.re+'44'],borderColor:C.re,borderWidth:1.5,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b',font:{size:10}}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:8}}}});
+  chComp=new Chart(document.getElementById('ch-comp'),{type:'bar',data:{labels:['AtlasIntel\nabr','BTG\nabr','Datafolha\nmai','Meio/Ideia\nmai','Real Time\nmai','Quaest\nmai'],datasets:[{label:'Renan Santos %',data:[5.3,4.0,3.0,2.0,2.0,2.0],backgroundColor:[C.re+'cc',C.re+'99',C.re+'88',C.re+'66',C.re+'66',C.re+'66'],borderColor:C.re,borderWidth:1.5,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b',font:{size:10}}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:8}}}});
   // Jovens
   const exJ=Chart.getChart(document.getElementById('ch-jovens'));if(exJ)exJ.destroy();
   chJovens=new Chart(document.getElementById('ch-jovens'),{type:'bar',data:{labels:['Fev/26','Mar/26'],datasets:[{label:'16–24 anos',data:[15.9,24.7],backgroundColor:'#3b82f6cc',borderColor:C.re,borderWidth:1.5,borderRadius:6},{label:'Geral',data:[2.5,4.5],backgroundColor:'#64748b66',borderColor:'#64748b',borderWidth:1.5,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{color:'#94a3b8',font:{size:10}}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b'}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:30}}}});
