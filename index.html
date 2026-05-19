@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 18 mai 2026</div>
+    <div class="hbadge">Atualizado: 19 mai 2026</div>
   </div>
 </header>
 
@@ -613,9 +613,12 @@ const CENARIOS=[
   {t:'Paraná Pesq.: 2T — Flávio × Lula (RJ)',turno:'2t',inst:'Outros',mes:'abr26',temRenan:false,c:[
     {n:'Flávio (PL)',cor:C.fl,p:47},{n:'Lula (PT)',cor:C.lu,p:40.5}],
     nota:'Paraná Pesquisas · abr/2026 · Rio de Janeiro'},
-  {t:'Meio/Ideia: 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
-    {n:'Lula (PT)',cor:C.lu,p:37},{n:'Flávio (PL)',cor:C.fl,p:33},{n:'Zema (Novo)',cor:C.ze,p:3},{n:'Renan Santos (Missão)',cor:C.re,p:2},{n:'Caiado (PSD)',cor:C.ca,p:2}],
-    nota:'Meio/Ideia · mai/2026'},
+  {t:'Meio/Ideia: 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:40},{n:'Flávio (PL)',cor:C.fl,p:36},{n:'Caiado (PSD)',cor:C.ca,p:5.6},{n:'Zema (Novo)',cor:C.ze,p:3},{n:'Ciro Gomes',cor:C.ot,p:2.3}],
+    nota:'Meio/Ideia · 1–5 mai/2026 · n=1.500 · TSE BR-05356/2026'},
+  {t:'Meio/Ideia: 2T — Flávio × Lula',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:45.3},{n:'Lula (PT)',cor:C.lu,p:44.7}],
+    nota:'Meio/Ideia · mai/2026 · empate técnico'},
   {t:'Futura Int.: 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:35},{n:'Flávio (PL)',cor:C.fl,p:32},{n:'Zema (Novo)',cor:C.ze,p:2},{n:'Renan Santos (Missão)',cor:C.re,p:2},{n:'Caiado (PSD)',cor:C.ca,p:2}],
     nota:'Futura Inteligência · mai/2026'},
@@ -735,13 +738,13 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
-  {i:'Datafolha',c:'12–14 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'35%',re:'3%',ze:'3%',ca:'3%',ou:'Cury 2%',n:'2.004',tse:'BR-00290/2026',ano:'2026'},
+  {i:'Datafolha',c:'12–13 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'35%',re:'3%',ze:'3%',ca:'3%',ou:'Cury 2%',n:'2.004',tse:'BR-00290/2026',ano:'2026'},
   {i:'Quaest/Genial',c:'8–11 mai 2026',mes:'mai26',a:'nac',lu:'39%',fl:'33%',re:'2%',ze:'4%',ca:'4%',ou:'—',n:'2.004',tse:'BR-03598/2026',ano:'2026'},
   {i:'GERP',c:'8–12 mai 2026',mes:'mai26',a:'nac',lu:'34%',fl:'36%',re:'1%',ze:'4%',ca:'2%',ou:'—',n:'2.000',tse:'BR-03369/2026',ano:'2026'},
   {i:'Real Time Big Data',c:'2–4 mai 2026',mes:'mai26',a:'nac',lu:'39%',fl:'30%',re:'2%',ze:'3%',ca:'2%',ou:'—',n:'2.000',tse:'—',ano:'2026'},
   {i:'Real Time (MS)',c:'9–11 mai 2026',mes:'mai26',a:'est',lu:'30%',fl:'43%',re:'3%',ze:'2%',ca:'5%',ou:'(Mato Grosso do Sul)',n:'1.600',tse:'BR-04762/2026',ano:'2026'},
   {i:'Futura Inteligência',c:'4–8 mai 2026',mes:'mai26',a:'nac',lu:'35%',fl:'32%',re:'2%',ze:'2%',ca:'2%',ou:'—',n:'2.000',tse:'—',ano:'2026'},
-  {i:'Meio/Ideia',c:'Mai 2026',mes:'mai26',a:'nac',lu:'37%',fl:'33%',re:'2%',ze:'3%',ca:'2%',ou:'—',n:'—',tse:'—',ano:'2026'},
+  {i:'Meio/Ideia',c:'1–5 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'36%',re:'—',ze:'3%',ca:'5,6%',ou:'Ciro 2,3%',n:'1.500',tse:'BR-05356/2026',ano:'2026'},
   {i:'AtlasIntel/Bloomberg',c:'22–27 abr 2026',mes:'abr26',a:'nac',lu:'46,6%',fl:'39,7%',re:'5,3%',ze:'3,1%',ca:'3,3%',ou:'—',n:'5.008',tse:'—',ano:'2026'},
   {i:'BTG/Nexus',c:'Abr 2026',mes:'abr26',a:'nac',lu:'41%',fl:'36%',re:'4%',ze:'4%',ca:'3%',ou:'Cury 2%',n:'2.028',tse:'—',ano:'2026'},
   {i:'Datafolha',c:'7–9 abr 2026',mes:'abr26',a:'nac',lu:'40%',fl:'34%',re:'3%',ze:'3%',ca:'3%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
