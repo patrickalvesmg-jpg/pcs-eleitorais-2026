@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 20 mai 2026</div>
+    <div class="hbadge">Atualizado: 21 mai 2026</div>
   </div>
 </header>
 
@@ -503,6 +503,7 @@ const RENAN_TL=[
   {m:'Mai/26',mes:'mai26',i:'Real Time',p:2.0,v:'+1,0pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Futura Int.',p:2.0,v:'estável',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Meio/Ideia',p:2.0,v:'estável',g:'Outros'},
+  {m:'Mai/26',mes:'mai26',i:'Vox Brasil',p:1.5,v:'estreia',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -633,6 +634,22 @@ const CENARIOS=[
   {t:'Futura Int.: 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:35},{n:'Flávio (PL)',cor:C.fl,p:32},{n:'Zema (Novo)',cor:C.ze,p:2},{n:'Renan Santos (Missão)',cor:C.re,p:2},{n:'Caiado (PSD)',cor:C.ca,p:2}],
     nota:'Futura Inteligência · mai/2026'},
+  // ── VOX BRASIL ──
+  {t:'Vox Brasil: 2T — Flávio × Lula (pré-Vorcaro)',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:43.8},{n:'Lula (PT)',cor:C.lu,p:40.2}],
+    nota:'Vox Brasil · 9–12 mai/2026 · n=2.100 · TSE BR-02423/2026 · realizada antes do caso Vorcaro/Dark Horse'},
+  {t:'Vox Brasil: 1T — 17–19 mai/2026 ★',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:41.5},{n:'Flávio (PL)',cor:C.fl,p:32.1},{n:'Caiado (PSD)',cor:C.ca,p:5.9},{n:'Zema (Novo)',cor:C.ze,p:4.1},{n:'Renan Santos (Missão)',cor:C.re,p:1.5}],
+    nota:'Vox Brasil · 17–19 mai/2026 · n=2.100 · TSE BR-02416/2026 · pós caso Vorcaro · Lula +9,4pp vs Vox anterior'},
+  {t:'Vox Brasil: 2T — Lula × Flávio',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46.8},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:38.1}],
+    nota:'Vox Brasil · 17–19 mai/2026 · TSE BR-02416/2026 · Flávio ▼ -5,7pp vs pesquisa anterior'},
+  {t:'Vox Brasil: 2T — Lula × Zema',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:48.5},{n:'Zema (Novo)',cor:C.ze,p:36.3}],
+    nota:'Vox Brasil · 17–19 mai/2026'},
+  {t:'Vox Brasil: 2T — Lula × Caiado',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47.8},{n:'Caiado (PSD)',cor:C.ca,p:34.1}],
+    nota:'Vox Brasil · 17–19 mai/2026'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -756,6 +773,8 @@ const TABELA=[
   {i:'Real Time (MS)',c:'9–11 mai 2026',mes:'mai26',a:'est',lu:'30%',fl:'43%',re:'3%',ze:'2%',ca:'5%',ou:'(Mato Grosso do Sul)',n:'1.600',tse:'BR-04762/2026',ano:'2026'},
   {i:'Futura Inteligência',c:'4–8 mai 2026',mes:'mai26',a:'nac',lu:'35%',fl:'32%',re:'2%',ze:'2%',ca:'2%',ou:'—',n:'2.000',tse:'—',ano:'2026'},
   {i:'Meio/Ideia',c:'1–5 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'36%',re:'—',ze:'3%',ca:'5,6%',ou:'Ciro 2,3%',n:'1.500',tse:'BR-05356/2026',ano:'2026'},
+  {i:'Vox Brasil',c:'17–19 mai 2026',mes:'mai26',a:'nac',lu:'41,5%',fl:'32,1%',re:'1,5%',ze:'4,1%',ca:'5,9%',ou:'Cury 0,3%',n:'2.100',tse:'BR-02416/2026',ano:'2026'},
+  {i:'Vox Brasil',c:'9–12 mai 2026',mes:'mai26',a:'nac',lu:'~35%',fl:'~37%',re:'—',ze:'—',ca:'—',ou:'(apenas 2T divulgado; pré-Vorcaro)',n:'2.100',tse:'BR-02423/2026',ano:'2026'},
   {i:'AtlasIntel/Bloomberg',c:'13–18 mai 2026',mes:'mai26',a:'nac',lu:'47%',fl:'34,3%',re:'6,9%',ze:'5,2%',ca:'2,7%',ou:'—',n:'5.032',tse:'BR-06939/2026',ano:'2026'},
   {i:'AtlasIntel/Bloomberg',c:'22–27 abr 2026',mes:'abr26',a:'nac',lu:'46,6%',fl:'39,7%',re:'5,3%',ze:'3,1%',ca:'3,3%',ou:'—',n:'5.008',tse:'—',ano:'2026'},
   {i:'BTG/Nexus',c:'Abr 2026',mes:'abr26',a:'nac',lu:'41%',fl:'36%',re:'4%',ze:'4%',ca:'3%',ou:'Cury 2%',n:'2.028',tse:'—',ano:'2026'},
