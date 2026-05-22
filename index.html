@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 21 mai 2026</div>
+    <div class="hbadge">Atualizado: 22 mai 2026</div>
   </div>
 </header>
 
@@ -220,9 +220,10 @@
     <div class="hero-r">
       <h2>Renan Santos — Partido Missão</h2>
       <p>Pré-candidato à Presidência 2026 · Presidente do MBL</p>
-      <span class="tag">3º lugar nacional · 6,9% AtlasIntel mai/26 (recorde) · Maior crescimento de 2026 · Líder absoluto entre jovens 16–24 anos</span>
+      <span class="tag">3º lugar nacional · 7,4% Vetor Arrow mai/26 (recorde) · 6,9% AtlasIntel mai/26 · Maior crescimento de 2026 · Líder absoluto entre jovens 16–24 anos</span>
       <div class="hero-stats">
-        <div class="hstat"><div class="hv">6,9%</div><div class="hl">AtlasIntel mai</div><div class="hc up">▲ novo recorde</div></div>
+        <div class="hstat"><div class="hv">7,4%</div><div class="hl">Vetor Arrow mai</div><div class="hc up">▲ recorde geral</div></div>
+        <div class="hstat"><div class="hv">6,9%</div><div class="hl">AtlasIntel mai</div><div class="hc up">▲ +1,6pp</div></div>
         <div class="hstat"><div class="hv">4%</div><div class="hl">BTG abr</div><div class="hc up">▲ +2pp</div></div>
         <div class="hstat"><div class="hv">3%</div><div class="hl">Datafolha mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">2%</div><div class="hl">Quaest mai</div><div class="hc eq">— estável</div></div>
@@ -234,7 +235,7 @@
 
   <div class="insights">
     <h3>Análise de desempenho</h3>
-    <div class="ins-row"><span class="ins-icon">▲</span><strong>590% de crescimento</strong> — saiu de 1% (jan/26) para 6,9% (mai/26) na AtlasIntel em 5 meses. Superou Zema e Caiado em março. Novo recorde pessoal em mai/26.</div>
+    <div class="ins-row"><span class="ins-icon">▲</span><strong>640% de crescimento</strong> — saiu de 1% (jan/26) para 7,4% (Vetor Arrow, mai/26) / 6,9% (AtlasIntel, mai/26) em 5 meses. Superou Zema e Caiado em março. Novo recorde histórico em mai/26.</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>Fenômeno geracional</strong> — 24,7% entre 16–24 anos (AtlasIntel mar/26, +8,8pp em 30 dias). Lula tem 72,7% de desaprovação nessa faixa.</div>
     <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 5,3% · BTG telefônico 4% · Datafolha presencial 3% · Quaest telefônico 2%. Metodologia online reflete mais o eleitor jovem/digital.</div>
     <div class="ins-row"><span class="ins-icon">→</span><strong>2º turno vs Lula (Quaest mai/26)</strong> — Renan 25%, Lula 42%. 29% branco/nulo. Ainda com 74% de desconhecimento nacional.</div>
@@ -504,6 +505,7 @@ const RENAN_TL=[
   {m:'Mai/26',mes:'mai26',i:'Futura Int.',p:2.0,v:'estável',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Meio/Ideia',p:2.0,v:'estável',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Vox Brasil',p:1.5,v:'estreia',g:'Outros'},
+  {m:'Mai/26',mes:'mai26',i:'Vetor Arrow',p:7.4,v:'+0,5pp',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -650,6 +652,17 @@ const CENARIOS=[
   {t:'Vox Brasil: 2T — Lula × Caiado',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
     {n:'Lula (PT)',cor:C.lu,p:47.8},{n:'Caiado (PSD)',cor:C.ca,p:34.1}],
     nota:'Vox Brasil · 17–19 mai/2026'},
+  // ── VETOR ARROW MAIO 2026 ──
+  {t:'Vetor Arrow: 1T — Mai/2026 ★',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:37.2},{n:'Flávio (PL)',cor:C.fl,p:30.2},{n:'Renan Santos (Missão)',cor:C.re,p:7.4},{n:'Zema (Novo)',cor:C.ze,p:3.6},{n:'Caiado (PSD)',cor:C.ca,p:2.9}],
+    nota:'Vetor Arrow · 15–18 mai/2026 · n=9.000 · TSE BR-09301/2026 · ME=1,03pp · 1.200+ municípios · pós caso Vorcaro'},
+  {t:'Vetor Arrow: 2T — Lula × Flávio',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:50.7},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:38.3}],
+    nota:'Vetor Arrow · 15–18 mai/2026 · TSE BR-09301/2026 · Lula +12,4pp pós escândalo Vorcaro'},
+  // ── GERP 2ª PESQUISA MAIO 2026 ──
+  {t:'GERP (2ª): 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Flávio (PL)',cor:C.fl,p:38},{n:'Lula (PT)',cor:C.lu,p:38}],
+    nota:'GERP · 19–22 mai/2026 · n=2.000 · empate técnico · 2T: Flávio +3pp (dentro da ME)'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -766,6 +779,8 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'GERP (2ª ed.)',c:'19–22 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'38%',re:'—',ze:'—',ca:'—',ou:'2T: Flávio +3pp',n:'2.000',tse:'—',ano:'2026'},
+  {i:'Vetor Arrow',c:'15–18 mai 2026',mes:'mai26',a:'nac',lu:'37,2%',fl:'30,2%',re:'7,4%',ze:'3,6%',ca:'2,9%',ou:'—',n:'9.000',tse:'BR-09301/2026',ano:'2026'},
   {i:'Datafolha',c:'12–13 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'35%',re:'3%',ze:'3%',ca:'3%',ou:'Cury 2%',n:'2.004',tse:'BR-00290/2026',ano:'2026'},
   {i:'Quaest/Genial',c:'8–11 mai 2026',mes:'mai26',a:'nac',lu:'39%',fl:'33%',re:'2%',ze:'4%',ca:'4%',ou:'—',n:'2.004',tse:'BR-03598/2026',ano:'2026'},
   {i:'GERP',c:'8–12 mai 2026',mes:'mai26',a:'nac',lu:'34%',fl:'36%',re:'1%',ze:'4%',ca:'2%',ou:'—',n:'2.000',tse:'BR-03369/2026',ano:'2026'},
