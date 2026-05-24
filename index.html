@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 22 mai 2026</div>
+    <div class="hbadge">Atualizado: 24 mai 2026</div>
   </div>
 </header>
 
@@ -225,7 +225,7 @@
         <div class="hstat"><div class="hv">7,4%</div><div class="hl">Vetor Arrow mai</div><div class="hc up">▲ recorde geral</div></div>
         <div class="hstat"><div class="hv">6,9%</div><div class="hl">AtlasIntel mai</div><div class="hc up">▲ +1,6pp</div></div>
         <div class="hstat"><div class="hv">4%</div><div class="hl">BTG abr</div><div class="hc up">▲ +2pp</div></div>
-        <div class="hstat"><div class="hv">3%</div><div class="hl">Datafolha mai</div><div class="hc eq">— estável</div></div>
+        <div class="hstat"><div class="hv">3%</div><div class="hl">Datafolha (2ª) mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">2%</div><div class="hl">Quaest mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">24,7%</div><div class="hl">Jovens 16–24</div><div class="hc up">▲ +8,8pp/30d</div></div>
         <div class="hstat"><div class="hv">9%</div><div class="hl">Entre homens</div><div class="hc up">vs 2,2% mulheres</div></div>
@@ -506,6 +506,8 @@ const RENAN_TL=[
   {m:'Mai/26',mes:'mai26',i:'Meio/Ideia',p:2.0,v:'estável',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Vox Brasil',p:1.5,v:'estreia',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Vetor Arrow',p:7.4,v:'+0,5pp',g:'Outros'},
+  {m:'Mai/26',mes:'mai26',i:'Datafolha (2ª)',p:3.0,v:'estável',g:'Datafolha'},
+  {m:'Mai/26',mes:'mai26',i:'Futura Int. (2ª)',p:1.7,v:'-0,3pp',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -663,6 +665,23 @@ const CENARIOS=[
   {t:'GERP (2ª): 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:false,c:[
     {n:'Flávio (PL)',cor:C.fl,p:38},{n:'Lula (PT)',cor:C.lu,p:38}],
     nota:'GERP · 19–22 mai/2026 · n=2.000 · empate técnico · 2T: Flávio +3pp (dentro da ME)'},
+  // ── DATAFOLHA 2ª EDIÇÃO MAIO 2026 ──
+  {t:'Datafolha (2ª): 1T — Mai/2026 pós-Vorcaro',turno:'1t',inst:'Datafolha',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:40},{n:'Flávio (PL)',cor:C.fl,p:31},{n:'Caiado (PSD)',cor:C.ca,p:4},{n:'Zema (Novo)',cor:C.ze,p:3},{n:'Renan Santos (Missão)',cor:C.re,p:3}],
+    nota:'Datafolha · 20–21 mai/2026 · n=2.004 · ME=2pp · 139 municípios · Lula abre 9pp sobre Flávio pós caso Vorcaro/Dark Horse'},
+  {t:'Datafolha (2ª): 1T — sem Flávio (mai/2026)',turno:'alt',inst:'Datafolha',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:41},{n:'Michelle (PL)',cor:C.mi,p:22},{n:'Zema (Novo)',cor:C.ze,p:6},{n:'Caiado (PSD)',cor:C.ca,p:5},{n:'Renan Santos (Missão)',cor:C.re,p:3}],
+    nota:'Datafolha · 20–21 mai/2026 · cenário alternativo sem Flávio · Renan mantém 3%'},
+  {t:'Datafolha (2ª): 2T — Lula × Flávio (mai/2026)',turno:'2t',inst:'Datafolha',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47},{n:'Flávio (PL)',cor:C.fl,p:43}],
+    nota:'Datafolha · 20–21 mai/2026 · Lula ▲ +2pp vs 1ª edição mai'},
+  // ── FUTURA INTELIGÊNCIA 2ª EDIÇÃO MAIO 2026 ──
+  {t:'Futura Int. (2ª): 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:42.7},{n:'Flávio (PL)',cor:C.fl,p:35.6},{n:'Zema (Novo)',cor:C.ze,p:3.9},{n:'Caiado (PSD)',cor:C.ca,p:3.3},{n:'Renan Santos (Missão)',cor:C.re,p:1.7}],
+    nota:'Futura Inteligência/Apex · 15–20 mai/2026 · n=2.000 · ME=2,2pp · pós caso Vorcaro · Lula+7,1pp sobre Flávio'},
+  {t:'Futura Int. (2ª): 2T — Lula × Flávio',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47.7},{n:'Flávio (PL)',cor:C.fl,p:42.2}],
+    nota:'Futura Inteligência/Apex · 15–20 mai/2026 · empate técnico na ME de 2,2pp'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -684,12 +703,12 @@ const EVOL={
     {n:'Tarcísio (alt.)',cor:C.ta,d:[18,12,null,null,null,null,null]},
     {n:'Michelle (alt.)',cor:C.mi,d:[21,16,null,null,null,null,null]},
   ]},
-  datafolha:{meses:['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26'],nota:'Presencial · n≈2.000',series:[
-    {n:'Lula',cor:C.lu,d:[41,38,41,40,38]},
-    {n:'Flávio',cor:C.fl,d:[22,27,33,34,35]},
+  datafolha:{meses:['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26'],nota:'Presencial · n≈2.000 · Mai/26=2ª ed. 20-21 mai',series:[
+    {n:'Lula',cor:C.lu,d:[41,38,41,40,40]},
+    {n:'Flávio',cor:C.fl,d:[22,27,33,34,31]},
     {n:'Renan Santos',cor:C.re,d:[1,1,3,3,3],hl:true},
     {n:'Zema',cor:C.ze,d:[4,4,3,3,3]},
-    {n:'Caiado',cor:C.ca,d:[3,3,3,3,3]},
+    {n:'Caiado',cor:C.ca,d:[3,3,3,3,4]},
   ]},
   btg:{meses:['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26'],nota:'Telefônico · n≈2.000',series:[
     {n:'Lula',cor:C.lu,d:[42,40,41,41,41]},
@@ -708,10 +727,10 @@ const EVOL={
 
 // ── RANKINGS
 const RANKINGS={
-  df:{src:'Datafolha · mai/2026',lista:[
-    {n:'Lula',p:'PT',cor:C.lu,pct:38,chg:-2,chgT:'▼ -2pp'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:35,chg:+1,chgT:'▲ +1pp'},
-    {n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:+2,chgT:'▲ +2pp vs jan',hl:true},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:3,chg:0,chgT:'—'},
-    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:3,chg:0,chgT:'—'},{n:'Augusto Cury',p:'MDB',cor:C.cu,pct:2,chg:0,chgT:'—'}]},
+  df:{src:'Datafolha · 2ª ed. mai/2026',lista:[
+    {n:'Lula',p:'PT',cor:C.lu,pct:40,chg:0,chgT:'— estável vs abr'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:31,chg:-3,chgT:'▼ -3pp pós Vorcaro'},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:4,chg:+1,chgT:'▲ +1pp'},{n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:+2,chgT:'▲ +2pp vs jan',hl:true},
+    {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:3,chg:0,chgT:'—'},{n:'Augusto Cury',p:'MDB',cor:C.cu,pct:2,chg:0,chgT:'—'}]},
   qu:{src:'Quaest · mai/2026',lista:[
     {n:'Lula',p:'PT',cor:C.lu,pct:39,chg:+1,chgT:'▲ +1pp'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:33,chg:0,chgT:'—'},
     {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:4,chg:+2,chgT:'▲ +2pp'},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:4,chg:+1,chgT:'▲ +1pp'},
@@ -779,6 +798,8 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Datafolha (2ª)',c:'20–21 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'31%',re:'3%',ze:'3%',ca:'4%',ou:'2T: Lula 47%×Flávio 43%',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Futura Int. (2ª)',c:'15–20 mai 2026',mes:'mai26',a:'nac',lu:'42,7%',fl:'35,6%',re:'1,7%',ze:'3,9%',ca:'3,3%',ou:'2T: Lula 47,7%×Flávio 42,2%',n:'2.000',tse:'—',ano:'2026'},
   {i:'GERP (2ª ed.)',c:'19–22 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'38%',re:'—',ze:'—',ca:'—',ou:'2T: Flávio +3pp',n:'2.000',tse:'—',ano:'2026'},
   {i:'Vetor Arrow',c:'15–18 mai 2026',mes:'mai26',a:'nac',lu:'37,2%',fl:'30,2%',re:'7,4%',ze:'3,6%',ca:'2,9%',ou:'—',n:'9.000',tse:'BR-09301/2026',ano:'2026'},
   {i:'Datafolha',c:'12–13 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'35%',re:'3%',ze:'3%',ca:'3%',ou:'Cury 2%',n:'2.004',tse:'BR-00290/2026',ano:'2026'},
