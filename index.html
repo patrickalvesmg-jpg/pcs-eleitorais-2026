@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 24 mai 2026</div>
+    <div class="hbadge">Atualizado: 25 mai 2026</div>
   </div>
 </header>
 
@@ -224,7 +224,7 @@
       <div class="hero-stats">
         <div class="hstat"><div class="hv">7,4%</div><div class="hl">Vetor Arrow mai</div><div class="hc up">▲ recorde geral</div></div>
         <div class="hstat"><div class="hv">6,9%</div><div class="hl">AtlasIntel mai</div><div class="hc up">▲ +1,6pp</div></div>
-        <div class="hstat"><div class="hv">4%</div><div class="hl">BTG abr</div><div class="hc up">▲ +2pp</div></div>
+        <div class="hstat"><div class="hv">3%</div><div class="hl">BTG mai</div><div class="hc dn">▼ -1pp</div></div>
         <div class="hstat"><div class="hv">3%</div><div class="hl">Datafolha (2ª) mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">2%</div><div class="hl">Quaest mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">24,7%</div><div class="hl">Jovens 16–24</div><div class="hc up">▲ +8,8pp/30d</div></div>
@@ -271,7 +271,7 @@
     <div class="ch-card">
       <div style="font-size:.78rem;font-weight:800;color:#f59e0b;margin-bottom:12px">BTG / Nexus</div>
       <div class="ch-h" style="height:220px"><canvas id="ch-btg"></canvas></div>
-      <p class="ch-note">Telefônico · n≈2.000 · Nov/25 a Abr/26</p>
+      <p class="ch-note">Telefônico · n≈2.000 · Nov/25 a Mai/26</p>
     </div>
 
     <div class="ch-card">
@@ -508,6 +508,7 @@ const RENAN_TL=[
   {m:'Mai/26',mes:'mai26',i:'Vetor Arrow',p:7.4,v:'+0,5pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Datafolha (2ª)',p:3.0,v:'estável',g:'Datafolha'},
   {m:'Mai/26',mes:'mai26',i:'Futura Int. (2ª)',p:1.7,v:'-0,3pp',g:'Outros'},
+  {m:'Mai/26',mes:'mai26',i:'BTG/Nexus',p:3.0,v:'-1,0pp',g:'BTG'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -589,6 +590,19 @@ const CENARIOS=[
     {n:'Lula (PT)',cor:C.lu,p:36},{n:'Flávio (PL)',cor:C.fl,p:30},{n:'Zema (Novo)',cor:C.ze,p:4},{n:'Caiado (PSD)',cor:C.ca,p:3},{n:'Renan Santos (Missão)',cor:C.re,p:1}],
     nota:'Quaest/Genial · jan/2026 · 1ª pesquisa com Renan'},
   // ── BTG/NEXUS ──
+  // ── BTG/NEXUS MAIO 2026 ──
+  {t:'BTG/Nexus: 1T — Mai/2026',turno:'1t',inst:'BTG',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:40},{n:'Flávio (PL)',cor:C.fl,p:35},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:5},{n:'Romeu Zema (Novo)',cor:C.ze,p:4},{n:'Renan Santos (Missão)',cor:C.re,p:3},{n:'Joaquim Barbosa',cor:C.ot,p:2}],
+    nota:'BTG/Nexus · 22–24 mai/2026 · n=2.045 · ME=2pp · TSE BR-04193/2026'},
+  {t:'BTG/Nexus: 2T — Lula × Flávio (Mai/2026)',turno:'2t',inst:'BTG',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:43}],
+    nota:'BTG/Nexus · 22–24 mai/2026 · TSE BR-04193/2026'},
+  {t:'BTG/Nexus: 2T — Lula × Zema (Mai/2026)',turno:'2t',inst:'BTG',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:49},{n:'Romeu Zema (Novo)',cor:C.ze,p:38}],
+    nota:'BTG/Nexus · 22–24 mai/2026'},
+  {t:'BTG/Nexus: 2T — Lula × Caiado (Mai/2026)',turno:'2t',inst:'BTG',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:40}],
+    nota:'BTG/Nexus · 22–24 mai/2026'},
   {t:'BTG/Nexus: 1T — Abr/2026',turno:'1t',inst:'BTG',mes:'abr26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:41},{n:'Flávio (PL)',cor:C.fl,p:36},{n:'Zema (Novo)',cor:C.ze,p:4},{n:'Renan Santos (Missão)',cor:C.re,p:4},{n:'Caiado (PSD)',cor:C.ca,p:3},{n:'Cury (MDB)',cor:C.cu,p:2}],
     nota:'BTG/Nexus · abr/2026 · n=2.028'},
@@ -710,12 +724,12 @@ const EVOL={
     {n:'Zema',cor:C.ze,d:[4,4,3,3,3]},
     {n:'Caiado',cor:C.ca,d:[3,3,3,3,4]},
   ]},
-  btg:{meses:['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26'],nota:'Telefônico · n≈2.000',series:[
-    {n:'Lula',cor:C.lu,d:[42,40,41,41,41]},
-    {n:'Flávio',cor:C.fl,d:[20,28,32,36,36]},
-    {n:'Renan Santos',cor:C.re,d:[1,1,1,2,4],hl:true},
-    {n:'Zema',cor:C.ze,d:[5,5,4,4,4]},
-    {n:'Caiado',cor:C.ca,d:[4,3,3,3,3]},
+  btg:{meses:['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'],nota:'Telefônico · n≈2.000',series:[
+    {n:'Lula',cor:C.lu,d:[42,40,41,41,41,40]},
+    {n:'Flávio',cor:C.fl,d:[20,28,32,36,36,35]},
+    {n:'Renan Santos',cor:C.re,d:[1,1,1,2,4,3],hl:true},
+    {n:'Zema',cor:C.ze,d:[5,5,4,4,4,4]},
+    {n:'Caiado',cor:C.ca,d:[4,3,3,3,3,5]},
   ]},
   parana:{meses:['Jan/26','Fev/26'],nota:'Presencial · Paraná Pesquisas',series:[
     {n:'Lula',cor:C.lu,d:[36,33]},
@@ -739,10 +753,10 @@ const RANKINGS={
     {n:'Lula',p:'PT',cor:C.lu,pct:47.0,chg:+0.4,chgT:'▲ +0,4pp'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:34.3,chg:-5.4,chgT:'▼ -5,4pp'},
     {n:'Renan Santos',p:'Missão',cor:C.re,pct:6.9,chg:+1.6,chgT:'▲ +1,6pp ★recorde',hl:true},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:5.2,chg:+2.1,chgT:'▲ +2,1pp'},
     {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:2.7,chg:-0.6,chgT:'▼ -0,6pp'}]},
-  bt:{src:'BTG/Nexus · abr/2026',lista:[
-    {n:'Lula',p:'PT',cor:C.lu,pct:41,chg:0,chgT:'—'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:36,chg:0,chgT:'—'},
-    {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:4,chg:0,chgT:'—'},{n:'Renan Santos',p:'Missão',cor:C.re,pct:4,chg:+2,chgT:'▲ +2pp',hl:true},
-    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:3,chg:0,chgT:'—'},{n:'Augusto Cury',p:'MDB',cor:C.cu,pct:2,chg:0,chgT:'—'}]},
+  bt:{src:'BTG/Nexus · mai/2026',lista:[
+    {n:'Lula',p:'PT',cor:C.lu,pct:40,chg:-1,chgT:'▼ -1pp'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:35,chg:-1,chgT:'▼ -1pp'},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:5,chg:+2,chgT:'▲ +2pp'},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:4,chg:0,chgT:'—'},
+    {n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:-1,chgT:'▼ -1pp vs abr',hl:true},{n:'Joaquim Barbosa',p:'PDT',cor:C.ot,pct:2,chg:0,chgT:'estreia'}]},
 };
 
 // ── ESTADOS
@@ -798,6 +812,7 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'BTG/Nexus',c:'22–24 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'5%',ou:'Barbosa 2%; 2T: Lula 47%×Flávio 43%',n:'2.045',tse:'BR-04193/2026',ano:'2026'},
   {i:'Datafolha (2ª)',c:'20–21 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'31%',re:'3%',ze:'3%',ca:'4%',ou:'2T: Lula 47%×Flávio 43%',n:'2.004',tse:'—',ano:'2026'},
   {i:'Futura Int. (2ª)',c:'15–20 mai 2026',mes:'mai26',a:'nac',lu:'42,7%',fl:'35,6%',re:'1,7%',ze:'3,9%',ca:'3,3%',ou:'2T: Lula 47,7%×Flávio 42,2%',n:'2.000',tse:'—',ano:'2026'},
   {i:'GERP (2ª ed.)',c:'19–22 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'38%',re:'—',ze:'—',ca:'—',ou:'2T: Flávio +3pp',n:'2.000',tse:'—',ano:'2026'},
