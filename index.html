@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 26 mai 2026</div>
+    <div class="hbadge">Atualizado: 27 mai 2026</div>
   </div>
 </header>
 
@@ -237,8 +237,8 @@
     <h3>Análise de desempenho</h3>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>640% de crescimento</strong> — saiu de 1% (jan/26) para 7,4% (Vetor Arrow, mai/26) / 6,9% (AtlasIntel, mai/26) em 5 meses. Superou Zema e Caiado em março. Novo recorde histórico em mai/26.</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>Fenômeno geracional</strong> — 24,7% entre 16–24 anos (AtlasIntel mar/26, +8,8pp em 30 dias). Lula tem 72,7% de desaprovação nessa faixa.</div>
-    <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 5,3% · BTG telefônico 4% · Datafolha presencial 3% · Quaest telefônico 2%. Metodologia online reflete mais o eleitor jovem/digital.</div>
-    <div class="ins-row"><span class="ins-icon">→</span><strong>2º turno vs Lula (Quaest mai/26)</strong> — Renan 25%, Lula 42%. 29% branco/nulo. Ainda com 74% de desconhecimento nacional.</div>
+    <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 6,9% · BTG telefônico 3% · Datafolha presencial 3% · Quaest telefônico 2%. Metodologia online reflete mais o eleitor jovem/digital.</div>
+    <div class="ins-row"><span class="ins-icon">→</span><strong>2º turno vs Lula</strong> — Quaest mai/26: Renan 25%, Lula 42%, 29% branco/nulo. AtlasIntel mai/26: Renan 28,4%, Lula 47,8%, 23,8% branco/nulo. Ainda com 74% de desconhecimento nacional (Quaest).</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>TikTok</strong> — maior crescimento de seguidores entre todos os pré-candidatos em 2026 (Poder360). Estratégia digital como motor.</div>
   </div>
 
@@ -492,6 +492,7 @@ const RENAN_TL=[
   {m:'Mar/26',mes:'mar26',i:'Quaest',p:1.0,v:'estável',g:'Quaest'},
   {m:'Mar/26',mes:'mar26',i:'GERP',p:1.5,v:'—',g:'Outros'},
   {m:'Mar/26',mes:'mar26',i:'Real Time',p:1.0,v:'—',g:'Outros'},
+  {m:'Mar/26',mes:'mar26',i:'Paraná Pesq.',p:1.2,v:'+0,2pp',g:'Outros'},
   {m:'Abr/26',mes:'abr26',i:'AtlasIntel',p:5.3,v:'+0,8pp',g:'AtlasIntel'},
   {m:'Abr/26',mes:'abr26',i:'BTG/Nexus',p:4.0,v:'+2,0pp',g:'BTG'},
   {m:'Abr/26',mes:'abr26',i:'Quaest',p:2.0,v:'+1,0pp',g:'Quaest'},
@@ -520,6 +521,15 @@ const CENARIOS=[
   {t:'AtlasIntel: 2T — Lula × Flávio Bolsonaro',turno:'2t',inst:'AtlasIntel',mes:'mai26',temRenan:false,c:[
     {n:'Lula (PT)',cor:C.lu,p:48.9},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:41.8}],
     nota:'AtlasIntel/Bloomberg · mai/2026 · Flávio caiu 6pp após caso Vorcaro'},
+  {t:'AtlasIntel: 2T — Lula × Romeu Zema (mai/2026)',turno:'2t',inst:'AtlasIntel',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47.8},{n:'Romeu Zema (Novo)',cor:C.ze,p:37.6}],
+    nota:'AtlasIntel/Bloomberg · 13–18 mai/2026 · Lula vence em todos os cenários de 2T'},
+  {t:'AtlasIntel: 2T — Lula × Ronaldo Caiado (mai/2026)',turno:'2t',inst:'AtlasIntel',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47.5},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:38.5}],
+    nota:'AtlasIntel/Bloomberg · 13–18 mai/2026 · 14% branco/nulo/NS'},
+  {t:'AtlasIntel: 2T — Lula × Renan Santos ★ (mai/2026)',turno:'2t',inst:'AtlasIntel',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47.8},{n:'Renan Santos (Missão)',cor:C.re,p:28.4},{n:'Branco/Nulo/NS',cor:C.ot,p:23.8}],
+    nota:'AtlasIntel/Bloomberg · 13–18 mai/2026 · Renan 28,4% vs 25% Quaest no mesmo mês · 23,8% branco/nulo/NS'},
   {t:'AtlasIntel: 1T — Cenário c/ Michelle (alt.)',turno:'alt',inst:'AtlasIntel',mes:'mai26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:47.0},{n:'Michelle (PL)',cor:C.mi,p:23.4},{n:'Zema (Novo)',cor:C.ze,p:10.0},{n:'Renan Santos (Missão)',cor:C.re,p:7.8},{n:'Caiado (PSD)',cor:C.ca,p:6.0}],
     nota:'AtlasIntel/Bloomberg · mai/2026 · cenário sem Flávio · Renan 7,8% neste cenário'},
@@ -637,6 +647,9 @@ const CENARIOS=[
   {t:'Futura/Apex: 2T — Flávio × Lula',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
     {n:'Flávio (PL)',cor:C.fl,p:46.9},{n:'Lula (PT)',cor:C.lu,p:44.4}],
     nota:'Futura/Apex · mai/2026'},
+  {t:'Paraná Pesq.: 1T — Mar/2026 (nacional)',turno:'1t',inst:'Outros',mes:'mar26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:41.3},{n:'Flávio (PL)',cor:C.fl,p:37.8},{n:'Caiado (PSD)',cor:C.ca,p:3.6},{n:'Zema (Novo)',cor:C.ze,p:3.0},{n:'Renan Santos (Missão)',cor:C.re,p:1.2}],
+    nota:'Paraná Pesquisas · 30 mar/2026 · nacional · empate técnico Lula×Flávio · Aldo Rebelo 1,1%'},
   {t:'Paraná Pesq.: 1T — RJ (1º Turno)',turno:'1t',inst:'Outros',mes:'abr26',temRenan:true,c:[
     {n:'Flávio (PL)',cor:C.fl,p:36.9},{n:'Lula (PT)',cor:C.lu,p:36.7},{n:'Zema (Novo)',cor:C.ze,p:5},{n:'Renan Santos (Missão)',cor:C.re,p:4},{n:'Caiado (PSD)',cor:C.ca,p:3}],
     nota:'Paraná Pesquisas · 21–23 abr/2026 · Rio de Janeiro · n=1.680'},
@@ -731,11 +744,12 @@ const EVOL={
     {n:'Zema',cor:C.ze,d:[5,5,4,4,4,4]},
     {n:'Caiado',cor:C.ca,d:[4,3,3,3,3,5]},
   ]},
-  parana:{meses:['Jan/26','Fev/26'],nota:'Presencial · Paraná Pesquisas',series:[
-    {n:'Lula',cor:C.lu,d:[36,33]},
-    {n:'Flávio',cor:C.fl,d:[29,32]},
-    {n:'Renan Santos',cor:C.re,d:[1,1],hl:true},
-    {n:'Zema',cor:C.ze,d:[4,4]},
+  parana:{meses:['Jan/26','Fev/26','Mar/26'],nota:'Presencial · Paraná Pesquisas',series:[
+    {n:'Lula',cor:C.lu,d:[36,33,41.3]},
+    {n:'Flávio',cor:C.fl,d:[29,32,37.8]},
+    {n:'Renan Santos',cor:C.re,d:[1,1,1.2],hl:true},
+    {n:'Zema',cor:C.ze,d:[4,4,3.0]},
+    {n:'Caiado',cor:C.ca,d:[null,null,3.6]},
   ]},
 };
 
@@ -837,6 +851,7 @@ const TABELA=[
   {i:'BTG/Nexus',c:'24–26 mar 2026',mes:'mar26',a:'nac',lu:'41%',fl:'36%',re:'2%',ze:'4%',ca:'3%',ou:'Cury 2%',n:'2.028',tse:'—',ano:'2026'},
   {i:'Datafolha',c:'Mar 2026',mes:'mar26',a:'nac',lu:'41%',fl:'33%',re:'3%',ze:'3%',ca:'3%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
   {i:'Quaest/Genial',c:'Mar 2026',mes:'mar26',a:'nac',lu:'38%',fl:'33%',re:'1%',ze:'3%',ca:'2%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
+  {i:'Paraná Pesquisas',c:'30 mar 2026',mes:'mar26',a:'nac',lu:'41,3%',fl:'37,8%',re:'1,2%',ze:'3%',ca:'3,6%',ou:'Aldo Rebelo 1,1%',n:'—',tse:'—',ano:'2026'},
   {i:'Real Time (MT)',c:'Mar 2026',mes:'mar26',a:'est',lu:'30%',fl:'46%',re:'2%',ze:'5%',ca:'4%',ou:'(Mato Grosso)',n:'1.600',tse:'BR-05763/2026',ano:'2026'},
   {i:'AtlasIntel/Bloomberg',c:'Fev 2026',mes:'fev26',a:'nac',lu:'46,8%',fl:'39,1%',re:'2,5%',ze:'3,8%',ca:'3,5%',ou:'—',n:'4.986',tse:'—',ano:'2026'},
   {i:'Quaest/Genial',c:'Fev 2026',mes:'fev26',a:'nac',lu:'37%',fl:'33%',re:'1%',ze:'3%',ca:'2%',ou:'—',n:'2.004',tse:'—',ano:'2026'},
