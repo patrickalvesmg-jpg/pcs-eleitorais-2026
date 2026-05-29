@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 28 mai 2026</div>
+    <div class="hbadge">Atualizado: 29 mai 2026</div>
   </div>
 </header>
 
@@ -238,7 +238,7 @@
     <div class="ins-row"><span class="ins-icon">▲</span><strong>640% de crescimento</strong> — saiu de 1% (jan/26) para 7,4% (Vetor Arrow, mai/26) / 6,9% (AtlasIntel, mai/26) em 5 meses. Superou Zema e Caiado em março. Novo recorde histórico em mai/26.</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>Fenômeno geracional</strong> — 24,7% entre 16–24 anos (AtlasIntel mar/26, +8,8pp em 30 dias). Lula tem 72,7% de desaprovação nessa faixa.</div>
     <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 6,9% · BTG telefônico 3% · Datafolha presencial 3% · Quaest telefônico 2%. Metodologia online reflete mais o eleitor jovem/digital.</div>
-    <div class="ins-row"><span class="ins-icon">→</span><strong>2º turno vs Lula</strong> — Quaest mai/26: Renan 25%, Lula 42%, 29% branco/nulo. AtlasIntel mai/26: Renan 28,4%, Lula 47,8%, 23,8% branco/nulo. Ainda com 74% de desconhecimento nacional (Quaest).</div>
+    <div class="ins-row"><span class="ins-icon">→</span><strong>2º turno vs Lula</strong> — Quaest mai/26: Renan 25%, Lula 42%, 29% branco/nulo. AtlasIntel mai/26: Renan 28,4%, Lula 47,8%, 23,8% branco/nulo. Meio/Ideia (2ª) mai/26: Renan 31%, Lula 46%. Ainda com 74% de desconhecimento nacional (Quaest).</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>TikTok</strong> — maior crescimento de seguidores entre todos os pré-candidatos em 2026 (Poder360). Estratégia digital como motor.</div>
   </div>
 
@@ -504,7 +504,7 @@ const RENAN_TL=[
   {m:'Mai/26',mes:'mai26',i:'GERP',p:1.0,v:'-0,5pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Real Time',p:2.0,v:'+1,0pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Futura Int.',p:2.0,v:'estável',g:'Outros'},
-  {m:'Mai/26',mes:'mai26',i:'Meio/Ideia',p:2.0,v:'estável',g:'Outros'},
+  {m:'Mai/26',mes:'mai26',i:'Meio/Ideia (2ª)',p:2.1,v:'+0,1pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Vox Brasil',p:1.5,v:'estreia',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Vetor Arrow',p:7.4,v:'+0,5pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Datafolha (2ª)',p:3.0,v:'estável',g:'Datafolha'},
@@ -710,9 +710,18 @@ const CENARIOS=[
     {n:'Lula (PT)',cor:C.lu,p:47.7},{n:'Flávio (PL)',cor:C.fl,p:42.2}],
     nota:'Futura Inteligência/Apex · 15–20 mai/2026 · empate técnico na ME de 2,2pp'},
   // ── MEIO/IDEIA 2ª EDIÇÃO MAIO 2026 ──
+  {t:'Meio/Ideia (2ª): 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:38.5},{n:'Flávio (PL)',cor:C.fl,p:31.5},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:5.5},{n:'Romeu Zema (Novo)',cor:C.ze,p:2.4},{n:'Renan Santos (Missão)',cor:C.re,p:2.1}],
+    nota:'Meio/Ideia · 23–27 mai/2026 · n=1.500 · ME=2,5pp · divulgado 28/mai · pós caso Vorcaro'},
   {t:'Meio/Ideia (2ª): 2T — Lula × Flávio',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
     {n:'Lula (PT)',cor:C.lu,p:46.5},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:41.4}],
     nota:'Meio/Ideia · 23–27 mai/2026 · n=1.500 · ME=2,5pp · Lula +3,9pp e Flávio -3,9pp pós caso Vorcaro · divulgado 28/mai'},
+  {t:'Meio/Ideia (2ª): 2T — Lula × Renan Santos ★',turno:'2t',inst:'Outros',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Renan Santos (Missão)',cor:C.re,p:31}],
+    nota:'Meio/Ideia · 23–27 mai/2026 · n=1.500 · Renan com 12% de rejeição'},
+  {t:'Meio/Ideia (2ª): 2T — Lula × Zema',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Romeu Zema (Novo)',cor:C.ze,p:37}],
+    nota:'Meio/Ideia · 23–27 mai/2026'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -830,7 +839,7 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
-  {i:'Meio/Ideia (2ª)',c:'23–27 mai 2026',mes:'mai26',a:'nac',lu:'—',fl:'—',re:'—',ze:'—',ca:'—',ou:'2T: Lula 46,5%×Flávio 41,4% · Lula lidera 1T pós-Vorcaro · 1.500 entrevistas',n:'1.500',tse:'—',ano:'2026'},
+  {i:'Meio/Ideia (2ª)',c:'23–27 mai 2026',mes:'mai26',a:'nac',lu:'38,5%',fl:'31,5%',re:'2,1%',ze:'2,4%',ca:'5,5%',ou:'2T: Lula 46,5%×Flávio 41,4%; 2T Lula×Renan: 46%×31%',n:'1.500',tse:'—',ano:'2026'},
   {i:'BTG/Nexus',c:'22–24 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'5%',ou:'Barbosa 2%; 2T: Lula 47%×Flávio 43%',n:'2.045',tse:'BR-04193/2026',ano:'2026'},
   {i:'Datafolha (2ª)',c:'20–21 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'31%',re:'3%',ze:'3%',ca:'4%',ou:'2T: Lula 47%×Flávio 43%',n:'2.004',tse:'—',ano:'2026'},
   {i:'Futura Int. (2ª)',c:'15–20 mai 2026',mes:'mai26',a:'nac',lu:'42,7%',fl:'35,6%',re:'1,7%',ze:'3,9%',ca:'3,3%',ou:'2T: Lula 47,7%×Flávio 42,2%',n:'2.000',tse:'—',ano:'2026'},
