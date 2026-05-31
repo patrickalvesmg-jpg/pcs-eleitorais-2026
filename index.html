@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 30 mai 2026</div>
+    <div class="hbadge">Atualizado: 31 mai 2026</div>
   </div>
 </header>
 
@@ -704,6 +704,13 @@ const CENARIOS=[
   {t:'Datafolha (2ª): 2T — Lula × Flávio (mai/2026)',turno:'2t',inst:'Datafolha',mes:'mai26',temRenan:false,c:[
     {n:'Lula (PT)',cor:C.lu,p:47},{n:'Flávio (PL)',cor:C.fl,p:43}],
     nota:'Datafolha · 20–21 mai/2026 · Lula ▲ +2pp vs 1ª edição mai'},
+  // ── DATAFOLHA PERNAMBUCO (PRESIDENCIAL) MAIO 2026 ──
+  {t:'Datafolha: 1T — Pernambuco (mai/2026)',turno:'1t',inst:'Datafolha',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:56},{n:'Flávio (PL)',cor:C.fl,p:24},{n:'Renan Santos (Missão)',cor:C.re,p:2}],
+    nota:'Datafolha · 25–27 mai/2026 · n=1.022 · ME=3pp · Pernambuco · estadual presidencial'},
+  {t:'Datafolha: 2T — Lula × Flávio (Pernambuco)',turno:'2t',inst:'Datafolha',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:62},{n:'Flávio (PL)',cor:C.fl,p:30}],
+    nota:'Datafolha · 25–27 mai/2026 · Pernambuco · Lula vence com 32pp de vantagem'},
   // ── FUTURA INTELIGÊNCIA 2ª EDIÇÃO MAIO 2026 ──
   {t:'Futura Int. (2ª): 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:42.7},{n:'Flávio (PL)',cor:C.fl,p:35.6},{n:'Zema (Novo)',cor:C.ze,p:3.9},{n:'Caiado (PSD)',cor:C.ca,p:3.3},{n:'Renan Santos (Missão)',cor:C.re,p:1.7}],
@@ -800,6 +807,7 @@ const RANKINGS={
 
 // ── ESTADOS
 const ESTADOS=[
+  {nome:'Pernambuco ★',reg:'nordeste',inst:'Datafolha',data:'mai/26',t1:[{n:'Lula',cor:C.lu,p:56},{n:'Flávio',cor:C.fl,p:24},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:62},{n:'Flávio',cor:C.fl,p:30}]},
   {nome:'Pernambuco',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:53},{n:'Flávio',cor:C.fl,p:19},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:67},{n:'Flávio',cor:C.fl,p:33}]},
   {nome:'Ceará',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:50},{n:'Flávio',cor:C.fl,p:23},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:64},{n:'Flávio',cor:C.fl,p:36}]},
   {nome:'Bahia',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:52},{n:'Flávio',cor:C.fl,p:21},{n:'Zema',cor:C.ze,p:3},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:1}],t2:[{n:'Lula',cor:C.lu,p:66},{n:'Flávio',cor:C.fl,p:34}]},
@@ -851,6 +859,7 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Datafolha (PE)',c:'25–27 mai 2026',mes:'mai26',a:'est',lu:'56%',fl:'24%',re:'2%',ze:'—',ca:'—',ou:'(Pernambuco presidencial) 2T: Lula 62%×Flávio 30%',n:'1.022',tse:'—',ano:'2026'},
   {i:'PoderData/AYA',c:'25–28 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'3%',ou:'Barbosa 3%; Cury 3%; 2T: Lula 46%×Flávio 42%; 2T Lula×Renan: 45%×36%',n:'2.400',tse:'BR-04882/2026',ano:'2026'},
   {i:'Meio/Ideia (2ª)',c:'23–27 mai 2026',mes:'mai26',a:'nac',lu:'38,5%',fl:'31,5%',re:'2,1%',ze:'2,4%',ca:'5,5%',ou:'2T: Lula 46,5%×Flávio 41,4%; 2T Lula×Renan: 46%×31%',n:'1.500',tse:'—',ano:'2026'},
   {i:'BTG/Nexus',c:'22–24 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'5%',ou:'Barbosa 2%; 2T: Lula 47%×Flávio 43%',n:'2.045',tse:'BR-04193/2026',ano:'2026'},
