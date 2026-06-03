@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 02 jun 2026</div>
+    <div class="hbadge">Atualizado: 03 jun 2026</div>
   </div>
 </header>
 
@@ -514,6 +514,7 @@ const RENAN_TL=[
   {m:'Mai/26',mes:'mai26',i:'Futura Int. (2ª)',p:1.7,v:'-0,3pp',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'BTG/Nexus',p:3.0,v:'-1,0pp',g:'BTG'},
   {m:'Mai/26',mes:'mai26',i:'PoderData/AYA',p:3.0,v:'estreia',g:'Outros'},
+  {m:'Mai/26',mes:'mai26',i:'Indexa Pesquisas',p:2.0,v:'estreia',g:'Outros'},
   {m:'Jun/26',mes:'jun26',i:'Real Time',p:6.0,v:'+4,0pp',g:'Outros'},
 ];
 
@@ -751,6 +752,22 @@ const CENARIOS=[
   {t:'Real Time: 2T — Lula × Renan Santos ★',turno:'2t',inst:'Outros',mes:'jun26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:46},{n:'Renan Santos (Missão)',cor:C.re,p:30}],
     nota:'Real Time Big Data · 29–30 mai/2026 · TSE BR-05864/2026 · 26% consideram Renan a principal 3ª via do Brasil'},
+  {t:'Real Time: 2T — Lula × Flávio (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:45},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:40}],
+    nota:'Real Time Big Data · 29–30 mai/2026 · TSE BR-05864/2026'},
+  {t:'Real Time: 2T — Lula × Caiado (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:43},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:43}],
+    nota:'Real Time Big Data · 29–30 mai/2026 · empate técnico'},
+  {t:'Real Time: 2T — Lula × Zema (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:43},{n:'Romeu Zema (Novo)',cor:C.ze,p:40}],
+    nota:'Real Time Big Data · 29–30 mai/2026 · empate técnico na ME'},
+  // ── INDEXA PESQUISAS JUNHO 2026 ──
+  {t:'Indexa: 1T — Mai/2026',turno:'1t',inst:'Outros',mes:'mai26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:39},{n:'Flávio (PL)',cor:C.fl,p:30},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:6},{n:'Romeu Zema (Novo)',cor:C.ze,p:4},{n:'Renan Santos (Missão)',cor:C.re,p:2}],
+    nota:'Indexa Pesquisas · 22–24 mai/2026 · n=2.000 · ME=2,2pp · TSE BR-02154/2026 · divulgado jun/2026 · estreia deste instituto'},
+  {t:'Indexa: 2T — Lula × Flávio (Mai/2026)',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:41}],
+    nota:'Indexa Pesquisas · 22–24 mai/2026 · TSE BR-02154/2026'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -869,11 +886,12 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
-  {i:'Real Time Big Data',c:'29–30 mai 2026',mes:'jun26',a:'nac',lu:'38%',fl:'31%',re:'6%',ze:'4%',ca:'6%',ou:'Aécio 3%; Barbosa 3%; 2T Lula×Renan: 46%×30%; 26% veem Renan como 3ª via',n:'2.000',tse:'BR-05864/2026',ano:'2026'},
+  {i:'Real Time Big Data',c:'29–30 mai 2026',mes:'jun26',a:'nac',lu:'38%',fl:'31%',re:'6%',ze:'4%',ca:'6%',ou:'Aécio 3%; Barbosa 3%; 2T×Flávio: 45%×40%; 2T×Renan: 46%×30%; 2T×Caiado: 43%=43% emp.; 2T×Zema: 43%×40%; 26% veem Renan como 3ª via',n:'2.000',tse:'BR-05864/2026',ano:'2026'},
   {i:'Datafolha (PE)',c:'25–27 mai 2026',mes:'mai26',a:'est',lu:'56%',fl:'24%',re:'2%',ze:'—',ca:'—',ou:'(Pernambuco presidencial) 2T: Lula 62%×Flávio 30%',n:'1.022',tse:'—',ano:'2026'},
   {i:'PoderData/AYA',c:'25–28 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'3%',ou:'Barbosa 3%; Cury 3%; 2T: Lula 46%×Flávio 42%; 2T Lula×Renan: 45%×36%',n:'2.400',tse:'BR-04882/2026',ano:'2026'},
   {i:'Meio/Ideia (2ª)',c:'23–27 mai 2026',mes:'mai26',a:'nac',lu:'38,5%',fl:'31,5%',re:'2,1%',ze:'2,4%',ca:'5,5%',ou:'2T: Lula 46,5%×Flávio 41,4%; 2T Lula×Renan: 46%×31%',n:'1.500',tse:'—',ano:'2026'},
   {i:'BTG/Nexus',c:'22–24 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'5%',ou:'Barbosa 2%; 2T: Lula 47%×Flávio 43%',n:'2.045',tse:'BR-04193/2026',ano:'2026'},
+  {i:'Indexa Pesquisas',c:'22–24 mai 2026',mes:'mai26',a:'nac',lu:'39%',fl:'30%',re:'2%',ze:'4%',ca:'6%',ou:'2T: Lula 46%×Flávio 41%; Lula empata Caiado/Zema no 2T',n:'2.000',tse:'BR-02154/2026',ano:'2026'},
   {i:'Datafolha (2ª)',c:'20–21 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'31%',re:'3%',ze:'3%',ca:'4%',ou:'2T: Lula 47%×Flávio 43%',n:'2.004',tse:'—',ano:'2026'},
   {i:'Futura Int. (2ª)',c:'15–20 mai 2026',mes:'mai26',a:'nac',lu:'42,7%',fl:'35,6%',re:'1,7%',ze:'3,9%',ca:'3,3%',ou:'2T: Lula 47,7%×Flávio 42,2%',n:'2.000',tse:'—',ano:'2026'},
   {i:'GERP (2ª ed.)',c:'19–22 mai 2026',mes:'mai26',a:'nac',lu:'38%',fl:'38%',re:'—',ze:'—',ca:'—',ou:'2T: Flávio +3pp',n:'2.000',tse:'—',ano:'2026'},
