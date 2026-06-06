@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 05 jun 2026</div>
+    <div class="hbadge">Atualizado: 06 jun 2026</div>
   </div>
 </header>
 
@@ -221,7 +221,7 @@
     <div class="hero-r">
       <h2>Renan Santos — Partido Missão</h2>
       <p>Pré-candidato à Presidência 2026 · Presidente do MBL</p>
-      <span class="tag">3º lugar nacional · 7,4% Vetor Arrow mai/26 (recorde) · 6,9% AtlasIntel mai/26 · 6% Real Time jun/26 (▲ novo recorde neste instituto) · 3% PoderData mai/26 · Líder absoluto entre jovens 16–24 anos · 36,1% (AtlasIntel mai/26)</span>
+      <span class="tag">3º lugar nacional · 7,4% Vetor Arrow mai/26 (recorde) · 6,9% AtlasIntel mai/26 · 6% Real Time jun/26 · 3,1% Vox Brasil jun/26 (▲ +1,6pp vs mai) · 3% PoderData mai/26 · Líder absoluto entre jovens 16–24 anos · 36,1% (AtlasIntel mai/26)</span>
       <div class="hero-stats">
         <div class="hstat"><div class="hv">7,4%</div><div class="hl">Vetor Arrow mai</div><div class="hc up">▲ recorde geral</div></div>
         <div class="hstat"><div class="hv">6,9%</div><div class="hl">AtlasIntel mai</div><div class="hc up">▲ +1,6pp</div></div>
@@ -229,6 +229,7 @@
         <div class="hstat"><div class="hv">3%</div><div class="hl">Datafolha (2ª) mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">2%</div><div class="hl">Quaest mai</div><div class="hc eq">— estável</div></div>
         <div class="hstat"><div class="hv">6%</div><div class="hl">Real Time jun</div><div class="hc up">▲ +4pp vs mai</div></div>
+        <div class="hstat"><div class="hv">3,1%</div><div class="hl">Vox Brasil jun</div><div class="hc up">▲ +1,6pp vs mai</div></div>
         <div class="hstat"><div class="hv">3%</div><div class="hl">PoderData mai</div><div class="hc up">▲ estreia</div></div>
         <div class="hstat"><div class="hv">36,1%</div><div class="hl">Jovens 16–24</div><div class="hc up">▲ +11,4pp vs mar</div></div>
         <div class="hstat"><div class="hv">9%</div><div class="hl">Entre homens</div><div class="hc up">vs 2,2% mulheres</div></div>
@@ -240,7 +241,7 @@
     <h3>Análise de desempenho</h3>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>640% de crescimento</strong> — saiu de 1% (jan/26) para 7,4% (Vetor Arrow, mai/26) / 6,9% (AtlasIntel, mai/26) em 5 meses. Superou Zema e Caiado em março. Novo recorde histórico em mai/26.</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>Fenômeno geracional</strong> — <strong>36,1%</strong> entre 16–24 anos (AtlasIntel mai/26, ▲ +11,4pp vs mar/26). Lula tem 72,7% de desaprovação nessa faixa. Renan lidera entre jovens à frente de Lula (28,2%) e Flávio (24,5%).</div>
-    <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 6,9% · Real Time jun/26 telefônico 6% (▲ novo recorde neste instituto) · PoderData 3% · BTG telefônico 3% · Datafolha presencial 3% · Quaest telefônico 2%. Metodologia online reflete mais o eleitor jovem/digital, mas Real Time telefônico corrobora tendência de alta.</div>
+    <div class="ins-row"><span class="ins-icon">→</span><strong>Discrepância metodológica</strong> — AtlasIntel online capta 6,9% · Real Time jun/26 telefônico 6% · Vox Brasil jun/26 online 3,1% (▲ +1,6pp) · PoderData 3% · BTG telefônico 3% · Datafolha presencial 3% · Quaest telefônico 2%. Metodologia online reflete mais o eleitor jovem/digital, mas Real Time telefônico corrobora tendência de alta.</div>
     <div class="ins-row"><span class="ins-icon">→</span><strong>2º turno vs Lula</strong> — Real Time jun/26: Renan 30%, Lula 46%. PoderData mai/26: Renan 36%, Lula 45%. Quaest mai/26: Renan 25%, Lula 42%, 29% branco/nulo. AtlasIntel mai/26: Renan 28,4%, Lula 47,8%, 23,8% branco/nulo. Meio/Ideia (2ª) mai/26: Renan 31%, Lula 46%. 26% dos eleitores veem Renan como principal 3ª via (Real Time jun/26). Ainda com 74% de desconhecimento nacional (Quaest mai).</div>
     <div class="ins-row"><span class="ins-icon">▲</span><strong>TikTok</strong> — maior crescimento de seguidores entre todos os pré-candidatos em 2026 (Poder360). Estratégia digital como motor.</div>
   </div>
@@ -516,6 +517,7 @@ const RENAN_TL=[
   {m:'Mai/26',mes:'mai26',i:'PoderData/AYA',p:3.0,v:'estreia',g:'Outros'},
   {m:'Mai/26',mes:'mai26',i:'Indexa Pesquisas',p:2.0,v:'estreia',g:'Outros'},
   {m:'Jun/26',mes:'jun26',i:'Real Time',p:6.0,v:'+4,0pp',g:'Outros'},
+  {m:'Jun/26',mes:'jun26',i:'Vox Brasil (nac.)',p:3.1,v:'+1,6pp',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -768,6 +770,19 @@ const CENARIOS=[
   {t:'Indexa: 2T — Lula × Flávio (Mai/2026)',turno:'2t',inst:'Outros',mes:'mai26',temRenan:false,c:[
     {n:'Lula (PT)',cor:C.lu,p:46},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:41}],
     nota:'Indexa Pesquisas · 22–24 mai/2026 · TSE BR-02154/2026'},
+  // ── VOX BRASIL JUNHO 2026 ──
+  {t:'Vox Brasil: 1T — Jun/2026 ★',turno:'1t',inst:'Outros',mes:'jun26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:42.1},{n:'Flávio (PL)',cor:C.fl,p:33.6},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:6.9},{n:'Romeu Zema (Novo)',cor:C.ze,p:5.1},{n:'Renan Santos (Missão)',cor:C.re,p:3.1}],
+    nota:'Vox Brasil · 1–3 jun/2026 · n=2.100 · ME=2,15pp · TSE BR-08016/2026 · Renan ▲ +1,6pp vs Vox mai/26'},
+  {t:'Vox Brasil: 2T — Lula × Flávio (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47.8},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:41.3}],
+    nota:'Vox Brasil · 1–3 jun/2026 · TSE BR-08016/2026 · Lula ▲ +1pp vs Vox mai/26'},
+  {t:'Vox Brasil: 2T — Lula × Zema (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46.3},{n:'Romeu Zema (Novo)',cor:C.ze,p:42.5}],
+    nota:'Vox Brasil · 1–3 jun/2026 · empate técnico na ME de 2,15pp'},
+  {t:'Vox Brasil: 2T — Lula × Caiado (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46.5},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:44.9}],
+    nota:'Vox Brasil · 1–3 jun/2026 · empate técnico'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -838,7 +853,7 @@ const ESTADOS=[
   {nome:'Pernambuco',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:53},{n:'Flávio',cor:C.fl,p:19},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:67},{n:'Flávio',cor:C.fl,p:33}]},
   {nome:'Ceará',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:50},{n:'Flávio',cor:C.fl,p:23},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:64},{n:'Flávio',cor:C.fl,p:36}]},
   {nome:'Bahia',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:52},{n:'Flávio',cor:C.fl,p:21},{n:'Zema',cor:C.ze,p:3},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:1}],t2:[{n:'Lula',cor:C.lu,p:66},{n:'Flávio',cor:C.fl,p:34}]},
-  {nome:'São Paulo',reg:'sudeste',inst:'Quaest/Vox',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:45},{n:'Lula',cor:C.lu,p:35},{n:'Zema',cor:C.ze,p:4},{n:'Renan',cor:C.re,p:3},{n:'Caiado',cor:C.ca,p:2}],t2:[{n:'Flávio',cor:C.fl,p:50.4},{n:'Lula',cor:C.lu,p:38.1}]},
+  {nome:'São Paulo ★',reg:'sudeste',inst:'Vox Brasil',data:'mai/26',t1:[{n:'Flávio',cor:C.fl,p:39.1},{n:'Lula',cor:C.lu,p:30.3},{n:'Caiado',cor:C.ca,p:3.4},{n:'Zema',cor:C.ze,p:3.1},{n:'Renan',cor:C.re,p:1.9}],t2:[{n:'Flávio',cor:C.fl,p:50.4},{n:'Lula',cor:C.lu,p:38.1}]},
   {nome:'Minas Gerais',reg:'sudeste',inst:'Quaest/Atlas',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:33},{n:'Flávio',cor:C.fl,p:27},{n:'Zema',cor:C.ze,p:10},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:3}],t2:[{n:'Lula',cor:C.lu,p:51},{n:'Flávio',cor:C.fl,p:48}]},
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:36.9},{n:'Lula',cor:C.lu,p:36.7},{n:'Zema',cor:C.ze,p:5},{n:'Renan',cor:C.re,p:4},{n:'Caiado',cor:C.ca,p:3}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:40.5}]},
   {nome:'Paraná',reg:'sul',inst:'Quaest',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:45},{n:'Lula',cor:C.lu,p:23},{n:'Zema',cor:C.ze,p:8},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:4}],t2:[{n:'Flávio',cor:C.fl,p:62},{n:'Lula',cor:C.lu,p:38}]},
@@ -886,8 +901,10 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Vox Brasil',c:'1–3 jun 2026',mes:'jun26',a:'nac',lu:'42,1%',fl:'33,6%',re:'3,1%',ze:'5,1%',ca:'6,9%',ou:'2T: Lula 47,8%×Flávio 41,3%; 2T Lula×Zema: 46,3%×42,5% emp.; 2T Lula×Caiado: 46,5%×44,9% emp.; Renan ▲ +1,6pp vs Vox mai',n:'2.100',tse:'BR-08016/2026',ano:'2026'},
   {i:'Real Time Big Data',c:'29–30 mai 2026',mes:'jun26',a:'nac',lu:'38%',fl:'31%',re:'6%',ze:'4%',ca:'6%',ou:'Aécio 3%; Barbosa 3%; 2T×Flávio: 45%×40%; 2T×Renan: 46%×30%; 2T×Caiado: 43%=43% emp.; 2T×Zema: 43%×40%; 26% veem Renan como 3ª via',n:'2.000',tse:'BR-05864/2026',ano:'2026'},
   {i:'Datafolha (PE)',c:'25–27 mai 2026',mes:'mai26',a:'est',lu:'56%',fl:'24%',re:'2%',ze:'—',ca:'—',ou:'(Pernambuco presidencial) 2T: Lula 62%×Flávio 30%',n:'1.022',tse:'—',ano:'2026'},
+  {i:'Vox Brasil (SP)',c:'26–28 mai 2026',mes:'mai26',a:'est',lu:'30,3%',fl:'39,1%',re:'1,9%',ze:'3,1%',ca:'3,4%',ou:'Barbosa 2,5%; Cury 2,1%; Daciolo 0,4% (São Paulo estadual)',n:'1.480',tse:'BR-08794/2026',ano:'2026'},
   {i:'PoderData/AYA',c:'25–28 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'3%',ou:'Barbosa 3%; Cury 3%; 2T: Lula 46%×Flávio 42%; 2T Lula×Renan: 45%×36%',n:'2.400',tse:'BR-04882/2026',ano:'2026'},
   {i:'Meio/Ideia (2ª)',c:'23–27 mai 2026',mes:'mai26',a:'nac',lu:'38,5%',fl:'31,5%',re:'2,1%',ze:'2,4%',ca:'5,5%',ou:'2T: Lula 46,5%×Flávio 41,4%; 2T Lula×Renan: 46%×31%',n:'1.500',tse:'—',ano:'2026'},
   {i:'BTG/Nexus',c:'22–24 mai 2026',mes:'mai26',a:'nac',lu:'40%',fl:'35%',re:'3%',ze:'4%',ca:'5%',ou:'Barbosa 2%; 2T: Lula 47%×Flávio 43%',n:'2.045',tse:'BR-04193/2026',ano:'2026'},
