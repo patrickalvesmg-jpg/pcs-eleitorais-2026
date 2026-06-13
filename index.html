@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 12 jun 2026</div>
+    <div class="hbadge">Atualizado: 13 jun 2026</div>
   </div>
 </header>
 
@@ -1071,10 +1071,10 @@ function renderRenanCharts(){
   // Datafolha
   chDf=miniLine(document.getElementById('ch-df'),['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26'],[1,1,3,3,3],'#f97316',8);
   // Quaest
-  chQu=miniLine(document.getElementById('ch-qu'),['Jan/26','Fev/26','Mar/26','Abr/26','Mai/26'],[1,1,1,2,2],'#10b981',8);
+  chQu=miniLine(document.getElementById('ch-qu'),['Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26'],[1,1,1,2,2,3],'#10b981',8);
   // Comparativo barras
   const ex=Chart.getChart(document.getElementById('ch-comp'));if(ex)ex.destroy();
-  chComp=new Chart(document.getElementById('ch-comp'),{type:'bar',data:{labels:['AtlasIntel\nmai','BTG\nabr','Datafolha\nmai','Meio/Ideia\nmai','Real Time\nmai','Quaest\nmai'],datasets:[{label:'Renan Santos %',data:[6.9,4.0,3.0,2.0,2.0,2.0],backgroundColor:[C.re+'cc',C.re+'99',C.re+'88',C.re+'66',C.re+'66',C.re+'66'],borderColor:C.re,borderWidth:1.5,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b',font:{size:10}}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:10}}}});
+  chComp=new Chart(document.getElementById('ch-comp'),{type:'bar',data:{labels:['AtlasIntel\nmai','BTG\nmai','Datafolha\nmai','GERP\njun','Real Time\njun','Quaest\njun'],datasets:[{label:'Renan Santos %',data:[6.9,3.0,3.0,4.0,6.0,3.0],backgroundColor:[C.re+'cc',C.re+'99',C.re+'88',C.re+'66',C.re+'66',C.re+'66'],borderColor:C.re,borderWidth:1.5,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b',font:{size:10}}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:10}}}});
   // Jovens
   const exJ=Chart.getChart(document.getElementById('ch-jovens'));if(exJ)exJ.destroy();
   chJovens=new Chart(document.getElementById('ch-jovens'),{type:'bar',data:{labels:['Fev/26','Mar/26','Mai/26'],datasets:[{label:'16–24 anos',data:[15.9,24.7,36.1],backgroundColor:'#3b82f6cc',borderColor:C.re,borderWidth:1.5,borderRadius:6},{label:'Geral',data:[2.5,4.5,6.9],backgroundColor:'#64748b66',borderColor:'#64748b',borderWidth:1.5,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{color:'#94a3b8',font:{size:10}}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}},scales:{x:{grid:{color:'#1a2540'},ticks:{color:'#64748b'}},y:{grid:{color:'#1a2540'},ticks:{color:'#64748b',callback:v=>v+'%'},min:0,max:45}}}});
