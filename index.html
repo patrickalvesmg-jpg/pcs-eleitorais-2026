@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 25 jun 2026</div>
+    <div class="hbadge">Atualizado: 26 jun 2026</div>
   </div>
 </header>
 
@@ -221,7 +221,7 @@
     <div class="hero-r">
       <h2>Renan Santos — Partido Missão</h2>
       <p>Pré-candidato à Presidência 2026 · Presidente do MBL</p>
-      <span class="tag">10% em SP (Real Time jun/26 — recorde estadual) · 7,4% Vetor Arrow mai/26 (recorde nacional) · 6,9% AtlasIntel mai/26 [TSE suspendeu divulgação da pesquisa BR-06939 por suspeita de indução ao eleitor] · 6% Real Time (nac.) jun/26 · 4% GERP 1ª jun/26 (▲ +3pp vs mai) · 3% GERP 2ª jun/26 (▼ -1pp vs GERP 1ª · divulgado 24/jun) · 4% BTG/Nexus jun/26 (▲ +1pp vs mai) · 3,1% Vox Brasil jun/26 · 3% Quaest jun/26 (▲ +1pp vs mai · 2T: 31%▲+6pp) · 3% Times Brasil/CNBC jun/26 (estreia · 2T: 28%) · 2,3% Futura/Apex jun/26 (▲ +0,6pp vs mai) · 3% PoderData mai/26 · 2% CNT/MDA jun/26 (estreia · 2T: 28%) · 3% Datafolha jun/26 (estável vs mai) · Líder absoluto entre jovens 16–24 anos · 36,1% (AtlasIntel mai/26)</span>
+      <span class="tag">10% em SP (Real Time jun/26 — recorde estadual) · 5% no RS (Real Time jun/26) · 7,4% Vetor Arrow mai/26 (recorde nacional) · 6,9% AtlasIntel mai/26 [TSE suspendeu divulgação da pesquisa BR-06939 por suspeita de indução ao eleitor] · 6% Real Time (nac.) jun/26 · 4% GERP 1ª jun/26 (▲ +3pp vs mai) · 3% GERP 2ª jun/26 (▼ -1pp vs GERP 1ª · divulgado 24/jun) · 4% BTG/Nexus jun/26 (▲ +1pp vs mai) · 3,1% Vox Brasil jun/26 · 3% Quaest jun/26 (▲ +1pp vs mai · 2T: 31%▲+6pp) · 3% Times Brasil/CNBC jun/26 (estreia · 2T: 28%) · 2,3% Futura/Apex jun/26 (▲ +0,6pp vs mai) · 3% PoderData mai/26 · 2% CNT/MDA jun/26 (estreia · 2T: 28%) · 3% Datafolha jun/26 (estável vs mai) · 2% Real Time (TO) jun/26 · Líder absoluto entre jovens 16–24 anos · 36,1% (AtlasIntel mai/26)</span>
       <div class="hero-stats">
         <div class="hstat"><div class="hv">10%</div><div class="hl">Real Time (SP) jun</div><div class="hc up">▲ recorde estadual</div></div>
         <div class="hstat"><div class="hv">7,4%</div><div class="hl">Vetor Arrow mai</div><div class="hc up">▲ recorde nacional</div></div>
@@ -536,6 +536,8 @@ const RENAN_TL=[
   {m:'Jun/26',mes:'jun26',i:'Times Brasil/CNBC',p:3.0,v:'estreia',g:'Outros'},
   {m:'Jun/26',mes:'jun26',i:'Datafolha',p:3.0,v:'estável',g:'Datafolha'},
   {m:'Jun/26',mes:'jun26',i:'GERP (2ª)',p:3.0,v:'-1,0pp vs GERP 1ª',g:'Outros'},
+  {m:'Jun/26',mes:'jun26',i:'Real Time (RS)',p:5.0,v:'▲ +1pp vs Quaest RS abr',g:'Outros'},
+  {m:'Jun/26',mes:'jun26',i:'Real Time (TO)',p:2.0,v:'estadual TO',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -909,6 +911,20 @@ const CENARIOS=[
   {t:'Times Brasil/CNBC: 2T — Lula × Renan Santos ★ (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:45},{n:'Renan Santos (Missão)',cor:C.re,p:28}],
     nota:'Times Brasil/CNBC (American Analytics) · 11–15 jun/2026 · TSE BR-09521/2026 · maior margem de Lula entre os cenários de 2T testados'},
+  // ── REAL TIME BIG DATA — RIO GRANDE DO SUL JUNHO 2026 ──
+  {t:'Real Time Big Data (RS): 1T — Jun/2026',turno:'1t',inst:'Outros',mes:'jun26',temRenan:true,c:[
+    {n:'Flávio (PL)',cor:C.fl,p:42},{n:'Lula (PT)',cor:C.lu,p:39},{n:'Renan Santos (Missão)',cor:C.re,p:5},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:3}],
+    nota:'Real Time Big Data · 20–22 jun/2026 · n=1.600 · ME=2pp · (Rio Grande do Sul estadual) · Renan ▲ +1pp vs Quaest RS abr/26'},
+  {t:'Real Time Big Data (RS): 2T — Flávio × Lula (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:51},{n:'Lula (PT)',cor:C.lu,p:42}],
+    nota:'Real Time Big Data · 20–22 jun/2026 · Rio Grande do Sul · Flávio +9pp'},
+  // ── REAL TIME BIG DATA — TOCANTINS JUNHO 2026 ──
+  {t:'Real Time Big Data (TO): 1T — Jun/2026',turno:'1t',inst:'Outros',mes:'jun26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:37},{n:'Flávio (PL)',cor:C.fl,p:37},{n:'Renan Santos (Missão)',cor:C.re,p:2}],
+    nota:'Real Time Big Data · 17–18 jun/2026 · n=1.600 · ME=2pp · (Tocantins estadual) · Lula=Flávio empate técnico · rejeição Lula 47%, Flávio 46%'},
+  {t:'Real Time Big Data (TO): 2T — Flávio × Lula (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:41},{n:'Lula (PT)',cor:C.lu,p:40}],
+    nota:'Real Time Big Data · 17–18 jun/2026 · Tocantins · empate técnico na ME de 2pp'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -983,11 +999,13 @@ const ESTADOS=[
   {nome:'Minas Gerais',reg:'sudeste',inst:'Quaest/Atlas',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:33},{n:'Flávio',cor:C.fl,p:27},{n:'Zema',cor:C.ze,p:10},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:3}],t2:[{n:'Lula',cor:C.lu,p:51},{n:'Flávio',cor:C.fl,p:48}]},
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:36.9},{n:'Lula',cor:C.lu,p:36.7},{n:'Zema',cor:C.ze,p:5},{n:'Renan',cor:C.re,p:4},{n:'Caiado',cor:C.ca,p:3}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:40.5}]},
   {nome:'Paraná',reg:'sul',inst:'Quaest',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:45},{n:'Lula',cor:C.lu,p:23},{n:'Zema',cor:C.ze,p:8},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:4}],t2:[{n:'Flávio',cor:C.fl,p:62},{n:'Lula',cor:C.lu,p:38}]},
+  {nome:'Rio G. do Sul ★',reg:'sul',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Flávio',cor:C.fl,p:42},{n:'Lula',cor:C.lu,p:39},{n:'Renan',cor:C.re,p:5},{n:'Caiado',cor:C.ca,p:3}],t2:[{n:'Flávio',cor:C.fl,p:51},{n:'Lula',cor:C.lu,p:42}]},
   {nome:'Rio G. do Sul',reg:'sul',inst:'Quaest',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:42},{n:'Lula',cor:C.lu,p:29},{n:'Zema',cor:C.ze,p:7},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:4}],t2:[{n:'Flávio',cor:C.fl,p:62},{n:'Lula',cor:C.lu,p:36}]},
   {nome:'Goiás',reg:'centro-oeste',inst:'Quaest',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:38},{n:'Lula',cor:C.lu,p:29},{n:'Caiado',cor:C.ca,p:12},{n:'Zema',cor:C.ze,p:5},{n:'Renan',cor:C.re,p:3}],t2:[{n:'Flávio',cor:C.fl,p:55},{n:'Lula',cor:C.lu,p:45}]},
   {nome:'Mato G. do Sul',reg:'centro-oeste',inst:'Real Time',data:'mai/26',t1:[{n:'Flávio',cor:C.fl,p:43},{n:'Lula',cor:C.lu,p:30},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:3},{n:'Zema',cor:C.ze,p:2}],t2:[{n:'Flávio',cor:C.fl,p:51},{n:'Lula',cor:C.lu,p:34}]},
   {nome:'Mato Grosso',reg:'centro-oeste',inst:'Real Time',data:'mar/26',t1:[{n:'Flávio',cor:C.fl,p:46},{n:'Lula',cor:C.lu,p:30},{n:'Zema',cor:C.ze,p:5},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Flávio',cor:C.fl,p:54},{n:'Lula',cor:C.lu,p:34}]},
   {nome:'Pará',reg:'norte',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:38},{n:'Flávio',cor:C.fl,p:33},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:52},{n:'Flávio',cor:C.fl,p:48}]},
+  {nome:'Tocantins',reg:'norte',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Lula',cor:C.lu,p:37},{n:'Flávio',cor:C.fl,p:37},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Flávio',cor:C.fl,p:41},{n:'Lula',cor:C.lu,p:40}]},
 ];
 
 // ── ATLAS DADOS ESTADUAIS (pesquisas específicas por estado)
@@ -1027,6 +1045,8 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Real Time Big Data (RS)',c:'20–22 jun 2026',mes:'jun26',a:'est',lu:'39%',fl:'42%',re:'5%',ze:'—',ca:'3%',ou:'(Rio Grande do Sul presidencial) 2T: Flávio 51%×Lula 42%; Renan ▲ +1pp vs Quaest RS abr/26',n:'1.600',tse:'—',ano:'2026'},
+  {i:'Real Time Big Data (TO)',c:'17–18 jun 2026',mes:'jun26',a:'est',lu:'37%',fl:'37%',re:'2%',ze:'—',ca:'—',ou:'(Tocantins presidencial) Lula=Flávio empate técnico 1T; 2T: Flávio 41%×Lula 40% emp. técnico; rejeição Lula 47%, Flávio 46%',n:'1.600',tse:'—',ano:'2026'},
   {i:'Datafolha',c:'17–19 jun 2026',mes:'jun26',a:'nac',lu:'41%',fl:'31%',re:'3%',ze:'2%',ca:'3%',ou:'Aécio Neves 2%; Cury (Avante) 2%; 2T: Lula 47%×Flávio 43%; 2T×Caiado: 47%×41%; 2T×Zema: 48%×39%; Renan estável vs mai (2ª ed.)',n:'2.004',tse:'BR-09956/2026',ano:'2026'},
   {i:'Real Time Big Data (SP)',c:'13–15 jun 2026',mes:'jun26',a:'est',lu:'31%',fl:'36%',re:'10%',ze:'5%',ca:'—',ou:'(São Paulo estadual) Barbosa 4%; 2T: Flávio 47%×Lula 44% empate técnico; rejeição Lula 51%, Flávio 50%; ★ melhor resultado estadual de Renan',n:'2.000',tse:'—',ano:'2026'},
   {i:'Times Brasil/CNBC',c:'11–15 jun 2026',mes:'jun26',a:'nac',lu:'38%',fl:'30%',re:'3%',ze:'2%',ca:'4%',ou:'Barbosa 2%; Branco/Nulo 8%; NS/NR 11%; estreia (American Analytics); 2T: Lula 45%×Flávio 40%; 2T×Caiado: 45%×39%; 2T×Zema: 45%×37%; 2T×Renan: 45%×28%; rejeição: Lula 48%, Flávio 48%, Zema 41%, Caiado 38%, Renan 35%',n:'2.000',tse:'BR-09521/2026',ano:'2026'},
