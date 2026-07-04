@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 2 jul 2026</div>
+    <div class="hbadge">Atualizado: 4 jul 2026</div>
   </div>
 </header>
 
@@ -222,7 +222,7 @@
     <div class="hero-r">
       <h2>Renan Santos — Partido Missão</h2>
       <p>Pré-candidato à Presidência 2026 · Presidente do MBL</p>
-      <span class="tag">10% em SP (Real Time jun/26 — recorde estadual) · 5% no RS (Real Time jun/26) · 7,4% Vetor Arrow mai/26 (recorde nacional) · 6,9% AtlasIntel mai/26 [TSE suspendeu divulgação da pesquisa BR-06939 por suspeita de indução ao eleitor] · 6% Real Time (nac.) jun/26 · 4% GERP 1ª jun/26 (▲ +3pp vs mai) · 3% GERP 2ª jun/26 (▼ -1pp vs GERP 1ª · divulgado 24/jun) · 4% BTG/Nexus 1ª jun/26 (▲ +1pp vs mai) · 4% BTG/Nexus 2ª jun/26 (estável · 26–28/jun · 2T: 48%×Lula · ▼ -1pp vs BTG 1ª no 2T) · 3,1% Vox Brasil jun/26 · 3% Quaest jun/26 (▲ +1pp vs mai · 2T: 31%▲+6pp) · 3% Times Brasil/CNBC jun/26 (estreia · 2T: 28%) · 2,3% Futura/Apex jun/26 (▲ +0,6pp vs mai) · 4% PoderData/AYA jun/26 (▲ +1pp vs mai · 2T: 38%▲+2pp) · 2% CNT/MDA jun/26 (estreia · 2T: 28%) · 3% Datafolha jun/26 (estável vs mai) · 3% Indexa Pesquisas jun/26 (▲ +1pp vs mai · 2T: 28%) · 2% Real Time (TO) jun/26 · 6,9% AtlasIntel jul/26 (cenário c/ Flávio · novo questionário pós-TSE · TSE BR-04582/2026) · 7,8% AtlasIntel jul/26 (cenário c/ Michelle — INÉDITO) · Líder absoluto entre jovens 16–24 anos · 36,1% (AtlasIntel mai/26)</span>
+      <span class="tag">10% em SP (Real Time jun/26 — recorde estadual) · 5% no RS (Real Time jun/26) · 7,4% Vetor Arrow mai/26 (recorde nacional) · 6,9% AtlasIntel mai/26 [TSE suspendeu divulgação da pesquisa BR-06939 por suspeita de indução ao eleitor] · 6% Real Time (nac.) jun/26 · 4% GERP 1ª jun/26 (▲ +3pp vs mai) · 3% GERP 2ª jun/26 (▼ -1pp vs GERP 1ª · divulgado 24/jun) · 4% BTG/Nexus 1ª jun/26 (▲ +1pp vs mai) · 4% BTG/Nexus 2ª jun/26 (estável · 26–28/jun · 2T: 48%×Lula · ▼ -1pp vs BTG 1ª no 2T) · 3,1% Vox Brasil jun/26 · 3% Quaest jun/26 (▲ +1pp vs mai · 2T: 31%▲+6pp) · 3% Times Brasil/CNBC jun/26 (estreia · 2T: 28%) · 2,3% Futura/Apex jun/26 (▲ +0,6pp vs mai) · 4% PoderData/AYA jun/26 (▲ +1pp vs mai · 2T: 38%▲+2pp) · 2% CNT/MDA jun/26 (estreia · 2T: 28%) · 3% Datafolha jun/26 (estável vs mai) · 3% Indexa Pesquisas jun/26 (▲ +1pp vs mai · 2T: 28%) · 2% Real Time (TO) jun/26 · 6,9% AtlasIntel jul/26 (cenário c/ Flávio · novo questionário pós-TSE · TSE BR-04582/2026) · 7,8% AtlasIntel jul/26 (cenário c/ Michelle — INÉDITO) · 1,6% Paraná Pesq. (RJ) jul/26 (▼ -2,4pp vs abr/26 · 60 municípios · 2T: Lula 44,7%×Flávio 44,4% emp. técnico · TSE BR-05371/2026) · Líder absoluto entre jovens 16–24 anos · 36,1% (AtlasIntel mai/26)</span>
       <div class="hero-stats">
         <div class="hstat"><div class="hv">10%</div><div class="hl">Real Time (SP) jun</div><div class="hc up">▲ recorde estadual</div></div>
         <div class="hstat"><div class="hv">7,4%</div><div class="hl">Vetor Arrow mai</div><div class="hc up">▲ recorde nacional</div></div>
@@ -546,6 +546,7 @@ const RENAN_TL=[
   {m:'Jun/26',mes:'jun26',i:'BTG/Nexus (2ª ed.)',p:4.0,v:'estável vs BTG 1ª jun',g:'BTG'},
   {m:'Jul/26',mes:'jul26',i:'AtlasIntel (c/ Flávio)',p:6.9,v:'— estável vs mai/26 (novo quest. pós-TSE)',g:'AtlasIntel'},
   {m:'Jul/26',mes:'jul26',i:'AtlasIntel (c/ Michelle)',p:7.8,v:'▲ +0,9pp vs cenário Flávio (INÉDITO)',g:'AtlasIntel'},
+  {m:'Jul/26',mes:'jul26',i:'Paraná Pesq. (RJ)',p:1.6,v:'▼ -2,4pp vs abr/26 (RJ estadual)',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -1005,6 +1006,13 @@ const CENARIOS=[
   {t:'AtlasIntel: 2T — Lula × Jair Bolsonaro (alt., Jul/2026)',turno:'alt',inst:'AtlasIntel',mes:'jul26',temRenan:false,c:[
     {n:'Lula (PT)',cor:C.lu,p:48.6},{n:'Jair Bolsonaro (PL)',cor:C.fl,p:43.1}],
     nota:'AtlasIntel/Bloomberg · 26–30 jun/2026 · n=4.999 · ME=1pp · TSE BR-04582/2026 · divulgado 1/jul/26 · cenário alternativo com Jair (inelegível) · Lula +5,5pp de vantagem'},
+  // ── PARANÁ PESQUISAS — RIO DE JANEIRO JULHO 2026 ──
+  {t:'Paraná Pesq. (RJ): 1T — Jul/2026',turno:'1t',inst:'Outros',mes:'jul26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:41.6},{n:'Flávio (PL)',cor:C.fl,p:38.6},{n:'Renan Santos (Missão)',cor:C.re,p:1.6},{n:'Cabo Daciolo (Mobiliza)',cor:C.ot,p:1.3},{n:'Zema (Novo)',cor:C.ze,p:1.3},{n:'Caiado (PSD)',cor:C.ca,p:1.3},{n:'Barbosa (DC)',cor:C.ot,p:1.1},{n:'Cury (Avante)',cor:C.cu,p:0.9}],
+    nota:'Paraná Pesquisas · 29 jun–1 jul 2026 · n=1.600 · 60 municípios · ME=2,5pp · TSE BR-05371/2026 · divulgado 2/jul/26 · Lula ▲ +5pp vs Paraná RJ abr/26 · Renan ▼ -2,4pp vs abr/26 (foi 4% em abr) · Branco/Nulo 6,8%; NS/NR 4,8%'},
+  {t:'Paraná Pesq. (RJ): 2T — Lula × Flávio (Jul/2026)',turno:'2t',inst:'Outros',mes:'jul26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:44.7},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:44.4}],
+    nota:'Paraná Pesquisas · 29 jun–1 jul 2026 · n=1.600 · ME=2,5pp · TSE BR-05371/2026 · empate técnico dentro da ME · Lula ▲ +4,2pp vs abr/26 (40,5%) no 2T'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -1079,6 +1087,7 @@ const ESTADOS=[
   {nome:'São Paulo ★',reg:'sudeste',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Flávio',cor:C.fl,p:36},{n:'Lula',cor:C.lu,p:31},{n:'Renan',cor:C.re,p:10},{n:'Zema',cor:C.ze,p:5}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:44}]},
   {nome:'São Paulo',reg:'sudeste',inst:'Vox Brasil',data:'mai/26',t1:[{n:'Flávio',cor:C.fl,p:39.1},{n:'Lula',cor:C.lu,p:30.3},{n:'Caiado',cor:C.ca,p:3.4},{n:'Zema',cor:C.ze,p:3.1},{n:'Renan',cor:C.re,p:1.9}],t2:[{n:'Flávio',cor:C.fl,p:50.4},{n:'Lula',cor:C.lu,p:38.1}]},
   {nome:'Minas Gerais',reg:'sudeste',inst:'Quaest/Atlas',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:33},{n:'Flávio',cor:C.fl,p:27},{n:'Zema',cor:C.ze,p:10},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:3}],t2:[{n:'Lula',cor:C.lu,p:51},{n:'Flávio',cor:C.fl,p:48}]},
+  {nome:'Rio de Janeiro ★',reg:'sudeste',inst:'Paraná Pesq.',data:'jul/26',t1:[{n:'Lula',cor:C.lu,p:41.6},{n:'Flávio',cor:C.fl,p:38.6},{n:'Renan',cor:C.re,p:1.6},{n:'Daciolo',cor:C.ot,p:1.3},{n:'Zema',cor:C.ze,p:1.3},{n:'Caiado',cor:C.ca,p:1.3}],t2:[{n:'Lula',cor:C.lu,p:44.7},{n:'Flávio',cor:C.fl,p:44.4}]},
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:36.9},{n:'Lula',cor:C.lu,p:36.7},{n:'Zema',cor:C.ze,p:5},{n:'Renan',cor:C.re,p:4},{n:'Caiado',cor:C.ca,p:3}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:40.5}]},
   {nome:'Paraná',reg:'sul',inst:'Quaest',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:45},{n:'Lula',cor:C.lu,p:23},{n:'Zema',cor:C.ze,p:8},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:4}],t2:[{n:'Flávio',cor:C.fl,p:62},{n:'Lula',cor:C.lu,p:38}]},
   {nome:'Rio G. do Sul ★',reg:'sul',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Flávio',cor:C.fl,p:42},{n:'Lula',cor:C.lu,p:39},{n:'Renan',cor:C.re,p:5},{n:'Caiado',cor:C.ca,p:3}],t2:[{n:'Flávio',cor:C.fl,p:51},{n:'Lula',cor:C.lu,p:42}]},
@@ -1130,6 +1139,7 @@ const ATLAS_REG_EVOL={
 // ── TABELA COMPLETA
 const TABELA=[
   {i:'AtlasIntel/Bloomberg',c:'26–30 jun 2026',mes:'jul26',a:'nac',lu:'47%',fl:'34,3%',re:'6,9%',ze:'5,2%',ca:'2,7%',ou:'⭐ Novo quest. pós-TSE; cenário c/ Michelle: Lula 47%, Michelle 23,4%, Zema 10%, Renan 7,8%, Caiado 6%; 2T Lula×Flávio: 48,8%×42,3% (+6,5pp Lula); 2T Lula×Renan: 49,2%×28,9% ▲+0,5pp vs mai; 2T Lula×Michelle: 48,7%×38,9% (+9,8pp Lula); 2T Lula×Caiado: 48%×39%; 2T Lula×Zema: 48,2%×38,5%; 2T Lula×Jair (alt.): 48,6%×43,1%; 1ª pesquisa nacional 2026 a testar Michelle PL',n:'4.999',tse:'BR-04582/2026',ano:'2026'},
+  {i:'Paraná Pesq. (RJ) (2ª)',c:'29 jun – 1 jul 2026',mes:'jul26',a:'est',lu:'41,6%',fl:'38,6%',re:'1,6%',ze:'1,3%',ca:'1,3%',ou:'Daciolo 1,3%; Barbosa 1,1%; Cury 0,9%; Samara 0,6%; Branco/Nulo 6,8%; NS/NR 4,8%; (Rio de Janeiro estadual) 2T: Lula 44,7%×Flávio 44,4% emp. técnico; Lula ▲ +5pp vs Paraná RJ abr/26 no 1T; Renan ▼ -2,4pp vs abr/26; divulgado 2/jul/26',n:'1.600',tse:'BR-05371/2026',ano:'2026'},
   {i:'BTG/Nexus (2ª ed.)',c:'26–28 jun 2026',mes:'jun26',a:'nac',lu:'42%',fl:'34%',re:'4%',ze:'3%',ca:'5%',ou:'2T: Lula 47%×Flávio 44% empate técnico na ME; 2T Lula×Renan: 48%×36%; rejeição: Lula 49%, Flávio 51%; Flávio ▲ +1pp vs BTG 1ª jun/26',n:'2.009',tse:'BR-08521/2026',ano:'2026'},
   {i:'PoderData/AYA',c:'21–24 jun 2026',mes:'jun26',a:'nac',lu:'40%',fl:'36%',re:'4%',ze:'—',ca:'4%',ou:'2T: Lula 46%×Flávio 43% emp. técnico; 2T Lula×Renan: 45%×38% ▲+2pp vs mai; 2T Lula×Caiado: 45%×42%; 2T Lula×Zema: 45%×42%; 2T Lula×Barbosa: 43%×41%; Renan ▲ +1pp vs mai/26; divulgado 25–26/jun/26',n:'2.400',tse:'—',ano:'2026'},
   {i:'Real Time Big Data (RS)',c:'20–22 jun 2026',mes:'jun26',a:'est',lu:'39%',fl:'42%',re:'5%',ze:'—',ca:'3%',ou:'(Rio Grande do Sul presidencial) 2T: Flávio 51%×Lula 42%; Renan ▲ +1pp vs Quaest RS abr/26',n:'1.600',tse:'—',ano:'2026'},
