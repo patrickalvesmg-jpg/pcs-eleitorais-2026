@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 28 jul 2026</div>
+    <div class="hbadge">Atualizado: 29 jul 2026</div>
   </div>
 </header>
 
@@ -564,6 +564,7 @@ const RENAN_TL=[
   {m:'Jul/26',mes:'jul26',i:'GERP (2ª ed.)',p:3.0,v:'▼ -1pp vs GERP 1ª jul (est.s/Caiado) · 1T: Lula=Flávio 38% emp. · 2T: Flávio 46%×Lula 45% · TSE BR-05026/2026 · 22/jul',g:'Outros'},
   {m:'Jul/26',mes:'jul26',i:'Datafolha',p:3,v:'— estável vs jun · 22–24 jul · 2T: Lula 47%×Flávio 43% · TSE BR-01166/2026 · divulgado 24/jul',g:'Datafolha'},
   {m:'Jul/26',mes:'jul26',i:'BTG/Nexus (2ª ed.)',p:5.0,v:'▲ +1pp vs BTG 13/jul · 24–26 jul · campo: convenção PL · 2T: 39% vs Lula 47% (▲ +3pp vs BTG 13/jul) · TSE BR-01489/2026 · divulgado 27/jul',g:'BTG'},
+  {m:'Jul/26',mes:'jul26',i:'AtlasIntel (2ª ed.)',p:7.8,v:'▲ +0,9pp vs Atlas jul 1ª (6,9%) · 22–27 jul · 2T: 30,2% vs Lula 47,6% · divulgado 29/jul',g:'AtlasIntel'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -1023,6 +1024,22 @@ const CENARIOS=[
   {t:'AtlasIntel: 2T — Lula × Jair Bolsonaro (alt., Jul/2026)',turno:'alt',inst:'AtlasIntel',mes:'jul26',temRenan:false,c:[
     {n:'Lula (PT)',cor:C.lu,p:48.6},{n:'Jair Bolsonaro (PL)',cor:C.fl,p:43.1}],
     nota:'AtlasIntel/Bloomberg · 26–30 jun/2026 · n=4.999 · ME=1pp · TSE BR-04582/2026 · divulgado 1/jul/26 · cenário alternativo com Jair (inelegível) · Lula +5,5pp de vantagem'},
+  // ── ATLASINTEL 2ª EDIÇÃO JULHO 2026 (campo: 22-27 jul · divulgado 29/jul) ──
+  {t:'AtlasIntel (2ª): 1T — Jul/2026 ★',turno:'1t',inst:'AtlasIntel',mes:'jul26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:44.9},{n:'Flávio (PL)',cor:C.fl,p:35.8},{n:'Renan Santos (Missão)',cor:C.re,p:7.8},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:3.1},{n:'Romeu Zema (Novo)',cor:C.ze,p:2.8},{n:'Samara Martins (UP)',cor:C.ot,p:2.1},{n:'Augusto Cury (Avante)',cor:C.cu,p:1.6}],
+    nota:'AtlasIntel/Bloomberg · 22–27 jul/2026 · n=5.021 · ME=1pp · divulgado 29/jul/26 · Renan ▲ +0,9pp vs Atlas jul 1ª (6,9%→7,8%) · Lula ▼ -2,1pp vs jul 1ª (47,0%→44,9%) · Flávio ▲ +1,5pp vs jul 1ª (34,3%→35,8%) · Zema ▼ -2,4pp · Lula lidera por 9,1pp'},
+  {t:'AtlasIntel (2ª): 2T — Lula × Flávio Bolsonaro (Jul/2026)',turno:'2t',inst:'AtlasIntel',mes:'jul26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:49.2},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:42.9}],
+    nota:'AtlasIntel/Bloomberg · 22–27 jul/2026 · n=5.021 · ME=1pp · divulgado 29/jul/26 · Lula ▲ +0,4pp vs Atlas jul 1ª (48,8%) · Flávio ▲ +0,6pp vs Atlas jul 1ª (42,3%)'},
+  {t:'AtlasIntel (2ª): 2T — Lula × Renan Santos ★ (Jul/2026)',turno:'2t',inst:'AtlasIntel',mes:'jul26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47.6},{n:'Renan Santos (Missão)',cor:C.re,p:30.2}],
+    nota:'AtlasIntel/Bloomberg · 22–27 jul/2026 · n=5.021 · ME=1pp · divulgado 29/jul/26 · Lula 17,4pp de vantagem'},
+  {t:'AtlasIntel (2ª): 2T — Lula × Romeu Zema (Jul/2026)',turno:'2t',inst:'AtlasIntel',mes:'jul26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:48.6},{n:'Romeu Zema (Novo)',cor:C.ze,p:39.6}],
+    nota:'AtlasIntel/Bloomberg · 22–27 jul/2026 · n=5.021 · ME=1pp · divulgado 29/jul/26 · Lula 9pp de vantagem'},
+  {t:'AtlasIntel (2ª): 2T — Lula × Ronaldo Caiado (Jul/2026)',turno:'2t',inst:'AtlasIntel',mes:'jul26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:48.2},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:38.9}],
+    nota:'AtlasIntel/Bloomberg · 22–27 jul/2026 · n=5.021 · ME=1pp · divulgado 29/jul/26 · Lula 9,3pp de vantagem'},
   // ── PARANÁ PESQUISAS — RIO DE JANEIRO JULHO 2026 ──
   {t:'Paraná Pesq. (RJ): 1T — Jul/2026',turno:'1t',inst:'Outros',mes:'jul26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:41.6},{n:'Flávio (PL)',cor:C.fl,p:38.6},{n:'Renan Santos (Missão)',cor:C.re,p:1.6},{n:'Cabo Daciolo (Mobiliza)',cor:C.ot,p:1.3},{n:'Zema (Novo)',cor:C.ze,p:1.3},{n:'Caiado (PSD)',cor:C.ca,p:1.3},{n:'Barbosa (DC)',cor:C.ot,p:1.1},{n:'Cury (Avante)',cor:C.cu,p:0.9}],
@@ -1172,13 +1189,13 @@ const CENARIOS=[
 
 // ── EVOLUÇÃO MENSAL
 const EVOL={
-  atlas:{meses:['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jul/26'],nota:'Online · n≈5.000 · Jul/26=novo questionário pós-TSE',series:[
-    {n:'Lula',cor:C.lu,d:[47.3,47.9,47.1,46.8,46.2,46.6,47.0,47.0]},
-    {n:'Flávio',cor:C.fl,d:[23.1,29.3,38.2,39.1,40.1,39.7,34.3,34.3]},
-    {n:'Renan Santos',cor:C.re,d:[2.4,3.2,1.0,2.5,4.5,5.3,6.9,6.9],hl:true},
-    {n:'Zema',cor:C.ze,d:[5.1,4.8,4.2,3.8,3.5,3.1,5.2,5.2]},
-    {n:'Caiado',cor:C.ca,d:[4.5,4.2,3.8,3.5,3.4,3.3,2.7,2.7]},
-    {n:'Tarcísio (alt.)',cor:C.ta,d:[15,15,6.1,null,null,null,null,null]},
+  atlas:{meses:['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jul/26','Jul/26 (2ª)'],nota:'Online · n≈5.000 · Jul/26=1ª (novo quest. pós-TSE) · Jul/26 (2ª)=22–27 jul · divulgado 29/jul',series:[
+    {n:'Lula',cor:C.lu,d:[47.3,47.9,47.1,46.8,46.2,46.6,47.0,47.0,44.9]},
+    {n:'Flávio',cor:C.fl,d:[23.1,29.3,38.2,39.1,40.1,39.7,34.3,34.3,35.8]},
+    {n:'Renan Santos',cor:C.re,d:[2.4,3.2,1.0,2.5,4.5,5.3,6.9,6.9,7.8],hl:true},
+    {n:'Zema',cor:C.ze,d:[5.1,4.8,4.2,3.8,3.5,3.1,5.2,5.2,2.8]},
+    {n:'Caiado',cor:C.ca,d:[4.5,4.2,3.8,3.5,3.4,3.3,2.7,2.7,3.1]},
+    {n:'Tarcísio (alt.)',cor:C.ta,d:[15,15,6.1,null,null,null,null,null,null]},
   ]},
   quaest:{meses:['Out/25','Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26'],nota:'Telefônico · n≈2.000 · Jul/26=10–13 jul · divulgado 15/jul',series:[
     {n:'Lula',cor:C.lu,d:[39,37,36,37,38,38,39,39,40]},
@@ -1222,10 +1239,10 @@ const RANKINGS={
     {n:'Lula',p:'PT',cor:C.lu,pct:40,chg:+1,chgT:'▲ +1pp vs jun'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:28,chg:-1,chgT:'▼ -1pp vs jun'},
     {n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:0,chgT:'— estável vs jun',hl:true},{n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:3,chg:0,chgT:'— estável vs jun'},
     {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:2,chg:0,chgT:'— estável vs jun'},{n:'Aécio Neves',p:'PSDB',cor:C.ot,pct:2,chg:0,chgT:'— estável vs jun'}]},
-  at:{src:'AtlasIntel · jul/2026 (novo questionário pós-TSE · BR-04582/2026)',lista:[
-    {n:'Lula',p:'PT',cor:C.lu,pct:47.0,chg:0,chgT:'— estável vs mai'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:34.3,chg:0,chgT:'— estável vs mai (novo quest.)'},
-    {n:'Renan Santos',p:'Missão',cor:C.re,pct:6.9,chg:0,chgT:'— estável vs mai · 7,8% no cenário Michelle',hl:true},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:5.2,chg:0,chgT:'— estável'},
-    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:2.7,chg:0,chgT:'— estável'}]},
+  at:{src:'AtlasIntel · jul/2026 2ª ed. (22–27 jul · n=5.021 · divulgado 29/jul)',lista:[
+    {n:'Lula',p:'PT',cor:C.lu,pct:44.9,chg:-2.1,chgT:'▼ -2,1pp vs Atlas jul 1ª (47,0%)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:35.8,chg:+1.5,chgT:'▲ +1,5pp vs Atlas jul 1ª (34,3%)'},
+    {n:'Renan Santos',p:'Missão',cor:C.re,pct:7.8,chg:+0.9,chgT:'▲ +0,9pp vs Atlas jul 1ª (6,9%) · 2T: 30,2% vs Lula 47,6%',hl:true},{n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:3.1,chg:+0.4,chgT:'▲ +0,4pp vs Atlas jul 1ª (2,7%)'},
+    {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:2.8,chg:-2.4,chgT:'▼ -2,4pp vs Atlas jul 1ª (5,2%)'}]},
   bt:{src:'BTG/Nexus · jul/2026 2ª ed. (24–26 jul · 7ª ed. · divulgado 27/jul)',lista:[
     {n:'Lula',p:'PT',cor:C.lu,pct:42,chg:+2,chgT:'▲ +2pp vs BTG 13/jul (40%→42%)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:33,chg:-1,chgT:'▼ -1pp vs BTG 13/jul (34%→33%)'},
     {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:6,chg:+1,chgT:'▲ +1pp vs BTG 13/jul (5%→6%)'},{n:'Renan Santos',p:'Missão',cor:C.re,pct:5,chg:+1,chgT:'▲ +1pp vs BTG 13/jul (4%→5%)',hl:true},
@@ -1280,19 +1297,20 @@ const ATLAS_REG_ABR26=[
 
 // Evolução de Renan por região no AtlasIntel (abr/26 = dados reais do PDF; meses anteriores = estimativas proporcionais)
 const ATLAS_REG_EVOL={
-  meses:['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jul/26'],
+  meses:['Nov/25','Dez/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jul/26','Jul/26 (2ª)'],
   series:[
-    {reg:'Norte',cor:'#34d399',d:[null,null,null,null,3.5,8.4,null,null]},
-    {reg:'Sul',cor:'#22d3ee',d:[null,null,null,null,2.5,5.7,null,null]},
-    {reg:'Nordeste',cor:'#fb7185',d:[null,null,null,null,2.0,5.3,null,null]},
-    {reg:'Sudeste',cor:'#818cf8',d:[null,null,null,null,2.0,4.8,null,null]},
-    {reg:'Centro-Oeste',cor:'#f59e0b',d:[null,null,null,null,1.5,3.7,null,null]},
-    {reg:'Nacional',cor:C.re,d:[2.4,3.2,1.0,2.5,4.5,5.3,6.9,6.9]},
+    {reg:'Norte',cor:'#34d399',d:[null,null,null,null,3.5,8.4,null,null,null]},
+    {reg:'Sul',cor:'#22d3ee',d:[null,null,null,null,2.5,5.7,null,null,null]},
+    {reg:'Nordeste',cor:'#fb7185',d:[null,null,null,null,2.0,5.3,null,null,null]},
+    {reg:'Sudeste',cor:'#818cf8',d:[null,null,null,null,2.0,4.8,null,null,null]},
+    {reg:'Centro-Oeste',cor:'#f59e0b',d:[null,null,null,null,1.5,3.7,null,null,null]},
+    {reg:'Nacional',cor:C.re,d:[2.4,3.2,1.0,2.5,4.5,5.3,6.9,6.9,7.8]},
   ]
 };
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'AtlasIntel/Bloomberg (2ª ed.)',c:'22–27 jul 2026',mes:'jul26',a:'nac',lu:'44,9%',fl:'35,8%',re:'7,8%',ze:'2,8%',ca:'3,1%',ou:'★ Renan ▲ +0,9pp vs Atlas jul 1ª (6,9%→7,8%); Lula ▼ -2,1pp (47,0%→44,9%); Flávio ▲ +1,5pp (34,3%→35,8%); Zema ▼ -2,4pp (5,2%→2,8%); Caiado ▲ +0,4pp; Samara Martins (UP) 2,1%; Cury (Avante) 1,6%; 2T Lula×Flávio: 49,2%×42,9%; 2T Lula×Zema: 48,6%×39,6%; 2T Lula×Caiado: 48,2%×38,9%; 2T Lula×Renan: 47,6%×30,2%; aprovação Lula 47,6%; liderança de 9,1pp no 1T; ME=1pp; divulgado 29/jul/26',n:'5.021',tse:'—',ano:'2026'},
   {i:'BTG/Nexus (2ª ed.)',c:'24–26 jul 2026',mes:'jul26',a:'nac',lu:'42%',fl:'33%',re:'5%',ze:'3%',ca:'6%',ou:'★ Renan ▲ +1pp vs BTG 13/jul (4%→5%) · Lula ▲ +2pp (40%→42%); Flávio ▼ -1pp (34%→33%); Caiado ▲ +1pp (5%→6%); Cury 2%; Daciolo 1%; 2T: Lula 47%×Flávio 44% (emp. técnico, estável); 2T×Renan: 47%×39% (▲ +3pp vs BTG 13/jul 36%); 2T×Zema: 47%×40%; 2T×Caiado: 47%×38%; campo: convenção PL (24-26 jul) que homologou Flávio como candidato; 7ª edição; divulgado 27/jul/26',n:'2.004',tse:'BR-01489/2026',ano:'2026'},
   {i:'Datafolha',c:'22–24 jul 2026',mes:'jul26',a:'nac',lu:'41%',fl:'31%',re:'3%',ze:'2%',ca:'3%',ou:'2T: Lula 47%×Flávio 43%; Renan estável 3% vs jun; Lula estável 41% vs jun; Flávio estável 31% vs jun; ME=2pp; divulgado 24/jul/26',n:'2.004',tse:'BR-01166/2026',ano:'2026'},
   {i:'GERP (2ª ed.)',c:'15–17 jul 2026',mes:'jul26',a:'nac',lu:'38%',fl:'38%',re:'3%',ze:'3%',ca:'3%',ou:'Lula=Flávio empate técnico; 2T: Flávio 46%×Lula 45% empate técnico na ME 2,2pp; ME=2,2pp; rejeição: Lula 47%, Flávio 46%; 2ª pesquisa GERP de jul/26; TSE BR-05026/2026; divulgado 22/jul/26',n:'2.000',tse:'BR-05026/2026',ano:'2026'},
