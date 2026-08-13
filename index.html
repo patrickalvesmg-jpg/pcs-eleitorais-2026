@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 12 ago 2026</div>
+    <div class="hbadge">Atualizado: 13 ago 2026</div>
   </div>
 </header>
 
@@ -245,7 +245,7 @@
         <div class="hstat"><div class="hv">2,6%</div><div class="hl">Futura/Apex jul</div><div class="hc up">▲ +0,3pp vs jun</div></div>
         <div class="hstat"><div class="hv">6%</div><div class="hl">PoderData/AYA jul (1ª)</div><div class="hc up">▲ +2pp vs jun · 3º colocado · 12–15 jul</div></div>
         <div class="hstat"><div class="hv">4%</div><div class="hl">PoderData/AYA jul (2ª)</div><div class="hc dn">▼ -2pp vs jul 1ª (6%→4%) · 26–29 jul</div></div>
-        <div class="hstat"><div class="hv">2%</div><div class="hl">CNT/MDA jun</div><div class="hc up">▲ estreia</div></div>
+        <div class="hstat"><div class="hv">2,8%</div><div class="hl">CNT/MDA ago</div><div class="hc up">▲ +0,8pp vs jun · 5–9/ago</div></div>
         <div class="hstat"><div class="hv">3%</div><div class="hl">Times Brasil/CNBC jun</div><div class="hc up">▲ estreia</div></div>
         <div class="hstat"><div class="hv">36,1%</div><div class="hl">Jovens 16–24</div><div class="hc up">▲ +11,4pp vs mar</div></div>
         <div class="hstat"><div class="hv">9%</div><div class="hl">Entre homens</div><div class="hc up">vs 2,2% mulheres</div></div>
@@ -584,6 +584,7 @@ const RENAN_TL=[
   {m:'Ago/26',mes:'ago26',i:'GERP (1ª ago)',p:5.0,v:'▲ +2pp vs GERP (2ª) jul/26 (3%→5%) · 3º colocado · 1T: Lula=Flávio 38% emp. técnico · 2T: Flávio 45%×Lula 43% emp. técnico · campo: 6–10/ago · n=2.400 · ME=2pp · TSE BR-08045/2026 · divulgado 11/ago',g:'Outros'},
   {m:'Ago/26',mes:'ago26',i:'Futura/Apex (ago)',p:3.6,v:'▲ +1pp vs Futura jul (2,6%→3,6%) · 1T: Lula 38,8%×Flávio 34,1% · campo: 3–7/ago · n=2.000 · ME=2,2pp · 2T: Lula vence Renan · divulgado 11/ago',g:'Outros'},
   {m:'Ago/26',mes:'ago26',i:'Palver (estreia)',p:10.0,v:'★ novo instituto · online não-probabilístico · n=5.000 · ME=3pp · 1T: Lula 44%×Flávio 40%×Renan 10%×Caiado 2%×Zema 1% · 2T: Lula=Flávio 46%×46% emp. · campo: 3–7/ago · ⚠️ avaliar c/ cautela (amostra por conveniência via redes sociais) · divulgado 11/ago',g:'Outros'},
+  {m:'Ago/26',mes:'ago26',i:'CNT/MDA (ago)',p:2.8,v:'▲ +0,8pp vs CNT/MDA jun (2,0%→2,8%) · campo: 5–9/ago · n=2.002 · ME=2,2pp · TSE BR-06935/2026 · 169ª rodada · 2T Lula×Flávio: 48%×39% · 2T Lula×Renan: 48,5%×33% · divulgado 11/ago',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -912,6 +913,16 @@ const CENARIOS=[
   {t:'Real Time Big Data (SP): 2T — Flávio × Lula (Jun/2026)',turno:'2t',inst:'Outros',mes:'jun26',temRenan:false,c:[
     {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:47},{n:'Lula (PT)',cor:C.lu,p:44}],
     nota:'Real Time Big Data · 13–15 jun/2026 · (São Paulo estadual) · empate técnico dentro da ME · rejeição Lula 51%, Flávio 50%'},
+  // ── CNT/MDA AGOSTO 2026 ──
+  {t:'CNT/MDA: 1T — Ago/2026 ★',turno:'1t',inst:'Outros',mes:'ago26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:42.4},{n:'Flávio (PL)',cor:C.fl,p:28.7},{n:'Caiado (PSD)',cor:C.ca,p:4.0},{n:'Zema (Novo)',cor:C.ze,p:3.3},{n:'Renan Santos (Missão)',cor:C.re,p:2.8}],
+    nota:'CNT/MDA · 5–9 ago/2026 · n=2.002 · ME=2,2pp · TSE BR-06935/2026 · 169ª rodada · presencial domiciliar · 143 municípios · 27 UFs · Lula 13,7pp à frente de Flávio · divulgado 11/ago'},
+  {t:'CNT/MDA: 2T — Lula × Renan Santos ★ (Ago/2026)',turno:'2t',inst:'Outros',mes:'ago26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:48.5},{n:'Renan Santos (Missão)',cor:C.re,p:33.0},{n:'Branco/Nulo/NS',cor:C.ot,p:18.5}],
+    nota:'CNT/MDA · 5–9 ago/2026 · TSE BR-06935/2026 · Lula +15,5pp · 13,6% branco/nulo/nenhum + 4,9% NS/NR'},
+  {t:'CNT/MDA: 2T — Lula × Flávio (Ago/2026)',turno:'2t',inst:'Outros',mes:'ago26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:48.0},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:39.0}],
+    nota:'CNT/MDA · 5–9 ago/2026 · TSE BR-06935/2026 · Lula vence por 9pp'},
   // ── CNT/MDA JUNHO 2026 ──
   {t:'CNT/MDA: 1T — Jun/2026 ★',turno:'1t',inst:'Outros',mes:'jun26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:41.8},{n:'Flávio (PL)',cor:C.fl,p:28.2},{n:'Caiado (PSD)',cor:C.ca,p:4.0},{n:'Zema (Novo)',cor:C.ze,p:2.8},{n:'Barbosa (DC)',cor:C.ot,p:2.3},{n:'Renan Santos (Missão)',cor:C.re,p:2.0},{n:'Temer (MDB)',cor:C.ot,p:1.9},{n:'Cury (Avante)',cor:C.cu,p:1.8}],
@@ -1416,6 +1427,7 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'CNT/MDA (ago)',c:'5–9 ago 2026',mes:'ago26',a:'nac',lu:'42,4%',fl:'28,7%',re:'2,8%',ze:'3,3%',ca:'4%',ou:'★ Renan ▲ +0,8pp vs CNT/MDA jun (2,0%→2,8%); Lula 13,7pp à frente de Flávio no 1T; 2T Lula×Flávio: 48%×39%; 2T Lula×Renan: 48,5%×33% (13,6% branco/nulo, 4,9% NS/NR); Lula vence Renan, Zema, Caiado e Cury no 2T; 169ª rodada; presencial domiciliar, 143 municípios, 27 UFs; divulgado 11/ago/26',n:'2.002',tse:'BR-06935/2026',ano:'2026'},
   {i:'GERP (1ª ago)',c:'6–10 ago 2026',mes:'ago26',a:'nac',lu:'38%',fl:'38%',re:'5%',ze:'3%',ca:'4%',ou:'★ Renan ▲ +2pp vs GERP (2ª) jul/26 (3%→5%) · 3º colocado; Lula=Flávio 38% empate técnico no 1T; 2T: Flávio 45%×Lula 43% empate técnico na ME 2pp; n=2.400 · ME=2pp · TSE BR-08045/2026 · divulgado 11/ago/26',n:'2.400',tse:'BR-08045/2026',ano:'2026'},
   {i:'Futura/Apex (ago)',c:'3–7 ago 2026',mes:'ago26',a:'nac',lu:'38,8%',fl:'34,1%',re:'3,6%',ze:'3,8%',ca:'4,5%',ou:'★ Renan ▲ +1pp vs Futura jul (2,6%→3,6%); Lula 38,8% (1T); Flávio 34,1%; Caiado 4,5%; Zema 3,8%; 2T Lula×Flávio; 2T Lula vence Renan no 2T; n=2.000 · ME=2,2pp · divulgado 11/ago/26',n:'2.000',tse:'—',ano:'2026'},
   {i:'Palver (estreia) ⚠️',c:'3–7 ago 2026',mes:'ago26',a:'nac',lu:'44%',fl:'40%',re:'10%',ze:'1%',ca:'2%',ou:'⚠️ novo instituto · online não-probabilístico (amostra por conveniência via redes sociais) · Renan 10% no 1T · 2T: Lula=Flávio 46%×46% emp. perfeito · avaliar com cautela: metodologia pode superestimar candidatos com forte engajamento digital · n=5.000 · ME=3pp · divulgado 11/ago/26',n:'5.000',tse:'—',ano:'2026'},
