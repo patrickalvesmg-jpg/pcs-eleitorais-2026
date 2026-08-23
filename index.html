@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 22 ago 2026</div>
+    <div class="hbadge">Atualizado: 23 ago 2026</div>
   </div>
 </header>
 
@@ -598,6 +598,9 @@ const RENAN_TL=[
   {m:'Ago/26',mes:'ago26',i:'Real Time (DF)',p:8.0,v:'★ Real Time estadual DF · Lula 36%×Flávio 35% emp. técnico · 1T: Renan 8% (empata com Caiado 8%) · 2T: Flávio 44%×Lula 39% · 14–18/ago · n=1.600 · ME=2pp · divulgado 19/ago',g:'Outros'},
   {m:'Ago/26',mes:'ago26',i:'AtlasIntel (PA)',p:5.9,v:'★ AtlasIntel estadual Pará · 1T: Lula 48,9%×Flávio 37,4%×Renan 5,9% · 2T Lula×Flávio: 50,8%×42,7% · 2T Lula×Renan: 50,3%×31,6% · 14–19/ago · n=1.197 · ME=3pp · divulgado 20/ago',g:'AtlasIntel'},
   {m:'Ago/26',mes:'ago26',i:'Datafolha',p:4,v:'▲ +1pp vs Datafolha jul (3%→4%) · 1ª vez em 4% no Datafolha · Caiado ▲ +2pp (3%→5%) · Lula ▼ -1pp (40%→39%) · Flávio ▲ +1pp (32%→33%) · 2T: Lula 47%×Flávio 43% (Lula ▼ -1pp vs jul/48%) · 18–20/ago · n=2.058 · ME=2pp · TSE BR-04496/2026 · divulgado 21/ago',g:'Datafolha'},
+  {m:'Ago/26',mes:'ago26',i:'Datafolha (SP)',p:5.0,v:'★ Datafolha estadual SP · Renan 3º com 5% em São Paulo · Flávio lidera 1T: 35%×Lula 34% emp. técnico (ME 2pp) · 2T: Flávio 47%×Lula 42% · 18–21/ago · n=1.610 · ME=2pp · divulgado 22/ago',g:'Datafolha'},
+  {m:'Ago/26',mes:'ago26',i:'Datafolha (RJ)',p:3.0,v:'Datafolha estadual RJ · Renan 4º com 3% no Rio · Flávio lidera 1T: 41%×Lula 36% (+5pp) · Caiado 2%; Zema 2% · 18–21/ago · divulgado 22/ago',g:'Datafolha'},
+  {m:'Ago/26',mes:'ago26',i:'Datafolha (PE)',p:2.0,v:'Datafolha estadual PE · Renan 3º com 2% em Pernambuco · Lula domina: 62%×Flávio 29% (+33pp) · 18–21/ago · divulgado 22/ago',g:'Datafolha'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -1441,14 +1444,18 @@ const RANKINGS={
 // ── ESTADOS
 const ESTADOS=[
   {nome:'Piauí',reg:'nordeste',inst:'AtlasIntel',data:'jun/26',t1:[{n:'Lula',cor:C.lu,p:63.9},{n:'Flávio',cor:C.fl,p:15.0}],t2:[{n:'Lula',cor:C.lu,p:67.3},{n:'Flávio',cor:C.fl,p:20.6}]},
-  {nome:'Pernambuco ★',reg:'nordeste',inst:'Datafolha',data:'mai/26',t1:[{n:'Lula',cor:C.lu,p:56},{n:'Flávio',cor:C.fl,p:24},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:62},{n:'Flávio',cor:C.fl,p:30}]},
+  {nome:'Pernambuco ★',reg:'nordeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:62},{n:'Flávio',cor:C.fl,p:29},{n:'Renan',cor:C.re,p:2}],t2:[]},
+  {nome:'Pernambuco',reg:'nordeste',inst:'Datafolha',data:'mai/26',t1:[{n:'Lula',cor:C.lu,p:56},{n:'Flávio',cor:C.fl,p:24},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:62},{n:'Flávio',cor:C.fl,p:30}]},
   {nome:'Pernambuco',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:53},{n:'Flávio',cor:C.fl,p:19},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:67},{n:'Flávio',cor:C.fl,p:33}]},
   {nome:'Ceará',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:50},{n:'Flávio',cor:C.fl,p:23},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:64},{n:'Flávio',cor:C.fl,p:36}]},
   {nome:'Bahia',reg:'nordeste',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:52},{n:'Flávio',cor:C.fl,p:21},{n:'Zema',cor:C.ze,p:3},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:1}],t2:[{n:'Lula',cor:C.lu,p:66},{n:'Flávio',cor:C.fl,p:34}]},
-  {nome:'São Paulo ★',reg:'sudeste',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Flávio',cor:C.fl,p:36},{n:'Lula',cor:C.lu,p:31},{n:'Renan',cor:C.re,p:10},{n:'Zema',cor:C.ze,p:5}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:44}]},
+  {nome:'São Paulo ★',reg:'sudeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Flávio',cor:C.fl,p:35},{n:'Lula',cor:C.lu,p:34},{n:'Renan',cor:C.re,p:5}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:42}]},
+  {nome:'São Paulo',reg:'sudeste',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Flávio',cor:C.fl,p:36},{n:'Lula',cor:C.lu,p:31},{n:'Renan',cor:C.re,p:10},{n:'Zema',cor:C.ze,p:5}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:44}]},
   {nome:'São Paulo',reg:'sudeste',inst:'Vox Brasil',data:'mai/26',t1:[{n:'Flávio',cor:C.fl,p:39.1},{n:'Lula',cor:C.lu,p:30.3},{n:'Caiado',cor:C.ca,p:3.4},{n:'Zema',cor:C.ze,p:3.1},{n:'Renan',cor:C.re,p:1.9}],t2:[{n:'Flávio',cor:C.fl,p:50.4},{n:'Lula',cor:C.lu,p:38.1}]},
+  {nome:'Minas Gerais ★',reg:'sudeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:37},{n:'Flávio',cor:C.fl,p:31}],t2:[]},
   {nome:'Minas Gerais',reg:'sudeste',inst:'Quaest/Atlas',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:33},{n:'Flávio',cor:C.fl,p:27},{n:'Zema',cor:C.ze,p:10},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:3}],t2:[{n:'Lula',cor:C.lu,p:51},{n:'Flávio',cor:C.fl,p:48}]},
-  {nome:'Rio de Janeiro ★',reg:'sudeste',inst:'Futura/Apex',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:39.3},{n:'Flávio',cor:C.fl,p:36.3}],t2:[]},
+  {nome:'Rio de Janeiro ★',reg:'sudeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Flávio',cor:C.fl,p:41},{n:'Lula',cor:C.lu,p:36},{n:'Renan',cor:C.re,p:3},{n:'Caiado',cor:C.ca,p:2},{n:'Zema',cor:C.ze,p:2}],t2:[]},
+  {nome:'Rio de Janeiro',reg:'sudeste',inst:'Futura/Apex',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:39.3},{n:'Flávio',cor:C.fl,p:36.3}],t2:[]},
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'jul/26',t1:[{n:'Lula',cor:C.lu,p:41.6},{n:'Flávio',cor:C.fl,p:38.6},{n:'Renan',cor:C.re,p:1.6},{n:'Daciolo',cor:C.ot,p:1.3},{n:'Zema',cor:C.ze,p:1.3},{n:'Caiado',cor:C.ca,p:1.3}],t2:[{n:'Lula',cor:C.lu,p:44.7},{n:'Flávio',cor:C.fl,p:44.4}]},
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:36.9},{n:'Lula',cor:C.lu,p:36.7},{n:'Zema',cor:C.ze,p:5},{n:'Renan',cor:C.re,p:4},{n:'Caiado',cor:C.ca,p:3}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:40.5}]},
   {nome:'Paraná',reg:'sul',inst:'Quaest',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:45},{n:'Lula',cor:C.lu,p:23},{n:'Zema',cor:C.ze,p:8},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:4}],t2:[{n:'Flávio',cor:C.fl,p:62},{n:'Lula',cor:C.lu,p:38}]},
@@ -1459,6 +1466,7 @@ const ESTADOS=[
   {nome:'Mato G. do Sul',reg:'centro-oeste',inst:'Real Time',data:'mai/26',t1:[{n:'Flávio',cor:C.fl,p:43},{n:'Lula',cor:C.lu,p:30},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:3},{n:'Zema',cor:C.ze,p:2}],t2:[{n:'Flávio',cor:C.fl,p:51},{n:'Lula',cor:C.lu,p:34}]},
   {nome:'Mato Grosso',reg:'centro-oeste',inst:'Real Time',data:'mar/26',t1:[{n:'Flávio',cor:C.fl,p:46},{n:'Lula',cor:C.lu,p:30},{n:'Zema',cor:C.ze,p:5},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Flávio',cor:C.fl,p:54},{n:'Lula',cor:C.lu,p:34}]},
   {nome:'Distrito Federal ★',reg:'centro-oeste',inst:'Real Time Big Data',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:36},{n:'Flávio',cor:C.fl,p:35},{n:'Renan',cor:C.re,p:8},{n:'Caiado',cor:C.ca,p:8}],t2:[{n:'Flávio',cor:C.fl,p:44},{n:'Lula',cor:C.lu,p:39}]},
+  {nome:'Distrito Federal',reg:'centro-oeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Flávio',cor:C.fl,p:39},{n:'Lula',cor:C.lu,p:31}],t2:[]},
   {nome:'Pará ★',reg:'norte',inst:'AtlasIntel',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:48.9},{n:'Flávio',cor:C.fl,p:37.4},{n:'Renan',cor:C.re,p:5.9},{n:'Caiado',cor:C.ca,p:2.5},{n:'Zema',cor:C.ze,p:1.3}],t2:[{n:'Lula',cor:C.lu,p:50.8},{n:'Flávio',cor:C.fl,p:42.7}]},
   {nome:'Pará',reg:'norte',inst:'Quaest',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:38},{n:'Flávio',cor:C.fl,p:33},{n:'Zema',cor:C.ze,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Lula',cor:C.lu,p:52},{n:'Flávio',cor:C.fl,p:48}]},
   {nome:'Tocantins',reg:'norte',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Lula',cor:C.lu,p:37},{n:'Flávio',cor:C.fl,p:37},{n:'Renan',cor:C.re,p:2}],t2:[{n:'Flávio',cor:C.fl,p:41},{n:'Lula',cor:C.lu,p:40}]},
@@ -1505,6 +1513,11 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Datafolha (SP)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'34%',fl:'35%',re:'5%',ze:'—',ca:'—',ou:'★ Datafolha estadual São Paulo · Flávio lidera 1T: 35%×Lula 34% emp. técnico (ME 2pp) · Renan 5% (3º em SP) · 2T: Flávio 47%×Lula 42% · n=1.610 · ME=2pp · campo: 18–21/ago · divulgado 22/ago/26',n:'1.610',tse:'—',ano:'2026'},
+  {i:'Datafolha (RJ)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'36%',fl:'41%',re:'3%',ze:'2%',ca:'2%',ou:'Datafolha estadual Rio de Janeiro · Flávio lidera 1T: 41%×Lula 36% (+5pp) · Renan 3%; Caiado 2%; Zema 2% · campo: 18–21/ago · divulgado 22/ago/26',n:'—',tse:'—',ano:'2026'},
+  {i:'Datafolha (MG)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'37%',fl:'31%',re:'—',ze:'—',ca:'—',ou:'Datafolha estadual Minas Gerais · Lula lidera 1T: 37%×Flávio 31% (+6pp) · n=1.204 · ME=3pp · campo: 18–21/ago · divulgado 22/ago/26',n:'1.204',tse:'—',ano:'2026'},
+  {i:'Datafolha (PE)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'62%',fl:'29%',re:'2%',ze:'—',ca:'—',ou:'Datafolha estadual Pernambuco · Lula domina 1T: 62%×Flávio 29% (+33pp) · Renan 2% · campo: 18–21/ago · divulgado 22/ago/26',n:'—',tse:'—',ano:'2026'},
+  {i:'Datafolha (DF)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'31%',fl:'39%',re:'—',ze:'—',ca:'—',ou:'Datafolha estadual Distrito Federal · Flávio lidera 1T: 39%×Lula 31% (+8pp) · n=910 · ME=3pp · campo: 18–21/ago · divulgado 22/ago/26',n:'910',tse:'—',ano:'2026'},
   {i:'Datafolha',c:'18–20 ago 2026',mes:'ago26',a:'nac',lu:'39%',fl:'33%',re:'4%',ze:'3%',ca:'5%',ou:'★ Renan ▲ +1pp vs Datafolha jul (3%→4%) · Caiado ▲ +2pp (3%→5%) · Lula ▼ -1pp vs jul (40%→39%) · Flávio ▲ +1pp vs jul (32%→33%) · 2T: Lula 47%×Flávio 43% (Lula ▼ -1pp vs jul/48%) · presencial domiciliar · encomendada por Folha/Globo · n=2.058 · ME=2pp · divulgado 21/ago/26',n:'2.058',tse:'BR-04496/2026',ano:'2026'},
   {i:'AtlasIntel/Bloomberg (PA)',c:'14–19 ago 2026',mes:'ago26',a:'est',lu:'48,9%',fl:'37,4%',re:'5,9%',ze:'1,3%',ca:'2,5%',ou:'★ Pará estadual · Renan 5,9% (3º) no 1T; Cury 1,7%; 2T Lula×Flávio: 50,8%×42,7%; 2T Lula×Renan: 50,3%×31,6%; Lula vence em todos os cenários 2T no PA; n=1.197 · ME=3pp · divulgado 20/ago/26',n:'1.197',tse:'—',ano:'2026'},
   {i:'Real Time Big Data (DF)',c:'14–18 ago 2026',mes:'ago26',a:'est',lu:'36%',fl:'35%',re:'8%',ze:'—',ca:'8%',ou:'★ Renan 8% no DF (empata c/ Caiado) · 3º colocado · Lula=Flávio emp. técnico 36%×35% no 1T; 2T: Flávio 44%×Lula 39%; rejeição: Lula 48%, Flávio 40%; n=1.600 · ME=2pp · divulgado 19/ago/26',n:'1.600',tse:'—',ano:'2026'},
