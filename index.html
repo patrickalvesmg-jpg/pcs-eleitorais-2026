@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 23 ago 2026</div>
+    <div class="hbadge">Atualizado: 25 ago 2026</div>
   </div>
 </header>
 
@@ -601,6 +601,8 @@ const RENAN_TL=[
   {m:'Ago/26',mes:'ago26',i:'Datafolha (SP)',p:5.0,v:'★ Datafolha estadual SP · Renan 3º com 5% em São Paulo · Flávio lidera 1T: 35%×Lula 34% emp. técnico (ME 2pp) · 2T: Flávio 47%×Lula 42% · 18–21/ago · n=1.610 · ME=2pp · divulgado 22/ago',g:'Datafolha'},
   {m:'Ago/26',mes:'ago26',i:'Datafolha (RJ)',p:3.0,v:'Datafolha estadual RJ · Renan 4º com 3% no Rio · Flávio lidera 1T: 41%×Lula 36% (+5pp) · Caiado 2%; Zema 2% · 18–21/ago · divulgado 22/ago',g:'Datafolha'},
   {m:'Ago/26',mes:'ago26',i:'Datafolha (PE)',p:2.0,v:'Datafolha estadual PE · Renan 3º com 2% em Pernambuco · Lula domina: 62%×Flávio 29% (+33pp) · 18–21/ago · divulgado 22/ago',g:'Datafolha'},
+  {m:'Ago/26',mes:'ago26',i:'Datafolha (MG)',p:3.0,v:'Datafolha estadual MG · 1T: Lula 37%×Flávio 31%×Zema 10%×Renan 3% · 2T: Lula 46%×Flávio 42% · n=1.204 · ME=3pp · TSE BR-04396/2026 · 18–20/ago · divulgado 22/ago',g:'Datafolha'},
+  {m:'Ago/26',mes:'ago26',i:'BTG/Nexus (11ª ed.)',p:3.0,v:'▼ -1pp vs BTG 10ª ago (4%→3%) · 1T: Lula 41%×Flávio 37%×Caiado 5%×Renan 3%×Zema 3% · 2T Lula×Flávio: 46%×45% emp. técnico · 2T Lula×Renan: 47%×35% (▼ -1pp vs BTG 10ª/36%) · 21–23/ago · n=2.006 · TSE BR-09028/2026 · divulgado 24/ago',g:'BTG'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -1377,6 +1379,19 @@ const CENARIOS=[
   {t:'AtlasIntel: 2T — Lula × Renan Santos ★ (PA ago/2026)',turno:'2t',inst:'AtlasIntel',mes:'ago26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:50.3},{n:'Renan Santos (Missão)',cor:C.re,p:31.6}],
     nota:'AtlasIntel/Bloomberg · 14–19 ago 2026 · Pará · Lula +18,7pp sobre Renan; 18,1% branco/nulo/NS; divulgado 20/ago/26'},
+  // ── BTG/NEXUS AGOSTO 2026 (11ª EDIÇÃO) ──
+  {t:'BTG/Nexus: 1T — Ago/2026 (11ª ed.) ★',turno:'1t',inst:'BTG',mes:'ago26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:41},{n:'Flávio (PL)',cor:C.fl,p:37},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:5},{n:'Renan Santos (Missão)',cor:C.re,p:3},{n:'Romeu Zema (Novo)',cor:C.ze,p:3}],
+    nota:'BTG/Nexus · 21–23 ago 2026 · n=2.006 · ME=2pp · TSE BR-09028/2026 · 11ª edição · Flávio ▲ +1pp vs BTG 10ª ago (36%→37%); Renan ▼ -1pp vs BTG 10ª ago (4%→3%); Lula estável 41%; Caiado estável 5%; Zema estável 3%; divulgado 24/ago/26'},
+  {t:'BTG/Nexus: 2T — Lula × Flávio Bolsonaro (Ago/2026 11ª ed.)',turno:'2t',inst:'BTG',mes:'ago26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:45}],
+    nota:'BTG/Nexus · 21–23 ago 2026 · n=2.006 · ME=2pp · TSE BR-09028/2026 · 11ª edição · empate técnico; divulgado 24/ago/26'},
+  {t:'BTG/Nexus: 2T — Lula × Renan Santos ★ (Ago/2026 11ª ed.)',turno:'2t',inst:'BTG',mes:'ago26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:47},{n:'Renan Santos (Missão)',cor:C.re,p:35}],
+    nota:'BTG/Nexus · 21–23 ago 2026 · n=2.006 · ME=2pp · TSE BR-09028/2026 · 11ª edição · Renan ▼ -1pp vs BTG 10ª ago (36%→35%); divulgado 24/ago/26'},
+  {t:'BTG/Nexus: 2T — Lula × Ronaldo Caiado (Ago/2026 11ª ed.)',turno:'2t',inst:'BTG',mes:'ago26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:42}],
+    nota:'BTG/Nexus · 21–23 ago 2026 · n=2.006 · ME=2pp · TSE BR-09028/2026 · 11ª edição; divulgado 24/ago/26'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -1405,12 +1420,12 @@ const EVOL={
     {n:'Zema',cor:C.ze,d:[4,4,3,3,3,2,2,3]},
     {n:'Caiado',cor:C.ca,d:[3,3,3,3,4,3,3,5]},
   ]},
-  btg:{meses:['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26','Ago/26 (9ª)','Ago/26 (10ª)'],nota:'Telefônico · n≈2.000 · Jul/26=2ª ed. 24-26 jul (7ª ed.) · Ago/26=8ª ed. 31/jul-2/ago · Ago/26 (9ª)=7–9 ago · Ago/26 (10ª)=14–16 ago · TSE BR-03317/2026 · divulgado 17/ago',series:[
-    {n:'Lula',cor:C.lu,d:[42,40,41,41,41,40,42,42,41,40,41]},
-    {n:'Flávio',cor:C.fl,d:[20,28,32,36,36,35,34,33,37,35,36]},
-    {n:'Renan Santos',cor:C.re,d:[1,1,1,2,4,3,4,5,4,4,4],hl:true},
-    {n:'Zema',cor:C.ze,d:[5,5,4,4,4,4,null,3,3,3,4]},
-    {n:'Caiado',cor:C.ca,d:[4,3,3,3,3,5,5,6,5,5,5]},
+  btg:{meses:['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26','Ago/26 (9ª)','Ago/26 (10ª)','Ago/26 (11ª)'],nota:'Telefônico · n≈2.000 · Jul/26=2ª ed. 24-26 jul (7ª ed.) · Ago/26=8ª ed. 31/jul-2/ago · Ago/26 (9ª)=7–9 ago · Ago/26 (10ª)=14–16 ago · Ago/26 (11ª)=21–23 ago · TSE BR-09028/2026 · divulgado 24/ago',series:[
+    {n:'Lula',cor:C.lu,d:[42,40,41,41,41,40,42,42,41,40,41,41]},
+    {n:'Flávio',cor:C.fl,d:[20,28,32,36,36,35,34,33,37,35,36,37]},
+    {n:'Renan Santos',cor:C.re,d:[1,1,1,2,4,3,4,5,4,4,4,3],hl:true},
+    {n:'Zema',cor:C.ze,d:[5,5,4,4,4,4,null,3,3,3,4,3]},
+    {n:'Caiado',cor:C.ca,d:[4,3,3,3,3,5,5,6,5,5,5,5]},
   ]},
   parana:{meses:['Jan/26','Fev/26','Mar/26'],nota:'Presencial · Paraná Pesquisas',series:[
     {n:'Lula',cor:C.lu,d:[36,33,41.3]},
@@ -1435,10 +1450,10 @@ const RANKINGS={
     {n:'Lula',p:'PT',cor:C.lu,pct:44.9,chg:-2.1,chgT:'▼ -2,1pp vs Atlas jul 1ª (47,0%)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:35.8,chg:+1.5,chgT:'▲ +1,5pp vs Atlas jul 1ª (34,3%)'},
     {n:'Renan Santos',p:'Missão',cor:C.re,pct:7.8,chg:+0.9,chgT:'▲ +0,9pp vs Atlas jul 1ª (6,9%) · 2T: 30,2% vs Lula 47,6%',hl:true},{n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:3.1,chg:+0.4,chgT:'▲ +0,4pp vs Atlas jul 1ª (2,7%)'},
     {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:2.8,chg:-2.4,chgT:'▼ -2,4pp vs Atlas jul 1ª (5,2%)'}]},
-  bt:{src:'BTG/Nexus · ago/2026 (14–16 ago · 10ª ed. · TSE BR-03317/2026 · divulgado 17/ago)',lista:[
-    {n:'Lula',p:'PT',cor:C.lu,pct:41,chg:+1,chgT:'▲ +1pp vs BTG 9ª ago (40%→41%)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:36,chg:+1,chgT:'▲ +1pp vs BTG 9ª ago (35%→36%)'},
-    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:5,chg:0,chgT:'— estável vs BTG 9ª ago'},{n:'Renan Santos',p:'Missão',cor:C.re,pct:4,chg:0,chgT:'— estável vs BTG 9ª ago (4%→4%) · 2T: Lula 47%×Renan 36% (▼ -1pp vs BTG 9ª ago/37%)',hl:true},
-    {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:4,chg:+1,chgT:'▲ +1pp vs BTG 9ª ago (3%→4%) · 2T: Lula×Flávio 47%×44%'}]},
+  bt:{src:'BTG/Nexus · ago/2026 (21–23 ago · 11ª ed. · TSE BR-09028/2026 · divulgado 24/ago)',lista:[
+    {n:'Lula',p:'PT',cor:C.lu,pct:41,chg:0,chgT:'— estável vs BTG 10ª ago (41%→41%)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:37,chg:+1,chgT:'▲ +1pp vs BTG 10ª ago (36%→37%)'},
+    {n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:5,chg:0,chgT:'— estável vs BTG 10ª ago'},{n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:-1,chgT:'▼ -1pp vs BTG 10ª ago (4%→3%) · 2T: Lula 47%×Renan 35% (▼ -1pp vs BTG 10ª/36%)',hl:true},
+    {n:'Romeu Zema',p:'Novo',cor:C.ze,pct:3,chg:-1,chgT:'▼ -1pp vs BTG 10ª ago (4%→3%) · 2T: Lula×Flávio 46%×45% emp. técnico'}]},
 };
 
 // ── ESTADOS
@@ -1452,7 +1467,7 @@ const ESTADOS=[
   {nome:'São Paulo ★',reg:'sudeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Flávio',cor:C.fl,p:35},{n:'Lula',cor:C.lu,p:34},{n:'Renan',cor:C.re,p:5}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:42}]},
   {nome:'São Paulo',reg:'sudeste',inst:'Real Time Big Data',data:'jun/26',t1:[{n:'Flávio',cor:C.fl,p:36},{n:'Lula',cor:C.lu,p:31},{n:'Renan',cor:C.re,p:10},{n:'Zema',cor:C.ze,p:5}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:44}]},
   {nome:'São Paulo',reg:'sudeste',inst:'Vox Brasil',data:'mai/26',t1:[{n:'Flávio',cor:C.fl,p:39.1},{n:'Lula',cor:C.lu,p:30.3},{n:'Caiado',cor:C.ca,p:3.4},{n:'Zema',cor:C.ze,p:3.1},{n:'Renan',cor:C.re,p:1.9}],t2:[{n:'Flávio',cor:C.fl,p:50.4},{n:'Lula',cor:C.lu,p:38.1}]},
-  {nome:'Minas Gerais ★',reg:'sudeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:37},{n:'Flávio',cor:C.fl,p:31}],t2:[]},
+  {nome:'Minas Gerais ★',reg:'sudeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:37},{n:'Flávio',cor:C.fl,p:31},{n:'Zema',cor:C.ze,p:10},{n:'Renan',cor:C.re,p:3}],t2:[{n:'Lula',cor:C.lu,p:46},{n:'Flávio',cor:C.fl,p:42}]},
   {nome:'Minas Gerais',reg:'sudeste',inst:'Quaest/Atlas',data:'abr/26',t1:[{n:'Lula',cor:C.lu,p:33},{n:'Flávio',cor:C.fl,p:27},{n:'Zema',cor:C.ze,p:10},{n:'Caiado',cor:C.ca,p:4},{n:'Renan',cor:C.re,p:3}],t2:[{n:'Lula',cor:C.lu,p:51},{n:'Flávio',cor:C.fl,p:48}]},
   {nome:'Rio de Janeiro ★',reg:'sudeste',inst:'Datafolha',data:'ago/26',t1:[{n:'Flávio',cor:C.fl,p:41},{n:'Lula',cor:C.lu,p:36},{n:'Renan',cor:C.re,p:3},{n:'Caiado',cor:C.ca,p:2},{n:'Zema',cor:C.ze,p:2}],t2:[]},
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Futura/Apex',data:'ago/26',t1:[{n:'Lula',cor:C.lu,p:39.3},{n:'Flávio',cor:C.fl,p:36.3}],t2:[]},
@@ -1513,9 +1528,10 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'BTG/Nexus (11ª ed.)',c:'21–23 ago 2026',mes:'ago26',a:'nac',lu:'41%',fl:'37%',re:'3%',ze:'3%',ca:'5%',ou:'Renan ▼ -1pp vs BTG 10ª ago (4%→3%); Flávio ▲ +1pp (36%→37%); Lula estável 41%; Caiado estável 5%; Zema estável 3%; 2T Lula×Flávio: 46%×45% emp. técnico; 2T Lula×Renan: 47%×35% (▼ -1pp vs BTG 10ª/36%); 2T Lula×Caiado: 46%×42%; 11ª edição; n=2.006 · ME=2pp · TSE BR-09028/2026 · divulgado 24/ago/26',n:'2.006',tse:'BR-09028/2026',ano:'2026'},
   {i:'Datafolha (SP)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'34%',fl:'35%',re:'5%',ze:'—',ca:'—',ou:'★ Datafolha estadual São Paulo · Flávio lidera 1T: 35%×Lula 34% emp. técnico (ME 2pp) · Renan 5% (3º em SP) · 2T: Flávio 47%×Lula 42% · n=1.610 · ME=2pp · campo: 18–21/ago · divulgado 22/ago/26',n:'1.610',tse:'—',ano:'2026'},
   {i:'Datafolha (RJ)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'36%',fl:'41%',re:'3%',ze:'2%',ca:'2%',ou:'Datafolha estadual Rio de Janeiro · Flávio lidera 1T: 41%×Lula 36% (+5pp) · Renan 3%; Caiado 2%; Zema 2% · campo: 18–21/ago · divulgado 22/ago/26',n:'—',tse:'—',ano:'2026'},
-  {i:'Datafolha (MG)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'37%',fl:'31%',re:'—',ze:'—',ca:'—',ou:'Datafolha estadual Minas Gerais · Lula lidera 1T: 37%×Flávio 31% (+6pp) · n=1.204 · ME=3pp · campo: 18–21/ago · divulgado 22/ago/26',n:'1.204',tse:'—',ano:'2026'},
+  {i:'Datafolha (MG)',c:'18–20 ago 2026',mes:'ago26',a:'est',lu:'37%',fl:'31%',re:'3%',ze:'10%',ca:'—',ou:'Datafolha estadual Minas Gerais · Lula lidera 1T: 37%×Flávio 31% (+6pp)×Zema 10%×Renan 3% · 2T: Lula 46%×Flávio 42% (emp. técnico ME 3pp) · n=1.204 · ME=3pp · TSE BR-04396/2026 · campo: 18–20/ago · divulgado 22/ago/26',n:'1.204',tse:'BR-04396/2026',ano:'2026'},
   {i:'Datafolha (PE)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'62%',fl:'29%',re:'2%',ze:'—',ca:'—',ou:'Datafolha estadual Pernambuco · Lula domina 1T: 62%×Flávio 29% (+33pp) · Renan 2% · campo: 18–21/ago · divulgado 22/ago/26',n:'—',tse:'—',ano:'2026'},
   {i:'Datafolha (DF)',c:'18–21 ago 2026',mes:'ago26',a:'est',lu:'31%',fl:'39%',re:'—',ze:'—',ca:'—',ou:'Datafolha estadual Distrito Federal · Flávio lidera 1T: 39%×Lula 31% (+8pp) · n=910 · ME=3pp · campo: 18–21/ago · divulgado 22/ago/26',n:'910',tse:'—',ano:'2026'},
   {i:'Datafolha',c:'18–20 ago 2026',mes:'ago26',a:'nac',lu:'39%',fl:'33%',re:'4%',ze:'3%',ca:'5%',ou:'★ Renan ▲ +1pp vs Datafolha jul (3%→4%) · Caiado ▲ +2pp (3%→5%) · Lula ▼ -1pp vs jul (40%→39%) · Flávio ▲ +1pp vs jul (32%→33%) · 2T: Lula 47%×Flávio 43% (Lula ▼ -1pp vs jul/48%) · presencial domiciliar · encomendada por Folha/Globo · n=2.058 · ME=2pp · divulgado 21/ago/26',n:'2.058',tse:'BR-04496/2026',ano:'2026'},
