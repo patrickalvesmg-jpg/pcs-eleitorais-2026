@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 17 set 2026</div>
+    <div class="hbadge">Atualizado: 18 set 2026</div>
   </div>
 </header>
 
@@ -659,10 +659,33 @@ const RENAN_TL=[
   {m:'Set/26',mes:'set26',i:'Indexa/Broadcast (2ª set.)',p:3.0,v:'▼ -1pp vs Indexa/Broadcast ago (4%→3%) · 1T: Lula 38%×Flávio 34%×Cury 6%×Caiado 4%×Renan 3%×Zema 1% · 2T Lula×Flávio: emp. técnico (diferença de 1pp) · Lula vence Renan e Zema no 2T · campo: 10–13/set · n=2.000 · ME=2,2pp · divulgado 15/set',g:'Outros'},
   {m:'Set/26',mes:'set26',i:'AtlasIntel/Bloomberg (5ª ed. set.)',p:5.1,v:'▼ -1,4pp vs Atlas 4ª set (6,5%→5,1%) · ★ Renan volta ao 3º (Cury ▼ cai p/ 4º 3,5%) · Flávio ▲ +4,3pp (37,4%→41,7%) RECORDE · Lula ▲ +1,1pp (43%→44,1%) · 2T Lula×Flávio: Flávio 47,2%×Lula 46,8% emp. técnico (★ 2ª vez Flávio à frente no Atlas!) · Lula só vence Renan e Cury no 2T · campo: 11–16/set · n=5.018 · ME=1pp · TSE BR-06221/2026 · divulgado 17/set',g:'AtlasIntel'},
   {m:'Set/26',mes:'set26',i:'PoderData/AYA (7ª)',p:3.0,v:'— estável vs PoderData 6ª set (3%→3%) · 1T: Lula 37%×Flávio 36%×Cury 8%×Renan 3%=Caiado 3% · 2T Lula×Flávio: Flávio 46%×Lula 44% · campo: 13–16/set · n=3.000 · ME=1,8pp · TSE BR-00360/2026 · divulgado 17/set',g:'Outros'},
+  {m:'Set/26',mes:'set26',i:'Datafolha (3ª set.)',p:3.0,v:'— estável vs Datafolha 2ª set (3%→3%) · Flávio ▲ +1pp (35%→36%) · Lula estável 39% · 1T: Lula 39%×Flávio 36%×Cury 6%×Caiado 4%×Renan 3%×Zema 2% · 2T Lula×Flávio: 46%×44% emp. técnico (estável) · ★ 2T Lula×Cury: 44%×44% emp. numérico (1ª vez Cury empata com Lula no 2T Datafolha!) · 2T Lula×Caiado: 46%×42% · 76% eleitores totalmente decididos · campo: 15–16/set · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set',g:'Datafolha'},
+  {m:'Set/26',mes:'set26',i:'GERP (set. 2ª)',p:2.0,v:'▼ -2pp vs GERP 1ª set (4%→2%) · Flávio ▲ +5pp vs GERP 1ª set (35%→40%) · Lula ▲ +3pp (34%→37%) · Cury 7% · 1T: Flávio 40%×Lula 37%×Cury 7%×Caiado 3%×Renan 2% · ★ 2T Lula×Flávio: Flávio 50%×Lula 43% (+7pp fora da ME) · campo: 14–16/set · n=2.400 · ME=2pp · TSE BR-00535/2026 · divulgado 17/set',g:'Outros'},
+  {m:'Set/26',mes:'set26',i:'AtlasIntel (PR estadual)',p:1.7,v:'★ estadual PR · Flávio 53,7%×Lula 34%×Cury 4,1%×Caiado 2,2%×Zema 1,8%×Renan 1,7% · Lula ▲ +6,2pp (27,8%→34%) · Flávio ▼ -2,1pp (55,8%→53,7%) · campo: 11–16/set · n=1.794 · ME=2pp · divulgado 17/set',g:'AtlasIntel'},
 ];
 
 // ── CENÁRIOS COMPLETOS
 const CENARIOS=[
+  // ── DATAFOLHA SETEMBRO 2026 (3ª ED.) — divulgado 17/set ──
+  {t:'Datafolha (3ª set.): 1T — Set/2026',turno:'1t',inst:'Datafolha',mes:'set26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:39},{n:'Flávio (PL)',cor:C.fl,p:36},{n:'Augusto Cury (Avante)',cor:C.cu,p:6},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:4},{n:'Renan Santos (Missão)',cor:C.re,p:3},{n:'Romeu Zema (Novo)',cor:C.ze,p:2}],
+    nota:'Datafolha · 15–16 set/2026 · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set · Flávio ▲ +1pp vs 2ª set (35%→36%) · Lula estável 39% · 76% dos eleitores totalmente decididos'},
+  {t:'Datafolha (3ª set.): 2T — Lula × Flávio (Set/2026)',turno:'2t',inst:'Datafolha',mes:'set26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Flávio Bolsonaro (PL)',cor:C.fl,p:44}],
+    nota:'Datafolha · 15–16 set/2026 · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set · empate técnico (2pp dentro da ME) — resultado idêntico à 2ª set. (8–10 set)'},
+  {t:'Datafolha (3ª set.): 2T — Lula × Cury ★ (Set/2026)',turno:'2t',inst:'Datafolha',mes:'set26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:44},{n:'Augusto Cury (Avante)',cor:C.cu,p:44}],
+    nota:'Datafolha · 15–16 set/2026 · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set · ★ 1ª vez que Cury empata numericamente com Lula no 2T Datafolha! · 44%×44% — empate numérico exato'},
+  {t:'Datafolha (3ª set.): 2T — Lula × Caiado (Set/2026)',turno:'2t',inst:'Datafolha',mes:'set26',temRenan:false,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:42}],
+    nota:'Datafolha · 15–16 set/2026 · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set · Lula +4pp sobre Caiado no 2T'},
+  // ── GERP SETEMBRO 2026 (2ª ED.) — divulgado 17/set ──
+  {t:'GERP (2ª set.): 1T — Set/2026 ★',turno:'1t',inst:'Outros',mes:'set26',temRenan:true,c:[
+    {n:'Flávio (PL)',cor:C.fl,p:40},{n:'Lula (PT)',cor:C.lu,p:37},{n:'Augusto Cury (Avante)',cor:C.cu,p:7},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:3},{n:'Renan Santos (Missão)',cor:C.re,p:2}],
+    nota:'GERP · 14–16 set/2026 · n=2.400 · ME=2pp · TSE BR-00535/2026 · divulgado 17/set · ★ Flávio ▲ +5pp vs GERP 1ª set (35%→40%) · Lula ▲ +3pp (34%→37%) · Renan ▼ -2pp (4%→2%) · Flávio abre 3pp sobre Lula (maior gap no GERP)'},
+  {t:'GERP (2ª set.): 2T — Flávio × Lula ★ (Set/2026)',turno:'2t',inst:'Outros',mes:'set26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:50},{n:'Lula (PT)',cor:C.lu,p:43}],
+    nota:'GERP · 14–16 set/2026 · n=2.400 · ME=2pp · TSE BR-00535/2026 · divulgado 17/set · ★ Flávio abre 7pp sobre Lula no 2T (fora da ME de 2pp) · maior vantagem de Flávio em qualquer 2T no GERP'},
   // ── ATLASINTEL SETEMBRO 2026 (5ª ED.) — divulgado 17/set ──
   {t:'AtlasIntel (5ª): 1T — Set/2026 ★',turno:'1t',inst:'AtlasIntel',mes:'set26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:44.1},{n:'Flávio (PL)',cor:C.fl,p:41.7},{n:'Renan Santos (Missão)',cor:C.re,p:5.1},{n:'Augusto Cury (MDB)',cor:C.cu,p:3.5},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:1.7},{n:'Romeu Zema (Novo)',cor:C.ze,p:1.1}],
@@ -1676,13 +1699,13 @@ const EVOL={
     {n:'Tarcísio (alt.)',cor:C.ta,d:[18,12,null,null,null,null,null,null,null,null,null,null,null,null]},
     {n:'Michelle (alt.)',cor:C.mi,d:[21,16,null,null,null,null,null,null,null,null,null,null,null,null]},
   ]},
-  datafolha:{meses:['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26','Set/26','Set/26 (2ª)'],nota:'Presencial · n≈2.000 · Mai/26=2ª ed. 20-21 mai · Jun/26=17-19 jun · Jul/26=22-24 jul · Ago/26=18-20 ago · TSE BR-04496/2026 · divulgado 21/ago · Set/26=1-3 set · n=2.002 · ME=2pp · TSE BR-03669/2026 · divulgado 3/set · Cury ▲ surge 8% (3º colocado) · Set/26 (2ª)=8-10 set · n=2.002 · ME=2pp · divulgado 11/set · Lula ▲ +1pp (38%→39%) · Flávio ▲ +2pp (33%→35%) · Cury ▼ -2pp (8%→6%) · Renan estável 3%',series:[
-    {n:'Lula',cor:C.lu,d:[41,38,41,40,40,41,40,39,38,39]},
-    {n:'Flávio',cor:C.fl,d:[22,27,33,34,31,31,32,33,33,35]},
-    {n:'Renan Santos',cor:C.re,d:[1,1,3,3,3,3,3,4,3,3],hl:true},
-    {n:'Zema',cor:C.ze,d:[4,4,3,3,3,2,2,3,2,2]},
-    {n:'Caiado',cor:C.ca,d:[3,3,3,3,4,3,3,5,4,4]},
-    {n:'Cury',cor:C.cu,d:[null,null,null,null,null,null,null,null,8,6]},
+  datafolha:{meses:['Nov/25','Jan/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26','Set/26','Set/26 (2ª)','Set/26 (3ª)'],nota:'Presencial · n≈2.000 · Mai/26=2ª ed. 20-21 mai · Jun/26=17-19 jun · Jul/26=22-24 jul · Ago/26=18-20 ago · TSE BR-04496/2026 · divulgado 21/ago · Set/26=1-3 set · n=2.002 · ME=2pp · TSE BR-03669/2026 · divulgado 3/set · Cury ▲ surge 8% (3º colocado) · Set/26 (2ª)=8-10 set · n=2.002 · ME=2pp · divulgado 11/set · Lula ▲ +1pp (38%→39%) · Flávio ▲ +2pp (33%→35%) · Cury ▼ -2pp (8%→6%) · Renan estável 3% · Set/26 (3ª)=15–16 set · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set · Flávio ▲ +1pp (35%→36%) · Lula estável 39% · ★ 2T Lula×Cury: 44%×44% emp. numérico (1ª vez Cury empata com Lula no 2T Datafolha!)',series:[
+    {n:'Lula',cor:C.lu,d:[41,38,41,40,40,41,40,39,38,39,39]},
+    {n:'Flávio',cor:C.fl,d:[22,27,33,34,31,31,32,33,33,35,36]},
+    {n:'Renan Santos',cor:C.re,d:[1,1,3,3,3,3,3,4,3,3,3],hl:true},
+    {n:'Zema',cor:C.ze,d:[4,4,3,3,3,2,2,3,2,2,2]},
+    {n:'Caiado',cor:C.ca,d:[3,3,3,3,4,3,3,5,4,4,4]},
+    {n:'Cury',cor:C.cu,d:[null,null,null,null,null,null,null,null,8,6,6]},
   ]},
   btg:{meses:['Nov/25','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26','Ago/26 (9ª)','Ago/26 (10ª)','Ago/26 (11ª)','Ago/26 (12ª)','Set/26 (13ª)','Set/26 (14ª)'],nota:'Telefônico · n≈2.000 · Jul/26=2ª ed. 24-26 jul (7ª ed.) · Ago/26=8ª ed. 31/jul-2/ago · Ago/26 (9ª)=7–9 ago · Ago/26 (10ª)=14–16 ago · Ago/26 (11ª)=21–23 ago · TSE BR-09028/2026 · Ago/26 (12ª)=28–30 ago · TSE BR-08900/2026 · Cury ▲ salta para 11% · divulgado 31/ago · Set/26 (13ª)=4–7 set · TSE BR-06790/2026 · ★ INÉDITO: Flávio 46%×Lula 45% no 2T (1ª vez Flávio à frente no BTG) · divulgado 8/set · Set/26 (14ª)=11–13 set · TSE BR-04076/2026 · ★ INÉDITO: Cury 45%×Lula 43% no 2T (1ª vez Cury à frente de Lula no BTG!) · divulgado 14/set',series:[
     {n:'Lula',cor:C.lu,d:[42,40,41,41,41,40,42,42,41,40,41,41,39,39,42]},
@@ -1703,10 +1726,10 @@ const EVOL={
 
 // ── RANKINGS
 const RANKINGS={
-  df:{src:'Datafolha · set/2026 2ª ed. (8–10 set · n=2.002 · ME=2pp · divulgado 11/set)',lista:[
-    {n:'Lula',p:'PT',cor:C.lu,pct:39,chg:1,chgT:'▲ +1pp vs Datafolha 1ª set (38%→39%)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:35,chg:2,chgT:'▲ +2pp vs Datafolha 1ª set (33%→35%) · 2T: Lula 46%×Flávio 44% (empate técnico)'},
-    {n:'Augusto Cury',p:'Avante',cor:C.cu,pct:6,chg:-2,chgT:'▼ -2pp vs Datafolha 1ª set (8%→6%) · mantém 3º colocado'},{n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:4,chg:0,chgT:'— estável vs Datafolha 1ª set (4%→4%)'},
-    {n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:0,chgT:'— estável vs Datafolha 1ª set (3%→3%) · 2T: Lula 47%×Renan 38% (Renan ▲ +5pp no 2T vs ago/33%)',hl:true},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:2,chg:0,chgT:'— estável vs Datafolha 1ª set (2%→2%)'}]},
+  df:{src:'Datafolha · set/2026 3ª ed. (15–16 set · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set)',lista:[
+    {n:'Lula',p:'PT',cor:C.lu,pct:39,chg:0,chgT:'— estável vs Datafolha 2ª set (39%→39%) · 2T: Lula 46%×Flávio 44% (empate técnico — estável)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:36,chg:1,chgT:'▲ +1pp vs Datafolha 2ª set (35%→36%) · 2T: Lula 46%×Flávio 44% (empate técnico)'},
+    {n:'Augusto Cury',p:'Avante',cor:C.cu,pct:6,chg:0,chgT:'— estável vs Datafolha 2ª set (6%→6%) · mantém 3º colocado · ★ 2T Lula×Cury: 44%×44% emp. numérico (1ª vez Cury empata com Lula no 2T Datafolha!)'},{n:'Ronaldo Caiado',p:'PSD',cor:C.ca,pct:4,chg:0,chgT:'— estável vs Datafolha 2ª set (4%→4%) · 2T Lula×Caiado: 46%×42%'},
+    {n:'Renan Santos',p:'Missão',cor:C.re,pct:3,chg:0,chgT:'— estável vs Datafolha 2ª set (3%→3%)',hl:true},{n:'Romeu Zema',p:'Novo',cor:C.ze,pct:2,chg:0,chgT:'— estável vs Datafolha 2ª set (2%→2%)'}]},
   qu:{src:'Quaest · set/2026 (3ª ed. · 10–13 set · n=2.004 · ME=2pp · TSE BR-03607/2026 · divulgado 14/set)',lista:[
     {n:'Lula',p:'PT',cor:C.lu,pct:36,chg:-1,chgT:'▼ -1pp vs Quaest 2ª set (37%→36%)'},{n:'Flávio Bolsonaro',p:'PL',cor:C.fl,pct:31,chg:+1,chgT:'▲ +1pp vs Quaest 2ª set (30%→31%) · 2T: Flávio 42%×Lula 40% emp. técnico (★ 2ª vez Flávio à frente numericamente no 2T Quaest!)'},
     {n:'Augusto Cury',p:'Avante',cor:C.cu,pct:7,chg:-3,chgT:'▼ -3pp vs Quaest 2ª set (10%→7%) · mantém 3º colocado'},{n:'Renan Santos',p:'Missão',cor:C.re,pct:4,chg:+1,chgT:'▲ +1pp vs Quaest 2ª set (3%→4%) · empata com Caiado',hl:true},
@@ -1742,7 +1765,8 @@ const ESTADOS=[
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'jul/26',t1:[{n:'Lula',cor:C.lu,p:41.6},{n:'Flávio',cor:C.fl,p:38.6},{n:'Renan',cor:C.re,p:1.6},{n:'Daciolo',cor:C.ot,p:1.3},{n:'Zema',cor:C.ze,p:1.3},{n:'Caiado',cor:C.ca,p:1.3}],t2:[{n:'Lula',cor:C.lu,p:44.7},{n:'Flávio',cor:C.fl,p:44.4}]},
   {nome:'Rio de Janeiro',reg:'sudeste',inst:'Paraná Pesq.',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:36.9},{n:'Lula',cor:C.lu,p:36.7},{n:'Zema',cor:C.ze,p:5},{n:'Renan',cor:C.re,p:4},{n:'Caiado',cor:C.ca,p:3}],t2:[{n:'Flávio',cor:C.fl,p:47},{n:'Lula',cor:C.lu,p:40.5}]},
   {nome:'Espírito Santo ★',reg:'sudeste',inst:'Quaest',data:'ago/26',t1:[{n:'Flávio',cor:C.fl,p:37},{n:'Lula',cor:C.lu,p:30},{n:'Renan',cor:C.re,p:4},{n:'Caiado',cor:C.ca,p:3},{n:'Zema',cor:C.ze,p:2}],t2:[]},
-  {nome:'Paraná ★',reg:'sul',inst:'Real Time Big Data',data:'ago/26 (1ª)',t1:[{n:'Flávio',cor:C.fl,p:44},{n:'Lula',cor:C.lu,p:31},{n:'Renan',cor:C.re,p:7},{n:'Caiado',cor:C.ca,p:4},{n:'Zema',cor:C.ze,p:2}],t2:[{n:'Flávio',cor:C.fl,p:52},{n:'Lula',cor:C.lu,p:35}]},
+  {nome:'Paraná ★',reg:'sul',inst:'AtlasIntel',data:'set/26',t1:[{n:'Flávio',cor:C.fl,p:53.7},{n:'Lula',cor:C.lu,p:34.0},{n:'Cury',cor:C.cu,p:4.1},{n:'Caiado',cor:C.ca,p:2.2},{n:'Zema',cor:C.ze,p:1.8},{n:'Renan',cor:C.re,p:1.7}],t2:[]},
+  {nome:'Paraná',reg:'sul',inst:'Real Time Big Data',data:'ago/26 (1ª)',t1:[{n:'Flávio',cor:C.fl,p:44},{n:'Lula',cor:C.lu,p:31},{n:'Renan',cor:C.re,p:7},{n:'Caiado',cor:C.ca,p:4},{n:'Zema',cor:C.ze,p:2}],t2:[{n:'Flávio',cor:C.fl,p:52},{n:'Lula',cor:C.lu,p:35}]},
   {nome:'Paraná',reg:'sul',inst:'Real Time Big Data',data:'ago/26 (2ª)',t1:[{n:'Flávio',cor:C.fl,p:44},{n:'Lula',cor:C.lu,p:30},{n:'Renan',cor:C.re,p:4},{n:'Caiado',cor:C.ca,p:4},{n:'Zema',cor:C.ze,p:2}],t2:[{n:'Flávio',cor:C.fl,p:52},{n:'Lula',cor:C.lu,p:34}]},
   {nome:'Paraná',reg:'sul',inst:'Quaest',data:'abr/26',t1:[{n:'Flávio',cor:C.fl,p:45},{n:'Lula',cor:C.lu,p:23},{n:'Zema',cor:C.ze,p:8},{n:'Caiado',cor:C.ca,p:5},{n:'Renan',cor:C.re,p:4}],t2:[{n:'Flávio',cor:C.fl,p:62},{n:'Lula',cor:C.lu,p:38}]},
   {nome:'Rio G. do Sul ★',reg:'sul',inst:'Real Time Big Data',data:'set/26',t1:[{n:'Flávio',cor:C.fl,p:42},{n:'Lula',cor:C.lu,p:39},{n:'Renan',cor:C.re,p:5},{n:'Cury',cor:C.cu,p:5},{n:'Caiado',cor:C.ca,p:2},{n:'Zema',cor:C.ze,p:1}],t2:[]},
@@ -1770,6 +1794,8 @@ const ATLAS_ESTADOS=[
     {n:'Lula (PT)',cor:C.lu,p:63.9},{n:'Flávio (PL)',cor:C.fl,p:15.0}]},
   {estado:'Pará',uf:'PA',reg:'Norte',data:'ago/26',n:1197,me:3,t1:[
     {n:'Lula (PT)',cor:C.lu,p:48.9},{n:'Flávio (PL)',cor:C.fl,p:37.4},{n:'Renan (Missão)',cor:C.re,p:5.9},{n:'Caiado (PSD)',cor:C.ca,p:2.5},{n:'Cury (Avante)',cor:C.cu,p:1.7},{n:'Zema (Novo)',cor:C.ze,p:1.3}]},
+  {estado:'Paraná',uf:'PR',reg:'Sul',data:'set/26',n:1794,me:2,t1:[
+    {n:'Flávio (PL)',cor:C.fl,p:53.7},{n:'Lula (PT)',cor:C.lu,p:34.0},{n:'Cury (Avante)',cor:C.cu,p:4.1},{n:'Caiado (PSD)',cor:C.ca,p:2.2},{n:'Zema (Novo)',cor:C.ze,p:1.8},{n:'Renan (Missão)',cor:C.re,p:1.7}]},
 ];
 
 // ── ATLAS DADOS REGIONAIS (extraídos do PDF oficial AtlasIntel/Bloomberg abr/26 — Cenário 1: Lula×Flávio×Renan×Caiado×Zema)
@@ -1801,6 +1827,9 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Datafolha (set. 3ª)',c:'15–16 set 2026',mes:'set26',a:'nac',lu:'39%',fl:'36%',re:'3%',ze:'2%',ca:'4%',ou:'— Flávio ▲ +1pp vs 2ª set (35%→36%) · Lula estável 39% · Cury 6% (estável) · 2T Lula×Flávio: 46%×44% emp. técnico (estável) · ★ 2T Lula×Cury: 44%×44% emp. numérico (1ª vez Cury empata com Lula no 2T Datafolha!) · 2T Lula×Caiado: 46%×42% · 76% eleitores totalmente decididos · presencial domiciliar · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set/26',n:'2.002',tse:'BR-04029/2026',ano:'2026'},
+  {i:'GERP (set. 2ª)',c:'14–16 set 2026',mes:'set26',a:'nac',lu:'37%',fl:'40%',re:'2%',ze:'—',ca:'3%',ou:'▼ -2pp vs GERP 1ª set (4%→2%) · Flávio ▲ +5pp vs GERP 1ª set (35%→40%) · Lula ▲ +3pp (34%→37%) · Cury 7% · 2T Lula×Flávio: Flávio 50%×Lula 43% (+7pp fora da ME) · n=2.400 · ME=2pp · TSE BR-00535/2026 · divulgado 17/set/26',n:'2.400',tse:'BR-00535/2026',ano:'2026'},
+  {i:'AtlasIntel PR (estadual)',c:'11–16 set 2026',mes:'set26',a:'est',lu:'34,0%',fl:'53,7%',re:'1,7%',ze:'1,8%',ca:'2,2%',ou:'★ estadual Paraná · Flávio 53,7%×Lula 34%×Cury 4,1%×Caiado 2,2%×Zema 1,8%×Renan 1,7% · Lula ▲ +6,2pp (27,8%→34%) · Flávio ▼ -2,1pp (55,8%→53,7%) · online · n=1.794 · ME=2pp · divulgado 17/set/26',n:'1.794',tse:'—',ano:'2026'},
   {i:'AtlasIntel/Bloomberg (set. 5ª)',c:'11–16 set 2026',mes:'set26',a:'nac',lu:'44,1%',fl:'41,7%',re:'5,1%',ze:'1,1%',ca:'1,7%',ou:'★ Renan volta ao 3º (Cury ▼ cai p/ 4º 3,5%) · Flávio ▲ +4,3pp (37,4%→41,7%) RECORDE · Lula ▲ +1,1pp (43%→44,1%) · ★ 2T: Flávio 47,2%×Lula 46,8% emp. técnico (2ª vez Flávio à frente no Atlas!) · Lula vence apenas Renan e Cury no 2T · online · n=5.018 · ME=1pp · TSE BR-06221/2026 · divulgado 17/set/26',n:'5.018',tse:'BR-06221/2026',ano:'2026'},
   {i:'PoderData/AYA (7ª ed.)',c:'13–16 set 2026',mes:'set26',a:'nac',lu:'37%',fl:'36%',re:'3%',ze:'—',ca:'3%',ou:'— estável vs PoderData 6ª set (3%→3%) · Cury 8% (3º colocado) · 1T: Lula 37%×Flávio 36%×Cury 8%×Renan 3%=Caiado 3% · ★ 2T Lula×Flávio: Flávio 46%×Lula 44% emp. técnico · 658 municípios · 27 UFs · n=3.000 · ME=1,8pp · TSE BR-00360/2026 · divulgado 17/set/26',n:'3.000',tse:'BR-00360/2026',ano:'2026'},
   {i:'CNT/MDA (set.)',c:'9–13 set 2026',mes:'set26',a:'nac',lu:'40,5%',fl:'30,4%',re:'2,7%',ze:'1%',ca:'3%',ou:'▼ -0,1pp vs CNT/MDA ago (2,8%→2,7%) · Cury 6% · 1T: Lula 40,5%×Flávio 30,4%×Cury 6%×Caiado 3%×Renan 2,7%×Zema 1% · 2T Lula×Flávio: 47,3%×40% (Lula +7,3pp) · 2T Lula×Cury: 45,3%×38,4% · 2T Lula×Caiado: 46,4%×37,3% · 2T Lula×Renan: 47,3%×33,9% (15,7% branco/nulo, 3,1% NS/NR) · 2T Lula×Zema: 47,7%×34,5% · rejeição: Flávio 44,2%·Lula 41,1% · 170ª rodada · presencial domiciliar · 143 municípios · 27 UFs · n=2.002 · ME=2,2pp · TSE BR-06902/2026 · divulgado 15/set/26',n:'2.002',tse:'BR-06902/2026',ano:'2026'},
