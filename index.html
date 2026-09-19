@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 18 set 2026</div>
+    <div class="hbadge">Atualizado: 19 set 2026</div>
   </div>
 </header>
 
@@ -662,6 +662,7 @@ const RENAN_TL=[
   {m:'Set/26',mes:'set26',i:'Datafolha (3ª set.)',p:3.0,v:'— estável vs Datafolha 2ª set (3%→3%) · Flávio ▲ +1pp (35%→36%) · Lula estável 39% · 1T: Lula 39%×Flávio 36%×Cury 6%×Caiado 4%×Renan 3%×Zema 2% · 2T Lula×Flávio: 46%×44% emp. técnico (estável) · ★ 2T Lula×Cury: 44%×44% emp. numérico (1ª vez Cury empata com Lula no 2T Datafolha!) · 2T Lula×Caiado: 46%×42% · 76% eleitores totalmente decididos · campo: 15–16/set · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set',g:'Datafolha'},
   {m:'Set/26',mes:'set26',i:'GERP (set. 2ª)',p:2.0,v:'▼ -2pp vs GERP 1ª set (4%→2%) · Flávio ▲ +5pp vs GERP 1ª set (35%→40%) · Lula ▲ +3pp (34%→37%) · Cury 7% · 1T: Flávio 40%×Lula 37%×Cury 7%×Caiado 3%×Renan 2% · ★ 2T Lula×Flávio: Flávio 50%×Lula 43% (+7pp fora da ME) · campo: 14–16/set · n=2.400 · ME=2pp · TSE BR-00535/2026 · divulgado 17/set',g:'Outros'},
   {m:'Set/26',mes:'set26',i:'AtlasIntel (PR estadual)',p:1.7,v:'★ estadual PR · Flávio 53,7%×Lula 34%×Cury 4,1%×Caiado 2,2%×Zema 1,8%×Renan 1,7% · Lula ▲ +6,2pp (27,8%→34%) · Flávio ▼ -2,1pp (55,8%→53,7%) · campo: 11–16/set · n=1.794 · ME=2pp · divulgado 17/set',g:'AtlasIntel'},
+  {m:'Set/26',mes:'set26',i:'Futura/100% Cidades (3ª set.)',p:3.4,v:'▲ +0,6pp vs Futura 2ª set (2,8%→3,4%) · 1T: Lula 38,3%×Flávio 37,7%×Renan 3,4% · Flávio ▲ +4,1pp (33,6%→37,7%) · 2T Lula×Flávio: Flávio 48,1%×Lula 43,7% (+4,4pp fora da ME) · rejeição: Lula 49,7%×Flávio 45,3% · campo: 11–15/set · n=2.000 · ME=2,2pp · divulgado 17/set',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -700,6 +701,23 @@ const CENARIOS=[
   {t:'PoderData/AYA (7ª): 2T — Flávio × Lula (Set/2026)',turno:'2t',inst:'Outros',mes:'set26',temRenan:false,c:[
     {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:46},{n:'Lula (PT)',cor:C.lu,p:44}],
     nota:'PoderData/AYA · 13–16 set/2026 · n=3.000 · ME=1,8pp · TSE BR-00360/2026 · divulgado 17/set · Flávio 46%×Lula 44% — Flávio 2pp à frente (empate técnico na ME 1,8pp)'},
+  // ── FUTURA/100% CIDADES SETEMBRO 2026 (3ª ED.) — divulgado 17/set ──
+  {t:'Futura/100% Cidades (3ª set.): 1T — Set/2026',turno:'1t',inst:'Outros',mes:'set26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:38.3},{n:'Flávio (PL)',cor:C.fl,p:37.7},{n:'Renan Santos (Missão)',cor:C.re,p:3.4}],
+    nota:'Futura/100% Cidades · 11–15 set/2026 · n=2.000 · ME=2,2pp · divulgado 17/set · Lula=Flávio emp. técnico no 1T (0,6pp dentro da ME 2,2pp) · Renan ▲ +0,6pp vs Futura 2ª set (2,8%→3,4%) · rejeição: Lula 49,7%×Flávio 45,3%'},
+  {t:'Futura/100% Cidades (3ª set.): 2T — Flávio × Lula ★ (Set/2026)',turno:'2t',inst:'Outros',mes:'set26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:48.1},{n:'Lula (PT)',cor:C.lu,p:43.7}],
+    nota:'Futura/100% Cidades · 11–15 set/2026 · n=2.000 · ME=2,2pp · divulgado 17/set · ★ Flávio 48,1%×Lula 43,7% — Flávio +4,4pp FORA da ME (2,2pp) · maior vantagem de Flávio no 2T na série Futura'},
+  // ── FUTURA/100% CIDADES SETEMBRO 2026 (2ª ED.) — divulgado 11/set ──
+  {t:'Futura/100% Cidades (2ª set.): 1T — Set/2026',turno:'1t',inst:'Outros',mes:'set26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:39.2},{n:'Flávio (PL)',cor:C.fl,p:33.6},{n:'Augusto Cury (Avante)',cor:C.cu,p:9.9},{n:'Renan Santos (Missão)',cor:C.re,p:2.8}],
+    nota:'Futura/100% Cidades · 4–10 set/2026 · n=2.000 · ME=2,2pp · divulgado 11/set · ★ INÉDITO: Flávio 45,4%×Lula 45% no 2T (1ª vez Flávio à frente na Futura no 2T!) · Renan estável 2,8% vs Futura 1ª set'},
+  {t:'Futura/100% Cidades (2ª set.): 2T — Flávio × Lula ★ (Set/2026 — 1ª vez Flávio à frente na Futura)',turno:'2t',inst:'Outros',mes:'set26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:45.4},{n:'Lula (PT)',cor:C.lu,p:45.0}],
+    nota:'Futura/100% Cidades · 4–10 set/2026 · n=2.000 · ME=2,2pp · divulgado 11/set · ★ INÉDITO: 1ª vez que Flávio aparece numericamente à frente de Lula no 2T na série Futura! · 45,4%×45% — empate técnico (ME 2,2pp)'},
+  {t:'Futura/100% Cidades (2ª set.): 2T — Lula × Renan Santos (Set/2026)',turno:'2t',inst:'Outros',mes:'set26',temRenan:true,c:[
+    {n:'Lula (PT)',cor:C.lu,p:46.1},{n:'Renan Santos (Missão)',cor:C.re,p:37.6}],
+    nota:'Futura/100% Cidades · 4–10 set/2026 · n=2.000 · ME=2,2pp · divulgado 11/set · 2T Lula×Renan: Lula 46,1%×Renan 37,6% (▲ +1pp vs Futura 1ª set/36,6%)'},
   // ── ATLASINTEL SETEMBRO 2026 (4ª ED.) ──
   {t:'AtlasIntel: 1T — Set/2026 (4ª ed.) ★',turno:'1t',inst:'AtlasIntel',mes:'set26',temRenan:true,c:[
     {n:'Lula (PT)',cor:C.lu,p:43},{n:'Flávio (PL)',cor:C.fl,p:37.4},{n:'Augusto Cury (MDB)',cor:C.cu,p:6.6},{n:'Renan Santos (Missão)',cor:C.re,p:6.5}],
@@ -1827,6 +1845,8 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Futura/100% Cidades (set. 3ª)',c:'11–15 set 2026',mes:'set26',a:'nac',lu:'38,3%',fl:'37,7%',re:'3,4%',ze:'—',ca:'—',ou:'▲ +0,6pp vs Futura 2ª set (2,8%→3,4%) · Flávio ▲ +4,1pp (33,6%→37,7%) · Lula=Flávio emp. técnico no 1T (0,6pp dentro da ME 2,2pp) · 2T Lula×Flávio: Flávio 48,1%×Lula 43,7% (+4,4pp fora da ME) · rejeição: Lula 49,7%×Flávio 45,3% · CATI · n=2.000 · ME=2,2pp · divulgado 17/set/26',n:'2.000',tse:'—',ano:'2026'},
+  {i:'Futura/100% Cidades (set. 2ª)',c:'4–10 set 2026',mes:'set26',a:'nac',lu:'39,2%',fl:'33,6%',re:'2,8%',ze:'—',ca:'—',ou:'Cury 9,9% · ★ INÉDITO: 2T Lula×Flávio: Flávio 45,4%×Lula 45% (1ª vez Flávio à frente na Futura no 2T!) · 2T Lula×Renan: Lula 46,1%×Renan 37,6% · 2T Lula×Caiado: 43,7%×42,8% emp. técnico · CATI · n=2.000 · ME=2,2pp · divulgado 11/set/26',n:'2.000',tse:'—',ano:'2026'},
   {i:'Datafolha (set. 3ª)',c:'15–16 set 2026',mes:'set26',a:'nac',lu:'39%',fl:'36%',re:'3%',ze:'2%',ca:'4%',ou:'— Flávio ▲ +1pp vs 2ª set (35%→36%) · Lula estável 39% · Cury 6% (estável) · 2T Lula×Flávio: 46%×44% emp. técnico (estável) · ★ 2T Lula×Cury: 44%×44% emp. numérico (1ª vez Cury empata com Lula no 2T Datafolha!) · 2T Lula×Caiado: 46%×42% · 76% eleitores totalmente decididos · presencial domiciliar · n=2.002 · ME=2pp · TSE BR-04029/2026 · divulgado 17/set/26',n:'2.002',tse:'BR-04029/2026',ano:'2026'},
   {i:'GERP (set. 2ª)',c:'14–16 set 2026',mes:'set26',a:'nac',lu:'37%',fl:'40%',re:'2%',ze:'—',ca:'3%',ou:'▼ -2pp vs GERP 1ª set (4%→2%) · Flávio ▲ +5pp vs GERP 1ª set (35%→40%) · Lula ▲ +3pp (34%→37%) · Cury 7% · 2T Lula×Flávio: Flávio 50%×Lula 43% (+7pp fora da ME) · n=2.400 · ME=2pp · TSE BR-00535/2026 · divulgado 17/set/26',n:'2.400',tse:'BR-00535/2026',ano:'2026'},
   {i:'AtlasIntel PR (estadual)',c:'11–16 set 2026',mes:'set26',a:'est',lu:'34,0%',fl:'53,7%',re:'1,7%',ze:'1,8%',ca:'2,2%',ou:'★ estadual Paraná · Flávio 53,7%×Lula 34%×Cury 4,1%×Caiado 2,2%×Zema 1,8%×Renan 1,7% · Lula ▲ +6,2pp (27,8%→34%) · Flávio ▼ -2,1pp (55,8%→53,7%) · online · n=1.794 · ME=2pp · divulgado 17/set/26',n:'1.794',tse:'—',ano:'2026'},
