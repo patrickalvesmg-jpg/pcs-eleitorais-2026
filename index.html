@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 29 set 2026</div>
+    <div class="hbadge">Atualizado: 30 set 2026</div>
   </div>
 </header>
 
@@ -423,7 +423,7 @@
     <button class="fbtn" onclick="setEvolC('top3',this)">Top 3</button>
   </div>
 
-  <div class="st">Evolução mensal <em>1º Turno</em> <small>· out/2025 a ago/2026</small></div>
+  <div class="st">Evolução mensal <em>1º Turno</em> <small>· out/2025 a set/2026</small></div>
   <div class="ch-card">
     <div class="ch-leg" id="evol-leg"></div>
     <div class="ch-h"><canvas id="evol-ch"></canvas></div>
@@ -685,10 +685,26 @@ const RENAN_TL=[
   {m:'Set/26',mes:'set26',i:'BTG/Nexus (16ª ed.)',p:3.0,v:'— estável est. vs BTG 15ª (3%→3%) · ★ Lula retoma +5pp no 1T (40%→42%) · 1T: Lula 42%×Flávio 37% · ★ 2T Lula×Flávio: Lula 46%×Flávio 44% emp. técnico (Lula retoma vantagem numérica!) · 2T Lula×Renan: Lula 48%×Renan 37% (▼ -2pp vs BTG 15ª/39%) · campo: 25–27/set · n=2.000 · ME=2pp · TSE BR-07557/2026 · divulgado 28/set',g:'BTG'},
   {m:'Set/26',mes:'set26',i:'Quaest/Genial (5ª ed.)',p:3.0,v:'— estável vs Quaest 4ª (3%→3%) · 1T: Lula 39%×Flávio 34%×Cury 4%×Caiado 4%×Renan 3%×Zema 1% · ★ 2T Lula×Flávio: 42%×42% emp. numérico (1ª vez empate numérico exato no 2T Quaest!) · 2T Lula×Renan: Lula 41%×Renan 38% · campo: 24–27/set · n=2.004 · ME=2pp · TSE BR-06520/2026 · divulgado 28/set',g:'Quaest'},
   {m:'Set/26',mes:'set26',i:'AtlasIntel/Bloomberg (7ª ed.)',p:5.2,v:'▲ +0,7pp vs Atlas 6ª (4,5%→5,2%) · 1T: Lula 45,3%×Flávio 42,2%×Renan 5,2% · ★ 2T Lula×Flávio: Lula 50,2%×Flávio 49,8% emp. técnico quase perfeito · Lula vence apenas Renan e Cury no 2T · campo: 23–28/set · n=5.005 · ME=1pp · divulgado 29/set',g:'AtlasIntel'},
+  {m:'Set/26',mes:'set26',i:'GERP (set. 3ª)',p:4.0,v:'▲ +2pp vs GERP 2ª set (2%→4%) · 3º colocado · votos válidos · 1T: Flávio 44%×Lula 42%×Renan 4% · 2T Flávio×Lula: Flávio 47%×Lula 40% (+7pp) · n=2.400 · ME=2pp · divulgado 29/set',g:'Outros'},
+  {m:'Set/26',mes:'set26',i:'Palver (set. 3ª) ⚠️',p:10.0,v:'▼ -1pp vs Palver 2ª set (11%→10%) · 1T: Flávio=Lula 44%×Renan 10% · 2T Flávio×Lula: Flávio 47%×Lula 45% emp. técnico · online não-probabilístico · n=5.000 · ME=2,5pp · divulgado 29/set',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
 const CENARIOS=[
+  // ── PALVER SETEMBRO 2026 (3ª ED.) ⚠️ — divulgado 29/set ──
+  {t:'Palver ⚠️ (set. 3ª): 1T — Set/2026',turno:'1t',inst:'Outros',mes:'set26',temRenan:true,c:[
+    {n:'Flávio (PL)',cor:C.fl,p:44},{n:'Lula (PT)',cor:C.lu,p:44},{n:'Renan Santos (Missão)',cor:C.re,p:10}],
+    nota:'⚠️ Palver · online não-probabilístico · 24–28 set/2026 · n=5.000 · ME=2,5pp · divulgado 29/set · Renan ▼ -1pp vs Palver 2ª set (11%→10%) · 1T: Flávio=Lula 44% emp. numérico×Renan 10% · ⚠️ amostra por conveniência via redes sociais · avaliar c/ cautela'},
+  {t:'Palver ⚠️ (set. 3ª): 2T — Flávio × Lula (Set/2026)',turno:'2t',inst:'Outros',mes:'set26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:47},{n:'Lula (PT)',cor:C.lu,p:45}],
+    nota:'⚠️ Palver · online não-probabilístico · 24–28 set/2026 · n=5.000 · ME=2,5pp · divulgado 29/set · Flávio 47%×Lula 45% — empate técnico (ME 2,5pp)'},
+  // ── GERP SETEMBRO 2026 (3ª ED.) — divulgado 29/set ──
+  {t:'GERP (set. 3ª): 1T — Set/2026 (votos válidos)',turno:'1t',inst:'Outros',mes:'set26',temRenan:true,c:[
+    {n:'Flávio (PL)',cor:C.fl,p:44},{n:'Lula (PT)',cor:C.lu,p:42},{n:'Renan Santos (Missão)',cor:C.re,p:4}],
+    nota:'GERP · 24–28 set/2026 · n=2.400 · ME=2pp · divulgado 29/set · Flávio 44%×Lula 42% (emp. técnico ME 2pp) · Renan 4% (3º colocado) · Flávio ▲ +4pp vs GERP 2ª set (40%→44%) · Lula ▲ +5pp (37%→42%)'},
+  {t:'GERP (set. 3ª): 2T — Flávio × Lula (Set/2026)',turno:'2t',inst:'Outros',mes:'set26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:47},{n:'Lula (PT)',cor:C.lu,p:40}],
+    nota:'GERP · 24–28 set/2026 · n=2.400 · ME=2pp · divulgado 29/set · Flávio 47%×Lula 40% (+7pp — fora da ME 2pp)'},
   // ── VERITÁ SETEMBRO 2026 (3ª ED.) — divulgado 26/set ──
   {t:'Veritá (set. 3ª): 1T — Set/2026 (votos válidos)',turno:'1t',inst:'Outros',mes:'set26',temRenan:false,c:[
     {n:'Flávio (PL)',cor:C.fl,p:45.5},{n:'Lula (PT)',cor:C.lu,p:41.8}],
@@ -1988,8 +2004,9 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'Palver (set. 3ª) ⚠️',c:'24–28 set 2026',mes:'set26',a:'nac',lu:'44%',fl:'44%',re:'10%',ze:'—',ca:'—',ou:'⚠️ online não-probabilístico · Renan ▼ -1pp vs Palver 2ª set (11%→10%) · 1T: Flávio=Lula 44% emp. numérico×Renan 10% · ★ 2T Flávio×Lula: Flávio 47%×Lula 45% emp. técnico (ME 2,5pp) · n=5.000 · ME=2,5pp · ⚠️ avaliar c/ cautela: amostra por conveniência via redes sociais · divulgado 29/set/26',n:'5.000',tse:'—',ano:'2026'},
   {i:'AtlasIntel/Bloomberg (set. 7ª)',c:'23–28 set 2026',mes:'set26',a:'nac',lu:'45,3%',fl:'42,2%',re:'5,2%',ze:'—',ca:'—',ou:'▲ +0,7pp vs Atlas 6ª set (4,5%→5,2%) · Flávio ▼ -1,2pp (43,4%→42,2%) · Lula ▼ -0,5pp (45,8%→45,3%) · ★ 2T Lula×Flávio: Lula 50,2%×Flávio 49,8% emp. técnico quase perfeito · Lula vence apenas Renan e Cury no 2T · online · n=5.005 · ME=1pp · divulgado 29/set/26',n:'5.005',tse:'—',ano:'2026'},
-  {i:'GERP (set. 3ª)',c:'24–28 set 2026',mes:'set26',a:'nac',lu:'42%',fl:'44%',re:'—',ze:'—',ca:'—',ou:'Flávio ▲ +4pp vs GERP 2ª set (40%→44%) · Lula ▲ +5pp (37%→42%) · Flávio 2pp à frente de Lula (empate técnico ME 2pp) · n=2.400 · ME=2pp · divulgado 29/set/26',n:'2.400',tse:'—',ano:'2026'},
+  {i:'GERP (set. 3ª)',c:'24–28 set 2026',mes:'set26',a:'nac',lu:'42%',fl:'44%',re:'4%',ze:'—',ca:'—',ou:'Renan ▲ +2pp vs GERP 2ª set (2%→4%) · Flávio ▲ +4pp vs GERP 2ª set (40%→44%) · Lula ▲ +5pp (37%→42%) · Flávio 2pp à frente de Lula (empate técnico ME 2pp) · 2T Flávio×Lula: Flávio 47%×Lula 40% (+7pp) · n=2.400 · ME=2pp · divulgado 29/set/26',n:'2.400',tse:'—',ano:'2026'},
   {i:'Quaest/Genial (set. 5ª)',c:'24–27 set 2026',mes:'set26',a:'nac',lu:'39%',fl:'34%',re:'3%',ze:'1%',ca:'4%',ou:'— estável vs Quaest 4ª set (3%→3%) · Lula ▲ +2pp (37%→39%) · Flávio ▲ +1pp (33%→34%) · Cury ▼ -2pp (6%→4%) · Caiado estável 4% · ★ 2T Lula×Flávio: 42%×42% emp. numérico (1ª vez empate perfeito no 2T Quaest!) · 2T Lula×Renan: Lula 41%×Renan 38% · 2T Lula×Caiado: Lula 41%×Caiado 39% · 2T Lula×Cury: Lula 39%×Cury 35% · telefônico · n=2.004 · ME=2pp · TSE BR-06520/2026 · divulgado 28/set/26',n:'2.004',tse:'BR-06520/2026',ano:'2026'},
   {i:'BTG/Nexus (16ª ed.)',c:'25–27 set 2026',mes:'set26',a:'nac',lu:'42%',fl:'37%',re:'3%',ze:'—',ca:'—',ou:'— estável est. vs BTG 15ª set (3%→3%) · ★ Lula retoma +5pp no 1T (40%→42%)! · 1T: Lula 42%×Flávio 37% · ★ 2T Lula×Flávio: Lula 46%×Flávio 44% emp. técnico (Lula retoma vantagem numérica vs BTG 15ª onde Flávio 46%×Lula 45%!) · 2T Lula×Renan: Lula 48%×Renan 37% (▼ -2pp vs BTG 15ª/39%) · BTG Pactual+Nexus · telefônico · n=2.000 · ME=2pp · TSE BR-07557/2026 · divulgado 28/set/26',n:'2.000',tse:'BR-07557/2026',ano:'2026'},
   {i:'Veritá (set. 3ª)',c:'20–25 set 2026',mes:'set26',a:'nac',lu:'41,8%',fl:'45,5%',re:'—',ze:'—',ca:'—',ou:'Flávio lidera com 45,5% votos válidos×Lula 41,8% · Flávio ▲ +1,55pp vs Veritá 2ª (43,95%→45,5%) · ★ 2T: Lula perde para Flávio no 2T (CNN); com Marçal no pleito, empate no 1T · ligação celular · campo: 20–25/set · n=40.500 · ME≈2pp · TSE BR-04467/2026 · divulgado 26/set/26',n:'40.500',tse:'BR-04467/2026',ano:'2026'},
