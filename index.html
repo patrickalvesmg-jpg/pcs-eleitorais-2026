@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 02 out 2026</div>
+    <div class="hbadge">Atualizado: 03 out 2026</div>
   </div>
 </header>
 
@@ -692,6 +692,8 @@ const RENAN_TL=[
   {m:'Set/26',mes:'set26',i:'Palver (set. 3ª) ⚠️',p:10.0,v:'▼ -1pp vs Palver 2ª set (11%→10%) · 1T: Flávio=Lula 44%×Renan 10% · 2T Flávio×Lula: Flávio 47%×Lula 45% emp. técnico · online não-probabilístico · n=5.000 · ME=2,5pp · divulgado 29/set',g:'Outros'},
   {m:'Out/26',mes:'out26',i:'Real Time Big Data (out. 3ª nac.)',p:5.0,v:'▼ -1pp vs RT set. 2ª (6%→5%) · ★ ÚLTIMA RT antes do 1T · 1T: Lula 43%×Flávio 39%×Renan 5% (3º) · 2T Flávio×Lula: Flávio 46%×Lula 45% emp. técnico (total) · Flávio 51%×Lula 49% emp. técnico (votos válidos) · 26–30/set · n=2.000 · ME=2pp · divulgado 1/out',g:'Outros'},
   {m:'Out/26',mes:'out26',i:'Datafolha (out. 5ª) ★ÚLTIMA',p:3.0,v:'— estável vs Datafolha 4ª set (3%→3%) · ★ 7ª ed. consecutiva em 3% · ★ ÚLTIMA Datafolha antes do 1T · 1T: Lula 40%×Flávio 36%×Cury 6%×Caiado 4%×Renan 3%×Zema 2% · 2T Lula×Flávio: Lula 47%×Flávio 45% emp. técnico · 28 set–1 out · n=2.506 · ME=2pp · divulgado 1/out',g:'Datafolha'},
+  {m:'Out/26',mes:'out26',i:'GERP (out. véspera 1T)',p:2.0,v:'▼ -2pp vs GERP 3ª set (4%→2%) · 1T: Flávio 46%×Lula 44% emp. técnico (ME 2pp) · 2T Flávio×Lula: Flávio 53%×Lula 47% (+6pp fora da ME) · 30/set–2/out · n=2.400 · ME=2pp · divulgado 3/out',g:'Outros'},
+  {m:'Out/26',mes:'out26',i:'PoderData/AYA (9ª out.)',p:3.0,v:'— estável vs PoderData 8ª set (3%→3%) · véspera 1T · votos válidos: Lula 45%×Flávio 43%×Cury 4%×Renan 3% · total: Lula=Flávio emp. técnico · 30/set–2/out · n=4.000 · ME=1,5pp · TSE BR-03519/2026 · divulgado 3/out',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -1873,6 +1875,13 @@ const CENARIOS=[
   {t:'Real Time Big Data (out. 3ª): 2T — Flávio × Lula (Out/2026)',turno:'2t',inst:'Outros',mes:'out26',temRenan:false,c:[
     {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:46},{n:'Lula (PT)',cor:C.lu,p:45}],
     nota:'Real Time Big Data · 26–30 set/2026 · n=2.000 · ME=2pp · divulgado 1/out · Flávio 46%×Lula 45% (votos totais) — empate técnico · Flávio 51%×Lula 49% (votos válidos) — empate técnico'},
+  // ── GERP OUTUBRO 2026 (VÉSPERA 1T) — divulgado 3/out ──
+  {t:'GERP (out. véspera 1T): 1T — Out/2026 ★ÚLTIMA',turno:'1t',inst:'Outros',mes:'out26',temRenan:true,c:[
+    {n:'Flávio (PL)',cor:C.fl,p:46},{n:'Lula (PT)',cor:C.lu,p:44},{n:'Renan Santos (Missão)',cor:C.re,p:2}],
+    nota:'GERP · 30/set–2/out/2026 · n=2.400 · ME=2pp · divulgado 3/out · ★ VÉSPERA DO 1T · Flávio 46%×Lula 44% emp. técnico (ME 2pp) · Renan ▼ -2pp vs GERP 3ª set (4%→2%) · 1T espontâneo: Flávio 38%×Lula 36%'},
+  {t:'GERP (out. véspera 1T): 2T — Flávio × Lula ★ (Out/2026)',turno:'2t',inst:'Outros',mes:'out26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:53},{n:'Lula (PT)',cor:C.lu,p:47}],
+    nota:'GERP · 30/set–2/out/2026 · n=2.400 · ME=2pp · divulgado 3/out · ★ Flávio 53%×Lula 47% (+6pp fora da ME 2pp) · maior vantagem de Flávio no 2T na série GERP'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -2023,6 +2032,9 @@ const ATLAS_REG_EVOL={
 
 // ── TABELA COMPLETA
 const TABELA=[
+  {i:'GERP (out. véspera 1T)',c:'30 set–2 out 2026',mes:'out26',a:'nac',lu:'44%',fl:'46%',re:'2%',ze:'—',ca:'—',ou:'▼ -2pp vs GERP 3ª set (4%→2%) · ★ véspera 1T · 1T estimulado: Flávio 46%×Lula 44% emp. técnico (ME 2pp) · 1T espontâneo: Flávio 38%×Lula 36% · 2T Flávio×Lula: Flávio 53%×Lula 47% (+6pp fora da ME) · n=2.400 · ME=2pp · divulgado 3/out/26',n:'2.400',tse:'—',ano:'2026'},
+  {i:'PoderData/AYA (9ª out.)',c:'30 set–2 out 2026',mes:'out26',a:'nac',lu:'45%',fl:'43%',re:'3%',ze:'—',ca:'—',ou:'— estável vs PoderData 8ª set (3%→3%) · ★ véspera 1T · votos válidos: Lula 45%×Flávio 43%×Cury 4%×Renan 3% · total: Lula=Flávio emp. técnico · n=4.000 · ME=1,5pp · TSE BR-03519/2026 · divulgado 3/out/26',n:'4.000',tse:'BR-03519/2026',ano:'2026'},
+  {i:'Futura/Apex (out. véspera 1T)',c:'29 set–3 out 2026',mes:'out26',a:'nac',lu:'39,4%',fl:'42,2%',re:'—',ze:'—',ca:'—',ou:'★ véspera 1T · Flávio 42,2%×Lula 39,4% emp. técnico (ME 2,2pp) · Flávio ▲ +1,8pp vs anterior (40,4%→42,2%) · 2T não divulgado · CATI · ME=2,2pp · TSE BR-02431/2026 · divulgado 3/out/26',n:'—',tse:'BR-02431/2026',ano:'2026'},
   {i:'Datafolha (out. 5ª) ★ÚLTIMA',c:'28 set–1 out 2026',mes:'out26',a:'nac',lu:'40%',fl:'36%',re:'3%',ze:'2%',ca:'4%',ou:'Lula ▲ +1pp vs Datafolha 4ª set (39%→40%) · Flávio ▲ +1pp (35%→36%) · Cury 6% (3º) · Caiado 4% · Renan 3% (7ª ed. consecutiva estável) · Zema 2% · ★ 2T Lula×Flávio: Lula 47%×Flávio 45% emp. técnico (estável) · ★ ÚLTIMA pesquisa Datafolha antes do 1T (3 dias da eleição de 4/out) · 1T: Lula 40%×Flávio 36%×Cury 6%×Caiado 4%×Renan 3%×Zema 2% · votos válidos: Lula 45%×Flávio 40% · presencial domiciliar · n=2.506 · ME=2pp · divulgado 1/out/26',n:'2.506',tse:'—',ano:'2026'},
   {i:'Real Time Big Data (out. 3ª nac.)',c:'26–30 set 2026',mes:'out26',a:'nac',lu:'43%',fl:'39%',re:'5%',ze:'—',ca:'—',ou:'★ ÚLTIMA RT antes do 1T · 1T: Lula 43%×Flávio 39%×Renan 5% (3º) · votos válidos 1T: Lula 46%×Flávio 41% · ★ 2T Flávio×Lula: Flávio 46%×Lula 45% emp. técnico (total) · Flávio 51%×Lula 49% emp. técnico (votos válidos) · Renan ▼ -1pp vs RT set. 2ª (6%→5%) · campo: 26–30/set · telefônico/digital · n=2.000 · ME=2pp · divulgado 1/out/26',n:'2.000',tse:'—',ano:'2026'},
   {i:'Palver (set. 3ª) ⚠️',c:'24–28 set 2026',mes:'set26',a:'nac',lu:'44%',fl:'44%',re:'10%',ze:'—',ca:'—',ou:'⚠️ online não-probabilístico · Renan ▼ -1pp vs Palver 2ª set (11%→10%) · 1T: Flávio=Lula 44% emp. numérico×Renan 10% · ★ 2T Flávio×Lula: Flávio 47%×Lula 45% emp. técnico (ME 2,5pp) · n=5.000 · ME=2,5pp · ⚠️ avaliar c/ cautela: amostra por conveniência via redes sociais · divulgado 29/set/26',n:'5.000',tse:'—',ano:'2026'},
