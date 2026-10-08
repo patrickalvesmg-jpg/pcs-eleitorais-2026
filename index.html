@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 07 out 2026</div>
+    <div class="hbadge">Atualizado: 08 out 2026</div>
   </div>
 </header>
 
@@ -702,6 +702,7 @@ const RENAN_TL=[
   {m:'Out/26',mes:'out26',i:'AtlasIntel (out. 8ª)',p:4.6,v:'▼ -0,6pp vs Atlas 7ª set (5,2%→4,6%) · ★ véspera 1T · votos válidos: Lula 47%×Flávio 44,1%×Renan 4,6%×Cury 2,1%×Caiado 1,4% · 2T Lula×Flávio: Lula 50,1%×Flávio 49,9% emp. técnico · 27 set–2 out · n=4.945 · ME=1pp · divulgado 3/out',g:'AtlasIntel'},
   {m:'Out/26',mes:'out26',i:'Datafolha (6ª véspera 1T) ★ÚLTIMA',p:3.0,v:'— est. estável (8ª ed. consecutiva em ~3%) · ★ ÚLTIMA pesquisa Datafolha · ★ véspera do 1T · votos válidos: Lula 45%×Flávio 42%×Renan ~3% est. · 2T Lula×Flávio: Lula 47%×Flávio 46% emp. técnico · n=4.006 (maior amostra da série) · ME=2pp · TSE BR-01708/2026 · campo 3/out · divulgado 3/out',g:'Datafolha'},
   {m:'Out/26',mes:'out26',i:'★ RESULTADO 1T — URNAS (4/out/2026)',p:2.24,v:'▼ RESULTADO OFICIAL: 4º colocado com 2,24% · 2.675.887 votos · Flávio 47,03% (56.104.503)×Lula 45,16% (53.879.538)×Cury 2,89% (3.448.569)×Renan 2,24% (2.675.887)×Caiado 2,18% (2.605.148) · 2T: Flávio vs Lula em 25/out/2026',g:'Resultado'},
+  {m:'Out/26',mes:'out26',i:'PoderData/AYA (10ª - 1ª pós-1T) 2T',p:null,v:'★ 1ª PESQUISA DO 2T pós-apuração · 2T: Flávio 53%×Lula 47% (votos válidos) · Flávio 6pp à frente (fora da ME 1,8pp) · campo: 5–7/out · n=3.000 · ME=1,8pp · TSE BR-08134/2026 · divulgado 8/out',g:'Outros'},
 ];
 
 // ── CENÁRIOS COMPLETOS
@@ -1908,6 +1909,10 @@ const CENARIOS=[
   {t:'★ RESULTADO 1T (4/out/2026): Urnas — 1T',turno:'1t',inst:'Resultado',mes:'out26',temRenan:true,c:[
     {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:47.03},{n:'Lula (PT)',cor:C.lu,p:45.16},{n:'Augusto Cury (Avante)',cor:C.cu,p:2.89},{n:'Renan Santos (Missão)',cor:C.re,p:2.24},{n:'Ronaldo Caiado (PSD)',cor:C.ca,p:2.18}],
     nota:'★★ RESULTADO OFICIAL URNAS 1T · 4/out/2026 · Flávio lidera: 47,03% (56.104.503 votos) · Lula: 45,16% (53.879.538) · Cury: 2,89% (3.448.569) · Renan Santos: 2,24% (2.675.887) · Caiado: 2,18% (2.605.148) · diferença Flávio-Lula: ~2,6 milhões de votos · Flávio venceu: Centro-Oeste (57,16%), Sul · Lula venceu: Nordeste (62,94%), Norte · 2T: Flávio vs Lula · 25/out/2026'},
+  // ── PODERDATA/AYA OUTUBRO 2026 (10ª ED. — 1ª PESQUISA 2T) — divulgado 8/out ──
+  {t:'PoderData/AYA (10ª - 1ª pós-1T): 2T — Flávio × Lula ★★ (Out/2026)',turno:'2t',inst:'Outros',mes:'out26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:53},{n:'Lula (PT)',cor:C.lu,p:47}],
+    nota:'PoderData/AYA · 5–7 out/2026 · n=3.000 · ME=1,8pp · TSE BR-08134/2026 · divulgado 8/out · ★ 1ª pesquisa do 2T pós-resultado do 1T · Flávio 53%×Lula 47% (votos válidos) · Flávio 6pp à frente (+6pp fora da ME 1,8pp) · na véspera do 1T PoderData tinha Lula 45%×Flávio 43% · 2T em 25/out/2026'},
 ];
 
 // ── EVOLUÇÃO MENSAL
