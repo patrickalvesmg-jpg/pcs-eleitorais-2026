@@ -181,7 +181,7 @@
 <header>
   <h1>Eleições <span>2026</span> — Pesquisas Eleitorais</h1>
   <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap">
-    <div class="hbadge">Atualizado: 08 out 2026</div>
+    <div class="hbadge">Atualizado: 09 out 2026</div>
   </div>
 </header>
 
@@ -1913,6 +1913,14 @@ const CENARIOS=[
   {t:'PoderData/AYA (10ª - 1ª pós-1T): 2T — Flávio × Lula ★★ (Out/2026)',turno:'2t',inst:'Outros',mes:'out26',temRenan:false,c:[
     {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:53},{n:'Lula (PT)',cor:C.lu,p:47}],
     nota:'PoderData/AYA · 5–7 out/2026 · n=3.000 · ME=1,8pp · TSE BR-08134/2026 · divulgado 8/out · ★ 1ª pesquisa do 2T pós-resultado do 1T · Flávio 53%×Lula 47% (votos válidos) · Flávio 6pp à frente (+6pp fora da ME 1,8pp) · na véspera do 1T PoderData tinha Lula 45%×Flávio 43% · 2T em 25/out/2026'},
+  // ── DATAFOLHA OUTUBRO 2026 (7ª ED. — 1ª PESQUISA 2T PÓS-1T) — divulgado 8/out ──
+  {t:'Datafolha (7ª - 1ª pós-1T): 2T — Flávio × Lula ★★ (Out/2026)',turno:'2t',inst:'Datafolha',mes:'out26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:52},{n:'Lula (PT)',cor:C.lu,p:48}],
+    nota:'Datafolha · 6–8 out/2026 · ME=2pp · TSE BR-02949/2026 · divulgado 8/out · ★ 1ª pesquisa Datafolha do 2T pós-resultado do 1T · Flávio 52%×Lula 48% (votos válidos) · Flávio 49%×Lula 45% (total) · empate técnico no limite da ME (4pp > ME 2pp) · na véspera 1T Datafolha tinha Lula 47%×Flávio 46% no 2T · 2T em 25/out/2026'},
+  // ── ATLASINTEL/BLOOMBERG OUTUBRO 2026 (9ª ED. — 1ª PESQUISA 2T PÓS-1T) — divulgado 9/out ──
+  {t:'AtlasIntel/Bloomberg (9ª - 1ª pós-1T): 2T — Flávio × Lula ★★ (Out/2026)',turno:'2t',inst:'AtlasIntel',mes:'out26',temRenan:false,c:[
+    {n:'Flávio Bolsonaro (PL)',cor:C.fl,p:52.8},{n:'Lula (PT)',cor:C.lu,p:47.2}],
+    nota:'AtlasIntel/Bloomberg · 3–8 out/2026 · n=5.000 · ME=1pp · divulgado 9/out · ★ 1ª pesquisa AtlasIntel do 2T · Flávio 52,8%×Lula 47,2% (votos válidos) · Flávio 51,1%×Lula 45,7% (total) · brancos/nulos/NS: 3,2% · na véspera 1T Atlas tinha Lula 50,1%×Flávio 49,9% no 2T · 2T em 25/out/2026'},
 ];
 
 // ── EVOLUÇÃO MENSAL
@@ -2064,6 +2072,9 @@ const ATLAS_REG_EVOL={
 // ── TABELA COMPLETA
 const TABELA=[
   {i:'★ RESULTADO 1º TURNO (4/out/2026)',c:'4 out 2026',mes:'out26',a:'nac',lu:'45,16%',fl:'47,03%',re:'2,24%',ze:'—',ca:'2,18%',ou:'★★ RESULTADO OFICIAL URNAS 1T · Flávio lidera: 47,03% (56.104.503 votos)×Lula 45,16% (53.879.538)×Cury 2,89% (3.448.569)×Renan Santos 2,24% (2.675.887)×Caiado 2,18% (2.605.148) · Flávio venceu: Centro-Oeste (57,16%), Sul · Lula venceu: Nordeste (62,94%), Norte · 2T: Flávio vs Lula · 25/out/2026',n:'—',tse:'—',ano:'2026'},
+  {i:'AtlasIntel/Bloomberg (out. 9ª - 1ª 2T pós-1T) ★★',c:'3–8 out 2026',mes:'out26',a:'nac',lu:'47,2%',fl:'52,8%',re:'—',ze:'—',ca:'—',ou:'★★ 1ª pesquisa AtlasIntel do 2T pós-resultado do 1T · votos válidos: Flávio 52,8%×Lula 47,2% (+5,6pp) · votos totais: Flávio 51,1%×Lula 45,7% (+5,4pp) · brancos/nulos/NS: 3,2% · na véspera do 1T Atlas tinha 2T Lula 50,1%×Flávio 49,9% (1T Lula liderava!) · online · n=5.000 · ME=1pp · IC 95% · divulgado 9/out/26',n:'5.000',tse:'—',ano:'2026'},
+  {i:'Datafolha (7ª - 1ª 2T pós-1T) ★★',c:'6–8 out 2026',mes:'out26',a:'nac',lu:'48%',fl:'52%',re:'—',ze:'—',ca:'—',ou:'★★ 1ª pesquisa Datafolha do 2T pós-resultado do 1T · votos válidos: Flávio 52%×Lula 48% (+4pp) · votos totais: Flávio 49%×Lula 45% · O instituto classificou como empate técnico no limite da ME · na véspera 1T Datafolha tinha 2T Lula 47%×Flávio 46% (Lula levemente à frente!) · presencial domiciliar · ME=2pp · TSE BR-02949/2026 · divulgado 8/out/26',n:'~2.520',tse:'BR-02949/2026',ano:'2026'},
+  {i:'PoderData/AYA (10ª - 1ª 2T pós-1T) ★★',c:'5–7 out 2026',mes:'out26',a:'nac',lu:'47%',fl:'53%',re:'—',ze:'—',ca:'—',ou:'★★ 1ª PESQUISA DO 2T pós-apuração · votos válidos: Flávio 53%×Lula 47% (+6pp — fora da ME 1,8pp) · na véspera 1T PoderData tinha Lula 45%×Flávio 43% · telefônico · n=3.000 · ME=1,8pp · TSE BR-08134/2026 · divulgado 8/out/26',n:'3.000',tse:'BR-08134/2026',ano:'2026'},
   {i:'Datafolha (out. 6ª véspera 1T) ★ÚLTIMA',c:'3 out 2026',mes:'out26',a:'nac',lu:'45%',fl:'42%',re:'~3%',ze:'~2%',ca:'~4%',ou:'★ ÚLTIMA pesquisa Datafolha · véspera do 1T · votos válidos: Lula 45%×Flávio 42% (emp. técnico ME 2pp) · 2T Lula×Flávio: Lula 47%×Flávio 46% emp. técnico · Renan ~3% est. (8ª ed. consecutiva) · n=4.006 (maior amostra da série Datafolha) · ME=2pp · TSE BR-01708/2026 · presencial domiciliar · divulgado 3/out/26 · ★ lu/fl em votos válidos; re/ze/ca estimados da série',n:'4.006',tse:'BR-01708/2026',ano:'2026'},
   {i:'AtlasIntel/Bloomberg (out. 8ª)',c:'27 set–2 out 2026',mes:'out26',a:'nac',lu:'47%',fl:'44,1%',re:'4,6%',ze:'—',ca:'1,4%',ou:'▼ -0,6pp vs Atlas 7ª set (5,2%→4,6%) · ★ véspera 1T · votos válidos: Lula 47%×Flávio 44,1%×Renan 4,6%×Cury 2,1%×Caiado 1,4%×outros 0,9% · ★ 2T Lula×Flávio: Lula 50,1%×Flávio 49,9% emp. técnico quase perfeito · online · n=4.945 · ME=1pp · IC 95% · divulgado 3/out/26',n:'4.945',tse:'—',ano:'2026'},
   {i:'Quaest/Genial (out. véspera 1T)',c:'2–3 out 2026',mes:'out26',a:'nac',lu:'46%',fl:'45%',re:'3%',ze:'—',ca:'3%',ou:'— estável vs Quaest 5ª set (3%→3%) · ★ véspera 1T · votos válidos: Lula 46%×Flávio 45% emp. técnico (ME 2pp) · ★ 2T Flávio×Lula: Flávio 44%×Lula 42% emp. técnico · Cury 3%·Caiado 3%·Renan 3% · n=3.702 · ME=2pp · TSE BR-02197/2026 · contratada Grupo Globo · divulgado 3/out/26',n:'3.702',tse:'BR-02197/2026',ano:'2026'},
